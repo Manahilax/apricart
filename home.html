@@ -1,0 +1,780 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>home page</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,750;1,400&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --paper: #ffffff;
+    --ink: #29231f;
+    --muted: #74695f;
+    --line: rgba(41, 35, 31, .16);
+    --white: #ffffff;
+    --brand-blue: #002072;
+    --blue-mid: #1f3f8c;
+    --yellow: #F9D857;
+    --yellow-hover: #f8e185;
+    --navy-3: #2A3D7A;
+    --sky-1: #E4EFFC;
+    --gold-dark: #E0B62E;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    margin: 0;
+    min-width: 320px;
+    color: var(--ink);
+    background: var(--paper);
+    font-family: 'Montserrat', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.gateway {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    min-height: 901px;        
+    padding: 150px 0 90px 9vw;
+    transition: padding .35s ease;
+    background: transparent;
+    overflow: hidden;
+}
+
+.gateway-svg {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    z-index: -1;
+    width: 100%;
+    height: 901px;
+    max-width: none;           
+    object-fit: cover;
+    object-position: center center;
+    transform: translate(-50%, 50px);   
+    opacity: 1;
+    pointer-events: none;
+    display: block;
+}
+
+.gateway:has(.market-dropdown.open) {
+    padding-top: 90px;
+    padding-bottom: 260px;
+}
+.gateway>*:not(.gateway-svg) {
+    position: relative;
+    z-index: 1;
+}
+
+.site {
+    width: 100%;
+    margin: auto;
+}
+
+.site>.site-header,
+.site>main>.gateway,
+.site>.footer {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+}
+
+/* ---------- NAVIGATION (site-header) ---------- */
+
+header.site-header {
+    width: 100%;
+    height: 84px;
+    background: var(--white);
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 48px;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.logo-img {
+    height: 90px;
+    width: auto;
+    display: block;
+}
+
+nav.main-nav {
+    display: flex;
+    align-items: stretch;
+    gap: 34px;
+    height: 100%;
+}
+
+nav.main-nav > a {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--brand-blue);
+    padding: 6px 0;
+    border-bottom: 2px solid transparent;
+    transition: color .15s ease, border-color .15s ease;
+}
+
+nav.main-nav > a:hover {
+    color: var(--navy-3);
+    border-bottom-color: var(--yellow);
+}
+
+nav.main-nav > a.active {
+    font-weight: 700;
+    border-bottom-color: var(--yellow);
+}
+
+.nav-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.nav-trigger {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    height: 100%;
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--brand-blue);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    padding: 6px 0;
+    border-bottom: 2px solid transparent;
+    transition: color .15s ease, border-color .15s ease;
+}
+
+.nav-trigger:hover,
+.nav-item.open .nav-trigger {
+    color: var(--navy-3);
+    border-bottom-color: var(--yellow);
+}
+
+.nav-trigger .chevron {
+    transition: transform .18s ease;
+    display: flex;
+}
+
+.nav-item:hover .chevron,
+.nav-item.open .chevron {
+    transform: rotate(180deg);
+}
+
+.dropdown-panel {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(6px);
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    box-shadow: 0 20px 48px -14px rgba(22,34,78,0.22);
+    padding: 10px;
+    min-width: 210px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity .16s ease, transform .16s ease;
+    z-index: 60;
+}
+
+.nav-item:hover .dropdown-panel,
+.nav-item.open .dropdown-panel,
+.nav-item:focus-within .dropdown-panel {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-panel a {
+    display: block;
+    padding: 11px 14px;
+    border-radius: 9px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--brand-blue);
+}
+
+.dropdown-panel a:hover {
+    background: var(--sky-1);
+    color: var(--navy-3);
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.header-right .btn {
+    padding: 11px 24px;
+    font-size: 14px;
+    position: relative;
+}
+
+.header-right .btn::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -9px;
+    width: 70%;
+    height: 2px;
+    transform: translateX(-50%) scaleX(0);
+    transform-origin: center;
+    transition: transform .15s ease;
+}
+
+.header-right .btn:hover::after {
+    transform: translateX(-50%) scaleX(1);
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 14px 28px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    transition: background .15s ease, border-color .15s ease, transform .15s ease;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.btn-gold {
+    background: var(--yellow);
+    color: var(--brand-blue);
+}
+
+.btn-gold:hover {
+    background: var(--yellow-hover);
+}
+
+.btn-outline-navy {
+    background: transparent;
+    border: 1.5px solid var(--brand-blue);
+    color: var(--brand-blue);
+}
+
+.btn-outline-navy:hover {
+    background: rgba(0,32,114,0.06);
+}
+
+.btn-outline-white {
+    background: transparent;
+    border: 1.5px solid rgba(255,255,255,0.5);
+    color: var(--white);
+}
+
+.btn-outline-white:hover {
+    background: rgba(255,255,255,0.12);
+}
+
+/* HERO */
+
+h1,
+h2,
+h3,
+p {
+    margin-top: 0;
+}
+
+h1,
+h2,
+h3 {
+    color: var(--brand-blue);
+}
+
+h1 {
+    max-width: 760px;
+    margin-bottom: 20px;
+    font: 600 clamp(5.55rem, 4vw, 4.05rem)/1.09 'Montserrat', sans-serif;
+    letter-spacing: -.055em;
+}
+
+h1 .highlight {
+    position: relative;
+    display: inline-block;
+    color: #2145d8;
+}
+
+h1 .highlight1 {
+    position: relative;
+    display: inline-block;
+    color: #2145d8;
+}
+
+.lead {
+    max-width: 430px;
+    margin-bottom: 0;
+    color: #1142bd;
+    font-size: 1.09rem;
+    line-height: 1.6;
+}
+
+/* MARKET DROPDOWN */
+
+.market-dropdown {
+    position: relative;
+    width: 430px;
+    max-width: 100%;
+    margin-top: 35px;
+}
+
+.market-main-btn {
+    width: 100%;
+    min-height: 82px;
+    padding: 0 28px;
+    border: 0;
+    border-radius: 18px;
+    background: var(--yellow);
+    color: var(--brand-blue);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    box-shadow: 0 14px 35px rgba(41, 35, 31, .12);
+    transition: .25s ease;
+}
+
+.market-main-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 40px rgba(41, 35, 31, .16);
+    background: var(--yellow-hover);
+    border-color: var(--yellow-hover);
+}
+
+.market-arrow {
+    font-size: 34px;
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    box-sizing: border-box;
+}
+
+.market-arrow:hover {
+    border-color: var(--brand-blue);
+}
+
+.market-dropdown.open .market-arrow {
+    transform: rotate(180deg);
+}
+
+.market-options {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    width: 100%;
+    padding: 8px;
+    border-radius: 16px;
+    background: white;
+    box-shadow: 0 18px 45px rgba(41, 35, 31, .16);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: .2s ease;
+    z-index: 20;
+}
+
+.market-dropdown.open .market-options {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.market-options button {
+    width: 100%;
+    padding: 16px 18px;
+    border: 0;
+    border-radius: 11px;
+    background: transparent;
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    transition: background .2s ease;
+}
+
+.market-options button:hover {
+    background: #f7f3ed;
+}
+
+.market-options button span,
+.market-options button small {
+    display: block;
+}
+
+.market-options button span {
+    color: var(--brand-blue);
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.market-options button small {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* MARKET SECTIONS */
+
+.market {
+    display: none;
+    padding: 70px 80px 100px;
+    border-top: 1px solid var(--line);
+    scroll-margin-top: 20px;
+}
+
+.market::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 100vw;
+    margin-left: -50vw;
+    border-top: 1px solid var(--line);
+}
+
+.market.active {
+    display: block;
+    animation: appear .45s ease both;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.market-header {
+    display: grid;
+    grid-template-columns: 1fr .72fr;
+    gap: 70px;
+    align-items: end;
+    margin-bottom: 50px;
+}
+
+.market-header h2 {
+    max-width: 650px;
+    margin: 0;
+    font: 500 clamp(2.4rem, 5vw, 4.8rem)/.95 'Montserrat', sans-serif;
+    letter-spacing: -.03em;
+    color: var(--brand-blue);
+}
+
+.market-header>p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.65;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    background-color: var(--blue-mid);
+    justify-content: space-between;
+    gap: 30px;
+    width: 100%;
+    padding: 25px 60px 36px;
+    border-top: 1px solid var(--line);
+    color: var(--white);
+    font-size: 1.05rem;
+}
+
+.footer-right {
+    margin-left: auto;
+    text-align: right;
+    max-width: 500px;
+}
+
+@media (max-width: 980px) {
+    nav.main-nav {
+        display: none;
+    }
+}
+
+@media (max-width: 900px) {
+
+    .gateway {
+        min-height: 720px;
+        padding: 105px 24px 45px;
+    }
+
+    h1 {
+        max-width: 700px;
+        font-size: clamp(2.45rem, 8vw, 3.7rem);
+    }
+
+    .lead {
+        max-width: 420px;
+        font-size: .9rem;
+    }
+
+    .market-dropdown {
+        width: 430px;
+        max-width: 100%;
+    }
+
+    .market {
+        padding: 60px 30px 80px;
+    }
+
+    .market-header {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    header.site-header {
+        height: 70px;
+        padding: 0 24px;
+    }
+
+    .logo-img {
+        width: 105px;
+        height: auto;
+    }
+
+    nav.main-nav {
+        display: none;
+    }
+
+    .header-right {
+        gap: 4px;
+    }
+
+    .btn {
+        min-height: 38px;
+        padding: 0 13px;
+        font-size: 11px;
+    }
+
+    .btn-gold {
+        display: none;
+    }
+}
+
+@media (max-width: 520px) {
+
+    .market-dropdown {
+        width: 100%;
+    }
+
+    .market-main-btn {
+        min-height: 70px;
+        font-size: 17px;
+        padding: 0 22px;
+    }
+
+    header.site-header {
+        padding: 0 16px;
+    }
+
+    .logo-img {
+        width: 95px;
+        height: auto;
+    }
+
+    .btn-outline-navy {
+        display: none;
+    }
+
+    .market {
+        padding: 50px 20px 70px;
+    }
+}  
+</style>
+</head>
+
+<body>
+
+    <div class="site">
+
+        <header class="site-header">
+            <a href="/" class="logo">
+                <img src="/final/images/apricart-logo-reveal.svg" alt="Apricart" class="logo-img">
+            </a>
+
+            <nav class="main-nav">
+                <a href="#home" class="active">Home</a>
+
+                <div class="nav-item">
+                    <button class="nav-trigger" aria-haspopup="true" aria-expanded="false">
+                        About Apricart
+                        <span class="chevron"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                    </button>
+                    <div class="dropdown-panel">
+                        <a href="aboutus.html#our-story">Our Story</a>
+                        <a href="aboutus.html#vision-mission">Vision</a>
+                        <a href="aboutus.html#team">Team</a>
+                    </div>
+                </div>
+
+                <div class="nav-item">
+                    <button class="nav-trigger" aria-haspopup="true" aria-expanded="false">
+                        Our Business
+                        <span class="chevron"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                    </button>
+                    <div class="dropdown-panel">
+                        <a href="Our_Business.html#supplies">Supplies</a>
+                        <a href="Our_Business.html#system">System</a>
+                    </div>
+                </div>
+
+                <a href="#partners.html">Partners</a>
+               
+            </nav>
+
+            <div class="header-right">
+                <a href="#login.html" class="btn btn-outline-navy">Login</a>
+                <a href="#contact_us.html" class="btn btn-gold">Talk to Sale</a>
+            </div>
+        </header>
+
+
+        <main>
+
+            <div class="gateway" aria-labelledby="gateway-title">
+                <img class="gateway-svg" src="/final/images/homeb.png" alt="" aria-hidden="true">
+
+                <div>
+
+                    <h1 id="gateway-title">
+                        <span class="highlight">Smarter</span> supply <br>chains for<br>
+                        <span class="highlight1">businesses.</span>
+                    </h1>
+
+                    <p class="lead">
+                        Apricart builds dependable procurement and distribution systems
+                        for the organizations that keep economies moving.
+                    </p>
+
+
+                    <!-- MARKET DROPDOWN -->
+
+                    <div class="market-dropdown">
+
+                        <button class="market-main-btn" id="market-main-btn" type="button">
+
+                            <span>
+                                Choose Your Market
+                            </span>
+
+                            <span class="market-arrow">
+                                ↓
+                            </span>
+
+                        </button>
+
+
+                        <div class="market-options" id="market-options">
+
+                            <button type="button" data-market="pakistan">
+
+                                <span>
+                                    Pakistan
+                                </span>
+
+                                <small>
+                                    Corporate Procurement
+                                </small>
+
+                            </button>
+
+
+                            <button type="button" data-market="ksa">
+
+                                <span>
+                                    Saudi Arabia
+                                </span>
+
+                                <small>
+                                    Food Distribution
+                                </small>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+
+
+        <footer class="footer">
+
+            <span>
+                © 2026 Apricart. All rights reserved.
+            </span>
+
+            <span class="footer-right">
+                NATIONWIDE CORPORATE DELIVERY
+            </span>
+
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

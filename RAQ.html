@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Request a Quote — Apricart Pakistan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,750;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #16224E;
+    --navy-2: #1F2E63;
+    --navy-3: #2A3D7A;
+    --slate: #6B7686;
+    --slate-light: #8A93A6;
+    --sky-1: #E4EFFC;
+    --sky-2: #BFDBF7;
+    --sky-3: #9CC5F2;
+    --gold: #F3C94E;
+    --gold-dark: #E0B62E;
+    --orange: #F2874B;
+    --white: #FFFFFF;
+    --line: #E3E9F3;
+    --bg: #FBFCFE;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Montserrat', system-ui, sans-serif; color: var(--navy); background: var(--bg); -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+  .container { max-width: 1240px; margin: 0 auto; padding: 0 48px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700; font-size: 15px; padding: 14px 28px; border-radius: 999px; border: none; cursor: pointer; transition: background .15s ease, border-color .15s ease, transform .15s ease; font-family: 'Montserrat', sans-serif; }
+  .btn-gold { background: var(--gold); color: var(--navy); }
+  .btn-gold:hover { background: var(--gold-dark); }
+  .btn-outline-navy { background: transparent; border: 1.5px solid var(--navy); color: var(--navy); }
+  .btn-outline-navy:hover { background: rgba(22,34,78,0.06); }
+  .eyebrow { font-weight: 700; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--navy-3); }
+  section { position: relative; }
+
+  /* ---------- HEADER (shared) ---------- */
+  header.site-header { width: 100%; height: 84px; background: var(--white); border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; padding: 0 48px; position: sticky; top: 0; z-index: 50; }
+  .logo-img { height: 90px; width: auto; display: block; }
+  nav.main-nav { display: flex; align-items: stretch; gap: 34px; height: 100%; }
+  nav.main-nav > a { display: flex; align-items: center; font-size: 18px; font-weight: 900; color: var(--navy); padding: 6px 0; border-bottom: 2px solid transparent; transition: color .15s ease, border-color .15s ease; }
+  nav.main-nav > a:hover { color: var(--navy-3); border-bottom-color: var(--gold); }
+  nav.main-nav > a.active { font-weight: 700; border-bottom-color: var(--gold); }
+  .nav-item { position: relative; display: flex; align-items: center; }
+  .nav-trigger { display: flex; align-items: center; gap: 6px; height: 100%; font-size: 18px; font-weight: 900; color: var(--navy); background: none; border: none; cursor: pointer; font-family: 'Montserrat', sans-serif; padding: 6px 0; border-bottom: 2px solid transparent; transition: color .15s ease, border-color .15s ease; }
+  .nav-trigger:hover, .nav-item.open .nav-trigger { color: var(--navy-3); border-bottom-color: var(--gold); }
+  .nav-trigger .chevron { transition: transform .18s ease; display: flex; }
+  .nav-item:hover .chevron, .nav-item.open .chevron { transform: rotate(180deg); }
+  .dropdown-panel {
+    position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(6px);
+    background: var(--white); border: 1px solid var(--line); border-radius: 14px;
+    box-shadow: 0 20px 48px -14px rgba(22,34,78,0.22); padding: 10px; min-width: 210px;
+    opacity: 0; visibility: hidden; pointer-events: none;
+    transition: opacity .16s ease, transform .16s ease;
+    z-index: 60;
+  }
+  .nav-item:hover .dropdown-panel,
+  .nav-item.open .dropdown-panel,
+  .nav-item:focus-within .dropdown-panel {opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(-50%) translateY(0);}
+  .dropdown-panel a { display: block; padding: 11px 14px; border-radius: 9px; font-size: 14px; font-weight: 500; color: var(--navy); }
+  .dropdown-panel a:hover { background: var(--sky-1); color: var(--navy-3); }
+  .header-right { display: flex; align-items: center; gap: 14px;}
+  .header-right .btn { padding: 11px 24px; font-size: 14px; position: relative; }
+
+  /* ---------- REQUEST A QUOTE ---------- */
+  .raq-hero {
+    background: var(--navy);
+    padding: 80px 0 220px;
+  }
+  .raq-hero h1 {
+    color: var(--white);
+    font-weight: 800;
+    font-size: 40px;
+    margin-bottom: 14px;
+  }
+  .raq-hero p {
+    color: var(--sky-2);
+    font-size: 15px;
+    line-height: 1.7;
+    max-width: 560px;
+  }
+
+  .raq-body { padding: 0 0 100px; }
+  .raq-card {
+    background: var(--white);
+    border-radius: 24px;
+    box-shadow: 0 30px 60px -20px rgba(22,34,78,0.25);
+    padding: 48px;
+    max-width: 880px;
+    margin: -160px auto 0;
+  }
+  .raq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px 24px;
+  }
+  .raq-field { display: flex; flex-direction: column; gap: 8px; }
+  .raq-field.full { grid-column: 1 / -1; }
+  .raq-field label { font-size: 13px; font-weight: 700; color: var(--navy); }
+  .raq-field input,
+  .raq-field select,
+  .raq-field textarea {
+    width: 100%;
+    border: 1.5px solid var(--line);
+    border-radius: 10px;
+    padding: 13px 14px;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--navy);
+    background: var(--white);
+    transition: border-color .15s ease, box-shadow .15s ease;
+  }
+  .raq-field input::placeholder,
+  .raq-field textarea::placeholder { color: var(--slate-light); }
+  .raq-field input:focus,
+  .raq-field select:focus,
+  .raq-field textarea:focus {
+    outline: none;
+    border-color: var(--navy-3);
+    box-shadow: 0 0 0 3px rgba(42,61,122,0.12);
+  }
+  .raq-field select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%236B7686' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+  .raq-field textarea { resize: vertical; min-height: 110px; font-family: 'Montserrat', sans-serif; }
+
+  .raq-upload {
+    border: 1.5px dashed var(--line);
+    border-radius: 12px;
+    padding: 26px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    background: var(--sky-1);
+  }
+  .raq-upload p { font-size: 13px; color: var(--slate); margin: 0; }
+  .raq-upload input[type="file"] { display: none; }
+  .raq-upload label.upload-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--navy); color: var(--white);
+    font-size: 12px; font-weight: 700; padding: 9px 18px;
+    border-radius: 999px; cursor: pointer;
+    transition: background .15s ease;
+  }
+  .raq-upload label.upload-btn:hover { background: var(--navy-3); }
+
+  .raq-submit-row { display: flex; justify-content: flex-end; margin-top: 8px; }
+
+
+  /* ---------- FOOTER (shared) ---------- */
+  footer.site-footer { background: var(--navy); padding: 64px 0 0 0; color: rgba(255,255,255,0.7); }
+  .footer-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 48px; padding-bottom: 48px; }
+  .footer-logo-img { height: 60px; width: auto; display: block; }
+  .footer-col h4 { font-weight: 700; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: var(--white); margin-bottom: 14px; }
+  .footer-col a, .footer-col .row { display: block; font-size: 14px; margin-bottom: 12px; }
+  .footer-col .row { display: flex; gap: 10px; align-items: flex-start; }
+  .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding: 22px 0; border-top: 1px solid rgba(255,255,255,0.14); font-size: 13px; }
+  .footer-bottom .tag { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+  .social-row { display: flex; gap: 10px; margin-top: 4px; }
+  .social-row a { width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; }
+  .social-row a:hover { background: rgba(255,255,255,0.18); }
+  .nl-row { display: flex; gap: 8px; }
+  .nl-row input { flex: 1; min-width: 0; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18); border-radius: 999px; padding: 10px 14px; font-size: 13px; color: var(--white); font-family: 'Montserrat', sans-serif; }
+  .nl-row button { background: var(--gold); color: var(--navy); border: none; border-radius: 999px; padding: 0 18px; font-size: 13px; font-weight: 700; cursor: pointer; }
+
+  @media (max-width: 980px) {
+    .container { padding: 0 24px; }
+    .site-header { padding: 0 24px; }
+    .main-nav { display: none; }
+    .footer-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  }
+  @media (max-width: 760px) {
+    .raq-grid { grid-template-columns: 1fr; }
+    .raq-card { padding: 28px; margin-top: -120px; }
+    .raq-hero { padding: 60px 0 180px; }
+    .raq-hero h1 { font-size: 30px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="site-header">
+  <a href="home.html" class="logo">
+    <img src="/final/images/apricart-logo-reveal.svg" alt="Apricart" class="logo-img">
+  </a>
+
+  <nav class="main-nav">
+    <a href="home.html">Home</a>
+
+    <div class="nav-item">
+      <button class="nav-trigger" aria-haspopup="true" aria-expanded="false">
+        About Apricart
+        <span class="chevron"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+      </button>
+      <div class="dropdown-panel">
+        <a href="about.html#our-story">Our Story</a>
+        <a href="about.html#vision-mission">Vision</a>
+        <a href="about.html#team">Team</a>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <button class="nav-trigger" aria-haspopup="true" aria-expanded="false">
+        Our Business
+        <span class="chevron"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+      </button>
+      <div class="dropdown-panel">
+        <a href="Our_Business.html#supplies">Supplies</a>
+        <a href="Our_Business.html#system">System</a>
+      </div>
+    </div>
+
+    <a href="#partners.html">Partners</a>
+  </nav>
+
+  <div class="header-right">
+    <a href="#login.html" class="btn btn-outline-navy">Login</a>
+    <a href="RAQ.html" class="btn btn-gold">Talk to Sale</a>
+  </div>
+</header>
+
+<!-- ================= REQUEST A QUOTE ================= -->
+<section class="raq-hero">
+  <div class="container">
+    <h1>Request a Quote</h1>
+    <p>Entrust with high professionalism, we are capable of offering pixel-perfect procurement, sourcing and delivery solutions tailored to your business.</p>
+  </div>
+</section>
+
+<section class="raq-body">
+  <div class="container">
+    <div class="raq-card">
+      <form>
+        <div class="raq-grid">
+          <div class="raq-field">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" placeholder="Type your name">
+          </div>
+          <div class="raq-field">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Type your last name">
+          </div>
+
+          <div class="raq-field">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="+92 XXX XXXXXXX">
+          </div>
+          <div class="raq-field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@company.com">
+          </div>
+
+          <div class="raq-field">
+            <label for="category">Supply Category</label>
+            <select id="category" name="category">
+              <option value="">Select a category</option>
+              <option value="office">Office &amp; Stationery</option>
+              <option value="kitchen">Kitchen Supplies</option>
+              <option value="water">Water</option>
+              <option value="hygiene">Hygiene &amp; Cleaning</option>
+              <option value="general">General Workplace Supplies</option>
+            </select>
+          </div>
+          <div class="raq-field">
+            <label for="budget">Estimated Budget</label>
+            <input type="text" id="budget" name="budget" placeholder="e.g. PKR 200,000 / month">
+          </div>
+
+          <div class="raq-field">
+            <label for="timeline">Preferred Delivery Timeline</label>
+            <input type="text" id="timeline" name="timeline" placeholder="e.g. Weekly, Monthly">
+          </div>
+          <div class="raq-field">
+            <label for="company">Company Name</label>
+            <input type="text" id="company" name="company" placeholder="Your organization">
+          </div>
+
+          <div class="raq-field">
+            <label for="locations">Number of Office Locations</label>
+            <input type="text" id="locations" name="locations" placeholder="e.g. 3 offices">
+          </div>
+          <div class="raq-field">
+            <label for="city">City</label>
+            <select id="city" name="city">
+              <option value="">Select a city</option>
+              <option value="karachi">Karachi</option>
+              <option value="lahore">Lahore</option>
+              <option value="islamabad">Islamabad</option>
+              <option value="faisalabad">Faisalabad</option>
+              <option value="multan">Multan</option>
+            </select>
+          </div>
+
+          <div class="raq-field full">
+            <label>Upload File</label>
+            <div class="raq-upload">
+              <p>Drag file here or click the button below</p>
+              <label class="upload-btn" for="fileUpload">Upload File</label>
+              <input type="file" id="fileUpload" name="fileUpload">
+            </div>
+          </div>
+
+          <div class="raq-field full">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell us more about what you need..."></textarea>
+          </div>
+        </div>
+
+        <div class="raq-submit-row">
+          <button type="submit" class="btn btn-gold">Request a Quote</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-col">
+      <div class="logo footer-logo" style="margin-bottom:16px;">
+        <img src="/final/images/logo_white.png" alt="Apricart" class="footer-logo-img">
+      </div>
+      <p style="font-size:14px; line-height:1.6; max-width:220px; margin-bottom:16px;">Smarter supply chains for businesses.</p>
+      <div class="social-row">
+        <a href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.34 18.34V10.1H5.67v8.24h2.67zM7 8.96a1.55 1.55 0 1 0 0-3.1 1.55 1.55 0 0 0 0 3.1zM18.34 18.34h.01v-4.5c0-2.4-1.28-3.52-3-3.52-1.38 0-2 .76-2.34 1.3v-1.11H10.3c.04.75 0 8.24 0 8.24h2.67v-4.6c0-.25.02-.5.1-.68.2-.5.66-1.03 1.44-1.03.95 0 1.42.7 1.42 1.85v4.46l2.42-.01z"/></svg></a>
+        <a href="#"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2.9h3.3l-7.2 8.2 8.5 11h-6.6l-5.2-6.8-6 6.8H2.4l7.7-8.8L2 2.9h6.8l4.7 6.3 5.4-6.3zm-1.2 17.2h1.8L7 4.8H5l12.7 15.3z"/></svg></a>
+        <a href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.4c0-.87.24-1.46 1.5-1.46h1.6V4.28C16.3 4.2 15.4 4.1 14.4 4.1c-2.3 0-3.9 1.4-3.9 4v2.4H8v3h2.5V21h3z"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="home.html">Home</a>
+      <a href="aboutus.html#our-story">About Apricart</a>
+      <a href="#Our_business.html">Our Business</a>
+      <a href="#partners.html">Partners</a>
+    </div>
+    <div class="footer-col">
+      <h4>Pakistan Office</h4>
+      <div class="row"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" style="flex-shrink:0; margin-top:2px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg><span>[Office address, City, Pakistan]</span></div>
+      <div class="row"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" style="flex-shrink:0;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg><span>[+92 XXX XXXXXXX]</span></div>
+      <div class="row"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" style="flex-shrink:0;"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 6-10 7L2 6"></path></svg><span>[hello@apricart.pk]</span></div>
+    </div>
+    <div class="footer-col">
+      <h4>Stay Updated</h4>
+      <p style="font-size:14px; line-height:1.55; margin-bottom:14px;">Procurement tips and product news, occasionally.</p>
+      <div class="nl-row">
+        <input type="email" placeholder="Work email">
+        <button>Join</button>
+      </div>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>&copy; 2026 Apricart. All rights reserved.</span>
+    <span class="tag">Nationwide Corporate Delivery</span>
+  </div>
+</footer>
+
+<script src="/final/pk_pg.js"></script>
+
+</body>
+</html>
