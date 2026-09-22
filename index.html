@@ -1,780 +1,508 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>home page</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,750;1,400&display=swap" rel="stylesheet">
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apricart - Smarter supply chains, built on technology</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --paper: #ffffff;
-    --ink: #29231f;
-    --muted: #74695f;
-    --line: rgba(41, 35, 31, .16);
+    --navy: #10163f;
+    --navy-2: #141b47;
+    --yellow: #f5b921;
+    --blue: #3b5bfb;
     --white: #ffffff;
-    --brand-blue: #002072;
-    --blue-mid: #1f3f8c;
-    --yellow: #F9D857;
-    --yellow-hover: #f8e185;
-    --navy-3: #2A3D7A;
-    --sky-1: #E4EFFC;
-    --gold-dark: #E0B62E;
-}
+    --muted: #b9bdd6;
+  }
 
-* {
-    box-sizing: border-box;
-}
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
-html {
-    scroll-behavior: smooth;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
+  body {
+    font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    overflow-x: hidden;
+  }
 
-html::-webkit-scrollbar {
-    display: none;
-}
-
-body {
-    margin: 0;
-    min-width: 320px;
-    color: var(--ink);
-    background: var(--paper);
-    font-family: 'Montserrat', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-img {
-    max-width: 100%;
-    display: block;
-}
-
-.gateway {
+  .page {
     position: relative;
-    z-index: 1;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    width: 100%;
-    min-height: 901px;        
-    padding: 150px 0 90px 9vw;
-    transition: padding .35s ease;
-    background: transparent;
+    min-height: 100vh;
+    background: radial-gradient(circle at 78% 45%, #171d4d 0%, var(--navy) 55%);
     overflow: hidden;
-}
+    display: flex;
+    flex-direction: column;
+  }
 
-.gateway-svg {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    z-index: -1;
-    width: 100%;
-    height: 901px;
-    max-width: none;           
-    object-fit: cover;
-    object-position: center center;
-    transform: translate(-50%, 50px);   
-    opacity: 1;
-    pointer-events: none;
-    display: block;
-}
-
-.gateway:has(.market-dropdown.open) {
-    padding-top: 90px;
-    padding-bottom: 260px;
-}
-.gateway>*:not(.gateway-svg) {
-    position: relative;
-    z-index: 1;
-}
-
-.site {
-    width: 100%;
-    margin: auto;
-}
-
-.site>.site-header,
-.site>main>.gateway,
-.site>.footer {
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
-}
-
-/* ---------- NAVIGATION (site-header) ---------- */
-
-header.site-header {
-    width: 100%;
-    height: 84px;
-    background: var(--white);
-    border-bottom: 1px solid var(--line);
+  /* NAV */
+  nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 48px;
-    position: sticky;
-    top: 0;
-    z-index: 50;
-}
+    padding: 28px 60px;
+    position: relative;
+    z-index: 10;
+  }
 
-.logo-img {
-    height: 90px;
+  .logo-slot {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-slot svg {
+    height: 28px;
     width: auto;
     display: block;
-}
+  }
 
-nav.main-nav {
-    display: flex;
-    align-items: stretch;
-    gap: 34px;
-    height: 100%;
-}
-
-nav.main-nav > a {
+  .nav-links {
     display: flex;
     align-items: center;
-    font-size: 18px;
-    font-weight: 900;
-    color: var(--brand-blue);
-    padding: 6px 0;
-    border-bottom: 2px solid transparent;
-    transition: color .15s ease, border-color .15s ease;
-}
+    gap: 36px;
+    list-style: none;
+  }
 
-nav.main-nav > a:hover {
-    color: var(--navy-3);
-    border-bottom-color: var(--yellow);
-}
-
-nav.main-nav > a.active {
-    font-weight: 700;
-    border-bottom-color: var(--yellow);
-}
-
-.nav-item {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.nav-trigger {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    height: 100%;
-    font-size: 18px;
-    font-weight: 900;
-    color: var(--brand-blue);
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-family: 'Montserrat', sans-serif;
-    padding: 6px 0;
-    border-bottom: 2px solid transparent;
-    transition: color .15s ease, border-color .15s ease;
-}
-
-.nav-trigger:hover,
-.nav-item.open .nav-trigger {
-    color: var(--navy-3);
-    border-bottom-color: var(--yellow);
-}
-
-.nav-trigger .chevron {
-    transition: transform .18s ease;
-    display: flex;
-}
-
-.nav-item:hover .chevron,
-.nav-item.open .chevron {
-    transform: rotate(180deg);
-}
-
-.dropdown-panel {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%) translateY(6px);
-    background: var(--white);
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    box-shadow: 0 20px 48px -14px rgba(22,34,78,0.22);
-    padding: 10px;
-    min-width: 210px;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: opacity .16s ease, transform .16s ease;
-    z-index: 60;
-}
-
-.nav-item:hover .dropdown-panel,
-.nav-item.open .dropdown-panel,
-.nav-item:focus-within .dropdown-panel {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transform: translateX(-50%) translateY(0);
-}
-
-.dropdown-panel a {
-    display: block;
-    padding: 11px 14px;
-    border-radius: 9px;
-    font-size: 14px;
+  .nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.95rem;
     font-weight: 500;
-    color: var(--brand-blue);
-}
+    opacity: 0.9;
+    transition: opacity 0.2s, border-color 0.2s;
+    padding-bottom: 6px;
+    border-bottom: 2px solid transparent;
+  }
 
-.dropdown-panel a:hover {
-    background: var(--sky-1);
-    color: var(--navy-3);
-}
+  .nav-links a:hover {
+    opacity: 1;
+    border-bottom-color: var(--yellow);
+  }
 
-.header-right {
+  .nav-links .active {
+    border-bottom: 2px solid var(--yellow);
+    opacity: 1;
+  }
+
+  .nav-right {
     display: flex;
     align-items: center;
     gap: 14px;
-}
+  }
 
-.header-right .btn {
-    padding: 11px 24px;
-    font-size: 14px;
-    position: relative;
-}
+  .btn-login {
+    background: transparent;
+    border: 1.5px solid rgba(255,255,255,0.4);
+    color: var(--white);
+    padding: 10px 22px;
+    border-radius: 24px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
 
-.header-right .btn::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    bottom: -9px;
-    width: 70%;
-    height: 2px;
-    transform: translateX(-50%) scaleX(0);
-    transform-origin: center;
-    transition: transform .15s ease;
-}
+  .btn-login:hover { border-color: var(--white); }
 
-.header-right .btn:hover::after {
-    transform: translateX(-50%) scaleX(1);
-}
-
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    font-weight: 700;
-    font-size: 15px;
-    padding: 14px 28px;
-    border-radius: 999px;
+  .btn-sales {
+    background: var(--yellow);
     border: none;
+    color: var(--navy);
+    padding: 10px 22px;
+    border-radius: 24px;
+    font-size: 0.9rem;
+    font-weight: 700;
     cursor: pointer;
-    transition: background .15s ease, border-color .15s ease, transform .15s ease;
-    font-family: 'Montserrat', sans-serif;
-}
+    line-height: 1.2;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
 
-.btn-gold {
-    background: var(--yellow);
-    color: var(--brand-blue);
-}
+  .btn-sales:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(245, 185, 33, 0.3);
+  }
 
-.btn-gold:hover {
-    background: var(--yellow-hover);
-}
-
-.btn-outline-navy {
-    background: transparent;
-    border: 1.5px solid var(--brand-blue);
-    color: var(--brand-blue);
-}
-
-.btn-outline-navy:hover {
-    background: rgba(0,32,114,0.06);
-}
-
-.btn-outline-white {
-    background: transparent;
-    border: 1.5px solid rgba(255,255,255,0.5);
-    color: var(--white);
-}
-
-.btn-outline-white:hover {
-    background: rgba(255,255,255,0.12);
-}
-
-/* HERO */
-
-h1,
-h2,
-h3,
-p {
-    margin-top: 0;
-}
-
-h1,
-h2,
-h3 {
-    color: var(--brand-blue);
-}
-
-h1 {
-    max-width: 760px;
-    margin-bottom: 20px;
-    font: 600 clamp(5.55rem, 4vw, 4.05rem)/1.09 'Montserrat', sans-serif;
-    letter-spacing: -.055em;
-}
-
-h1 .highlight {
+  /* HERO */
+  .hero {
     position: relative;
-    display: inline-block;
-    color: #2145d8;
-}
-
-h1 .highlight1 {
-    position: relative;
-    display: inline-block;
-    color: #2145d8;
-}
-
-.lead {
-    max-width: 430px;
-    margin-bottom: 0;
-    color: #1142bd;
-    font-size: 1.09rem;
-    line-height: 1.6;
-}
-
-/* MARKET DROPDOWN */
-
-.market-dropdown {
-    position: relative;
-    width: 430px;
-    max-width: 100%;
-    margin-top: 35px;
-}
-
-.market-main-btn {
-    width: 100%;
-    min-height: 82px;
-    padding: 0 28px;
-    border: 0;
-    border-radius: 18px;
-    background: var(--yellow);
-    color: var(--brand-blue);
-    font-family: 'Montserrat', sans-serif;
-    font-size: 20px;
-    font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 70px 60px 140px;
+    max-width: 1440px;
+    margin: 0 auto;
+    gap: 40px;
+    flex: 1;
+    width: 100%;
+  }
+
+  .hero-content {
+    max-width: 580px;
+    position: relative;
+    z-index: 5;
+  }
+
+  /* Placeholder slot for a custom eyebrow element (text or SVG) above the
+     headline -- paste your content inside .eyebrow-slot */
+  .eyebrow-slot {
+    min-height: 20px;
+    margin-bottom: 18px;
+  }
+
+  h1 {
+    font-size: 3.6rem;
+    line-height: 1.08;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    margin-bottom: 40px;
+  }
+
+  h1 .highlight { color: var(--yellow); }
+
+  .market-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+
+  .market-cards {
+    display: flex;
+    gap: 16px;
+  }
+
+  .market-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 14px;
+    padding: 18px 20px;
+    min-width: 230px;
+    text-decoration: none;
+    color: var(--white);
     cursor: pointer;
-    box-shadow: 0 14px 35px rgba(41, 35, 31, .12);
-    transition: .25s ease;
-}
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+  }
 
-.market-main-btn:hover {
+  .market-card:hover {
+    background: rgba(255,255,255,0.07);
+    border-color: rgba(255,255,255,0.25);
     transform: translateY(-2px);
-    box-shadow: 0 18px 40px rgba(41, 35, 31, .16);
-    background: var(--yellow-hover);
-    border-color: var(--yellow-hover);
-}
+  }
 
-.market-arrow {
-    font-size: 34px;
-    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-    display: inline-flex;
+  .market-card .country {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .market-card .sub {
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  .market-arrow {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--yellow);
+    display: flex;
     align-items: center;
     justify-content: center;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    border: 2px solid transparent;
-    box-sizing: border-box;
-}
+    color: var(--navy);
+    font-weight: 700;
+  }
 
-.market-arrow:hover {
-    border-color: var(--brand-blue);
-}
+  /* GRAPHIC */
+  .hero-graphic {
+    position: relative;
+    width: 720px;
+    max-width: 100%;
+    aspect-ratio: 1 / 1;
+    flex-shrink: 0;
+  }
 
-.market-dropdown.open .market-arrow {
-    transform: rotate(180deg);
-}
-
-.market-options {
-    position: absolute;
-    top: calc(100% + 10px);
-    left: 0;
-    width: 100%;
-    padding: 8px;
-    border-radius: 16px;
-    background: white;
-    box-shadow: 0 18px 45px rgba(41, 35, 31, .16);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-8px);
-    transition: .2s ease;
-    z-index: 20;
-}
-
-.market-dropdown.open .market-options {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-.market-options button {
-    width: 100%;
-    padding: 16px 18px;
-    border: 0;
-    border-radius: 11px;
-    background: transparent;
-    text-align: left;
-    font-family: 'Montserrat', sans-serif;
-    cursor: pointer;
-    transition: background .2s ease;
-}
-
-.market-options button:hover {
-    background: #f7f3ed;
-}
-
-.market-options button span,
-.market-options button small {
+  .hero-graphic svg {
     display: block;
-}
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
 
-.market-options button span {
-    color: var(--brand-blue);
-    font-size: 15px;
-    font-weight: 600;
-    margin-bottom: 4px;
-}
+  /* Orbit graphic animation */
+  .ring {
+    fill: none;
+    stroke: rgba(255,255,255,0.09);
+  }
 
-.market-options button small {
-    color: var(--muted);
-    font-size: 12px;
-}
+  .core-circle-bg {
+    fill: url(#coreGradient);
+  }
 
-/* MARKET SECTIONS */
+  .cart-icon {
+    fill: var(--white);
+  }
 
-.market {
-    display: none;
-    padding: 70px 80px 100px;
-    border-top: 1px solid var(--line);
-    scroll-margin-top: 20px;
-}
+  .traveler {
+    offset-rotate: 0deg;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
 
-.market::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 100vw;
-    margin-left: -50vw;
-    border-top: 1px solid var(--line);
-}
+  .orbit-1 { offset-path: path("M 310,4   A 306,306 0 1,1 309.9,4   Z"); animation-name: orbit-fwd; animation-duration: 60s; }
+  .orbit-2 { offset-path: path("M 310,72  A 238,238 0 1,1 309.9,72  Z"); animation-name: orbit-rev; animation-duration: 38s; }
+  .orbit-3 { offset-path: path("M 310,140 A 170,170 0 1,1 309.9,140 Z"); animation-name: orbit-fwd; animation-duration: 22s; }
 
-.market.active {
-    display: block;
-    animation: appear .45s ease both;
-}
+  .orbit-1.square-rev { animation-name: orbit-rev; }
+  .orbit-2.square-rev { animation-name: orbit-fwd; }
+  .orbit-3.square-rev { animation-name: orbit-rev; }
 
-@keyframes appear {
-    from {
-        opacity: 0;
-        transform: translateY(12px);
+  .orbit-3-lead {
+    transform-origin: 310px 310px;
+    animation-name: spin-fwd;
+    animation-duration: 22s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes orbit-fwd {
+    from { offset-distance: 0%; }
+    to   { offset-distance: 100%; }
+  }
+
+  @keyframes orbit-rev {
+    from { offset-distance: 100%; }
+    to   { offset-distance: 0%; }
+  }
+
+  @keyframes spin-fwd {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  .core-group {
+    animation: pulse 4s ease-in-out infinite;
+    transform-origin: 310px 310px;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.035); }
+  }
+
+  .core-glow {
+    animation: glow 4s ease-in-out infinite;
+  }
+
+  @keyframes glow {
+    0%, 100% { opacity: 0.35; }
+    50% { opacity: 0.6; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .traveler, .core-group, .core-glow, .orbit-3-lead {
+      animation: none;
     }
+  }
 
-    to {
-        opacity: 1;
-        transform: none;
-    }
-}
+  /* FOOTER */
+  footer {
+    position: relative;
+    z-index: 5;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 36px 60px;
+  }
 
-.market-header {
-    display: grid;
-    grid-template-columns: 1fr .72fr;
-    gap: 70px;
-    align-items: end;
-    margin-bottom: 50px;
-}
-
-.market-header h2 {
-    max-width: 650px;
-    margin: 0;
-    font: 500 clamp(2.4rem, 5vw, 4.8rem)/.95 'Montserrat', sans-serif;
-    letter-spacing: -.03em;
-    color: var(--brand-blue);
-}
-
-.market-header>p {
-    margin: 0;
-    color: var(--muted);
-    line-height: 1.65;
-}
-
-.footer {
+  .footer-inner {
+    max-width: 1440px;
+    margin: 0 auto;
     display: flex;
     align-items: center;
-    background-color: var(--blue-mid);
     justify-content: space-between;
-    gap: 30px;
-    width: 100%;
-    padding: 25px 60px 36px;
-    border-top: 1px solid var(--line);
-    color: var(--white);
-    font-size: 1.05rem;
-}
+    flex-wrap: wrap;
+    gap: 20px;
+  }
 
-.footer-right {
-    margin-left: auto;
-    text-align: right;
-    max-width: 500px;
-}
+  .footer-logo svg {
+    height: 20px;
+    width: auto;
+    display: block;
+  }
 
-@media (max-width: 980px) {
-    nav.main-nav {
-        display: none;
+  .footer-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--white); }
+
+  .footer-copy {
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1100px) {
+    .hero {
+      flex-direction: column;
+      text-align: left;
+      padding-bottom: 80px;
     }
-}
-
-@media (max-width: 900px) {
-
-    .gateway {
-        min-height: 720px;
-        padding: 105px 24px 45px;
+    .hero-graphic {
+      width: 420px;
+      margin-top: -20px;
     }
+    h1 { font-size: 2.8rem; }
+  }
 
-    h1 {
-        max-width: 700px;
-        font-size: clamp(2.45rem, 8vw, 3.7rem);
+  @media (max-width: 700px) {
+    nav {
+      padding: 20px 24px;
+      flex-wrap: wrap;
+      gap: 16px;
     }
-
-    .lead {
-        max-width: 420px;
-        font-size: .9rem;
+    .nav-links { display: none; }
+    .hero { padding: 40px 24px 60px; }
+    h1 { font-size: 2.2rem; }
+    .market-cards { flex-direction: column; }
+    .market-card { min-width: unset; }
+    .hero-graphic {
+      width: 300px;
+      margin: -40px auto 0;
     }
-
-    .market-dropdown {
-        width: 430px;
-        max-width: 100%;
-    }
-
-    .market {
-        padding: 60px 30px 80px;
-    }
-
-    .market-header {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-
-    header.site-header {
-        height: 70px;
-        padding: 0 24px;
-    }
-
-    .logo-img {
-        width: 105px;
-        height: auto;
-    }
-
-    nav.main-nav {
-        display: none;
-    }
-
-    .header-right {
-        gap: 4px;
-    }
-
-    .btn {
-        min-height: 38px;
-        padding: 0 13px;
-        font-size: 11px;
-    }
-
-    .btn-gold {
-        display: none;
-    }
-}
-
-@media (max-width: 520px) {
-
-    .market-dropdown {
-        width: 100%;
-    }
-
-    .market-main-btn {
-        min-height: 70px;
-        font-size: 17px;
-        padding: 0 22px;
-    }
-
-    header.site-header {
-        padding: 0 16px;
-    }
-
-    .logo-img {
-        width: 95px;
-        height: auto;
-    }
-
-    .btn-outline-navy {
-        display: none;
-    }
-
-    .market {
-        padding: 50px 20px 70px;
-    }
-}  
+    footer { padding: 28px 24px; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+  }
 </style>
 </head>
-
 <body>
+<div class="page">
 
-    <div class="site">
+  <nav>
+    <div class="logo-slot">
+      <img src="/images/apricart-logo-reveal.svg" alt="Apricart" class="logo-img">
+    </div>
+    <ul class="nav-links">
+      <li><a href="#" class="active">Home</a></li>
+      <li><a href="#">About Apricart</a></li>
+      <li><a href="#">Our Business</a></li>
+      <li><a href="#">Partners</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="btn-login">Login</button>
+      <button class="btn-sales">Talk to Sales</button>
+    </div>
+  </nav>
 
-        <header class="site-header">
-            <a href="/" class="logo">
-                <img src="/images/apricart-logo-reveal.svg" alt="Apricart" class="logo-img">
-            </a>
+  <section class="hero">
+    <div class="hero-content">
 
-            <nav class="main-nav">
-                <a href="#home" class="active">Home</a>
+      <h1>Smarter supply chains, <span class="highlight">built on technology.</span></h1>
 
-                <div class="nav-item">
-                    <button class="nav-trigger" aria-haspopup="true" aria-expanded="false">
-                        About Apricart
-                        <span class="chevron"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
-                    </button>
-                    <div class="dropdown-panel">
-                        <a href="aboutus.html#our-story">Our Story</a>
-                        <a href="aboutus.html#vision-mission">Vision</a>
-                        <a href="aboutus.html#team">Team</a>
-                    </div>
-                </div>
-
-                <div class="nav-item">
-                    <button class="nav-trigger" aria-haspopup="true" aria-expanded="false">
-                        Our Business
-                        <span class="chevron"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
-                    </button>
-                    <div class="dropdown-panel">
-                        <a href="Our_Business.html#supplies">Supplies</a>
-                        <a href="Our_Business.html#system">System</a>
-                    </div>
-                </div>
-
-                <a href="#partners.html">Partners</a>
-               
-            </nav>
-
-            <div class="header-right">
-                <a href="#login.html" class="btn btn-outline-navy">Login</a>
-                <a href="#contact_us.html" class="btn btn-gold">Talk to Sale</a>
-            </div>
-        </header>
-
-
-        <main>
-
-            <div class="gateway" aria-labelledby="gateway-title">
-                <img class="gateway-svg" src="/images/homeb.png" alt="" aria-hidden="true">
-
-                <div>
-
-                    <h1 id="gateway-title">
-                        <span class="highlight">Smarter</span> supply <br>chains for<br>
-                        <span class="highlight1">businesses.</span>
-                    </h1>
-
-                    <p class="lead">
-                        Apricart builds dependable procurement and distribution systems
-                        for the organizations that keep economies moving.
-                    </p>
-
-
-                    <!-- MARKET DROPDOWN -->
-
-                    <div class="market-dropdown">
-
-                        <button class="market-main-btn" id="market-main-btn" type="button">
-
-                            <span>
-                                Choose Your Market
-                            </span>
-
-                            <span class="market-arrow">
-                                ↓
-                            </span>
-
-                        </button>
-
-
-                        <div class="market-options" id="market-options">
-
-                            <button type="button" data-market="pakistan">
-
-                                <span>
-                                    Pakistan
-                                </span>
-
-                                <small>
-                                    Corporate Procurement
-                                </small>
-
-                            </button>
-
-
-                            <button type="button" data-market="ksa">
-
-                                <span>
-                                    Saudi Arabia
-                                </span>
-
-                                <small>
-                                    Food Distribution
-                                </small>
-
-                            </button>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </main>
-
-
-
-        <footer class="footer">
-
-            <span>
-                © 2026 Apricart. All rights reserved.
-            </span>
-
-            <span class="footer-right">
-                NATIONWIDE CORPORATE DELIVERY
-            </span>
-
-        </footer>
-
+      <div class="market-label">Choose your market</div>
+      <div class="market-cards">
+        <a class="market-card" href="#">
+          <div>
+            <div class="country">Pakistan</div>
+            <div class="sub">Corporate Procurement</div>
+          </div>
+          <div class="market-arrow">&#8594;</div>
+        </a>
+        <a class="market-card" href="#">
+          <div>
+            <div class="country">Saudi Arabia</div>
+            <div class="sub">Food Distribution</div>
+          </div>
+          <div class="market-arrow">&#8594;</div>
+        </a>
+      </div>
     </div>
 
-    <script src="script.js"></script>
+    <div class="hero-graphic">
+      <svg width="620" height="620" viewBox="0 0 620 620" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Apricart animated orbit mark with a shopping cart at its center">
+        <defs>
+          <radialGradient id="coreGradient" cx="35%" cy="30%" r="75%">
+            <stop offset="0%" stop-color="#5470ff"/>
+            <stop offset="70%" stop-color="#3b5bfb"/>
+          </radialGradient>
+          <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="18" result="blur"/>
+            <feMerge>
+              <feMergeNode in="blur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
 
+        <!-- Three concentric orbit rings -->
+        <circle class="ring" cx="310" cy="310" r="306"/>
+        <circle class="ring" cx="310" cy="310" r="238"/>
+        <circle class="ring" cx="310" cy="310" r="170"/>
+
+        <!-- Innermost ring: a fixed-length yellow arc leads the yellow dot -->
+        <g class="orbit-3-lead">
+          <path d="M 310 140 A 170 170 0 0 1 452.34 214.34" fill="none" stroke="#f5b921" stroke-width="3" stroke-linecap="round" opacity="0.85"/>
+        </g>
+        <circle class="dot-yellow traveler orbit-3" r="8" cx="0" cy="0" fill="#f5b921"/>
+
+        <!-- Shapes traveling along each ring's own path -->
+        <circle class="dot-yellow traveler orbit-1" r="9" cx="0" cy="0" fill="#f5b921"/>
+        <rect class="square-blue traveler orbit-1 square-rev" width="24" height="24" rx="7" x="-12" y="-12" fill="#3b5bfb" style="animation-delay:-21s;"/>
+
+        <circle class="ring-yellow traveler orbit-2" r="10" cx="0" cy="0" fill="none" stroke="#f5b921" stroke-width="3" style="animation-delay:-11s;"/>
+        <rect class="square-blue traveler orbit-2 square-rev" width="20" height="20" rx="6" x="-10" y="-10" fill="#3b5bfb" transform="rotate(45)" style="animation-delay:-28s;"/>
+
+        <circle class="dot-white traveler orbit-3" r="5" cx="0" cy="0" fill="#ffffff" style="animation-delay:-6s;"/>
+
+        <!-- Core circle with cart -->
+        <g class="core-group">
+          <circle class="core-circle-bg core-glow" cx="310" cy="310" r="135" filter="url(#softGlow)" opacity="0.35"/>
+          <circle class="core-circle-bg" cx="310" cy="310" r="110"/>
+
+          <g transform="translate(245.000,228.059) scale(0.102307)">
+            <g transform="translate(-20.000000,1620.972578) scale(0.100000,-0.100000)" class="cart-icon" fill="#ffffff" stroke="none">
+              <path d="M5751 16123 c-230 -366 -271 -797 -156 -1630 l6 -43 1362 0 c2241 0
+              3550 -24 3911 -71 164 -21 261 -84 294 -188 26 -84 22 -439 -7 -716 -84 -802
+              -224 -1725 -277 -1827 -38 -74 -99 -78 -544 -29 -970 105 -3502 297 -4830 366
+              -1420 73 -1821 39 -2535 -212 -625 -219 -985 -441 -1444 -888 -472 -460 -802
+              -957 -1045 -1571 -257 -651 -285 -1159 -286 -5082 l0 -1634 27 6 c258 51 2164
+              225 6793 621 2095 179 2549 221 3030 281 1208 148 1461 331 1639 1179 111 525
+              457 3041 830 6030 180 1442 279 2278 368 3125 79 752 -72 1244 -522 1693 -324
+              325 -573 460 -1002 547 -549 110 -1128 130 -3798 130 l-1760 0 -54 -87z"/>
+              <path d="M8605 2213 c-387 -7 -738 -32 -832 -59 -84 -23 -93 -73 -53 -269 88
+              -429 334 -895 612 -1161 729 -695 1987 -674 2709 45 301 301 591 878 593 1181
+              1 109 -8 132 -62 159 -100 50 -424 84 -962 101 -272 8 -1621 11 -2005 3z"/>
+              <path d="M380 2180 c-154 -12 -179 -48 -159 -235 50 -479 286 -914 694 -1278
+              983 -876 2516 -496 3048 755 111 260 213 674 173 703 -59 44 -3312 91 -3756
+              55z"/>
+            </g>
+          </g>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="/images/logo_white.png" alt="Apricart" class="logo-img">
+      </div>
+      <div class="footer-copy">&copy; 2026 Apricart. All rights reserved.</div>
+    </div>
+  </footer>
+
+</div>
 </body>
-
 </html>
