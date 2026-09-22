@@ -36,97 +36,6 @@
     flex-direction: column;
   }
 
-  /* NAV */
-  nav {
-    display: flex;
-    align-items: center;
-    /* justify-content: space-between;
-    flex-shrink: 0; */
-    padding: 28px 60px;
-    position: relative;
-    z-index: 10;
-  }
-
-  .logo-slot {
-    display: flex;
-    align-items: center;
-  }
-
-  .logo-img {
-    height: 55px;
-    width: auto;
-    display: block;
-  }
-
-  .nav-links {
-    display: flex;
-    align-items: flex-start;
-    gap: 36px;
-    list-style: none;
-  }
-
-  .nav-links a {
-    color: var(--white);
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: 700;
-    opacity: 0.9;
-    transition: opacity 0.2s, border-color 0.2s;
-    padding-bottom: 6px;
-    border-bottom: 2px solid transparent;
-  }
-
-  .nav-links a:hover {
-    opacity: 1;
-    border-bottom-color: var(--yellow);
-  }
-
-  .nav-links .active {
-    border-bottom: 2px solid var(--yellow);
-    opacity: 1;
-  }
-
-  .nav-right {
-    display: flex;
-    align-items: center;
-    margin-left: auto;
-    gap: 14px;
-  }
-
-  .btn-login {
-    background: transparent;
-    height: auto;
-    border: 2px solid rgba(255,255,255,0.4);
-    color: var(--white);
-    padding: 10px 22px;
-    border-radius: 24px;
-    font-size: 1rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: border-color 0.2s;
-  }
-
-  .btn-login:hover { border-color: var(--white); }
-
-  .btn-sales {
-    background: var(--yellow);
-    height: auto;
-    border: none;
-    color: var(--navy);
-    padding: 10px 22px;
-    border-radius: 24px;
-    font-size: 1rem;
-    font-weight: 700;
-    cursor: pointer;
-    line-height: 1.2;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-
-  .btn-sales:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 8px 20px rgba(245, 185, 33, 0.3);
-  }
-
   /* HERO */
   .hero {
   position: relative;
@@ -365,12 +274,6 @@ h1 {
  
   /* ===== 700px: mobile ===== */
   @media (max-width: 700px) {
-    nav {
-      padding: 20px 24px;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-    .nav-links { display: none; }
     .hero {
       padding: 0 24px;
       gap: 32px;
@@ -403,10 +306,6 @@ h1 {
   }
 
   @media (max-width: 420px) {
-    .btn-login, .btn-sales {
-      padding: 8px 16px;
-      font-size: 0.9rem;
-    }
     h1 { font-size: 1.8rem; }
     .hero-content .logo-img { height: 52px; }
     .hero-graphic { width: 220px; }
@@ -415,22 +314,6 @@ h1 {
 </head>
 <body>
 <div class="page">
-
-  <nav>
-    <!-- <div class="logo-slot">
-        <img src="/images/cart-icon_WHITE.svg" alt="Apricart" class="logo-img">
-    </div> -->
-    <ul class="nav-links">
-      <li><a href="#" class="active">Home</a></li>
-      <li><a href="#">About Apricart</a></li>
-      <li><a href="#">Our Business</a></li>
-      <li><a href="#">Partners</a></li>
-    </ul>
-    <div class="nav-right">
-      <button class="btn-login">Login</button>
-      <button class="btn-sales">Talk to Sales</button>
-    </div>
-  </nav>
 
   <section class="hero">
     <div class="hero-content">
