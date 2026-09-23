@@ -6,12 +6,12 @@
 <title>Apricart — Pakistan | Corporate Procurement</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Sora:wght@500;600;700;800&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --navy: #16224E;
-    --navy-2: #1F2E63;
-    --navy-3: #2A3D7A;
+    --navy: #002072;
+    --navy-2: #002072;
+    --navy-3: #002072;
     --slate: #6B7686;
     --slate-light: #8A93A6;
     --sky-1: #E4EFFC;
@@ -25,16 +25,16 @@
   }
   *, *::before, *::after { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { margin: 0; font-family: 'DM Sans', system-ui, sans-serif; background: #F5F6FA; -webkit-font-smoothing: antialiased; }
+  body { margin: 0; font-family: 'Montserrat', system-ui; background: #F5F6FA; -webkit-font-smoothing: antialiased; }
   a { color: #16206A; text-decoration: none; }
 
   /* ---------- NAV + FOOTER (from pak_pg.html) ---------- */
-  .site-header, .site-footer { font-family: 'Montserrat', system-ui, sans-serif; color: var(--navy); }
+  .site-header, .site-footer { font-family: 'Montserrat', system-ui; color: var(--navy); }
   .site-header *, .site-footer * { margin: 0; padding: 0; }
   .site-header a, .site-footer a { color: inherit; }
   .site-header img, .site-footer img { max-width: 100%; display: block; }
   .container { max-width: 1240px; margin: 0 auto; padding: 0 48px; }
-  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700; font-size: 15px; padding: 14px 28px; border-radius: 999px; border: none; cursor: pointer; transition: background .15s ease, border-color .15s ease, transform .15s ease; font-family: 'Montserrat', sans-serif; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700; font-size: 15px; padding: 14px 28px; border-radius: 999px; border: none; cursor: pointer; transition: background .15s ease, border-color .15s ease, transform .15s ease; font-family: 'Montserrat'; }
   .btn-gold { background: var(--gold); color: var(--navy); }
   .btn-gold:hover { background: var(--gold-dark); }
   .btn-outline-navy { background: transparent; border: 1.5px solid var(--navy); color: var(--navy); }
@@ -52,7 +52,7 @@
   nav.main-nav > a.active { font-weight: 700; border-bottom-color: var(--gold); }
 
   .nav-item { position: relative; display: flex; align-items: center; }
-  .nav-trigger { display: flex; align-items: center; gap: 6px; height: 100%; font-size: 18px; font-weight: 900; color: var(--navy); background: none; border: none; cursor: pointer; font-family: 'Montserrat', sans-serif; padding: 6px 0; border-bottom: 2px solid transparent; transition: color .15s ease, border-color .15s ease; }
+  .nav-trigger { display: flex; align-items: center; gap: 6px; height: 100%; font-size: 18px; font-weight: 900; color: var(--navy); background: none; border: none; cursor: pointer; font-family: 'Montserrat'; padding: 6px 0; border-bottom: 2px solid transparent; transition: color .15s ease, border-color .15s ease; }
   .nav-trigger:hover, .nav-item.open .nav-trigger { color: var(--navy-3); border-bottom-color: var(--gold); }
   .nav-trigger .chevron { transition: transform .18s ease; display: flex; }
   .nav-item:hover .chevron, .nav-item.open .chevron { transform: rotate(180deg); }
@@ -92,7 +92,7 @@
   .social-row a { width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; }
   .social-row a:hover { background: rgba(255,255,255,0.18); }
   .nl-row { display: flex; gap: 8px; }
-  .nl-row input { flex: 1; min-width: 0; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18); border-radius: 999px; padding: 10px 14px; font-size: 13px; color: var(--white); font-family: 'Montserrat', sans-serif; }
+  .nl-row input { flex: 1; min-width: 0; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18); border-radius: 999px; padding: 10px 14px; font-size: 13px; color: var(--white); font-family: 'Montserrat'; }
   .nl-row button { background: var(--gold); color: var(--navy); border: none; border-radius: 999px; padding: 0 18px; font-size: 13px; font-weight: 700; cursor: pointer; }
   .logo.footer-logo .lo-part { color: rgba(255,255,255,0.85); }
 
@@ -119,9 +119,9 @@
   .icon { stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
   .section { padding: 80px 96px; }
   .eyebrow-tag { font-size: 13px; font-weight: 600; letter-spacing: 1.6px; text-transform: uppercase; color: #2B55E6; }
-  .section-title { font-family: Sora, sans-serif; font-weight: 700; font-size: 36px; line-height: 1.15; letter-spacing: -0.9px; color: #111A57; }
+  .section-title { font-family:'Montserrat'; font-weight: 700; font-size: 36px; line-height: 1.15; letter-spacing: -0.9px; color: #111A57; }
   .section-intro { display: flex; flex-direction: column; gap: 10px; }
-  .card-title { font-family: Sora, sans-serif; font-weight: 600; color: #111A57; }
+  .card-title { font-family: 'Montserrat'; font-weight: 600; color: #111A57; }
   .card-text { font-size: 15px; line-height: 1.55; color: #475079; }
 
   /* hero */
@@ -133,7 +133,7 @@
   .market-pill { height: 30px; padding: 0 14px; display: flex; align-items: center; gap: 8px; border-radius: 999px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); font-size: 12px; font-weight: 600; letter-spacing: 1.2px; color: #FFFFFF; }
   .market-dot { width: 7px; height: 7px; border-radius: 2px; background: #FFD23F; }
   .market-switch { font-size: 12px; font-weight: 600; letter-spacing: 1.2px; color: #9AA4D4; }
-  .hero-title { font-family: Sora, sans-serif; font-weight: 700; font-size: 60px; line-height: 1.04; letter-spacing: -1.8px; color: #FFFFFF; }
+  .hero-title { font-family:'Montserrat'; font-weight: 700; font-size: 60px; line-height: 1.04; letter-spacing: -1.8px; color: #FFFFFF; }
   .hero-title span { color: #FFD23F; }
   .hero-rule { width: 72px; height: 4px; border-radius: 2px; background: #2B55E6; }
   .hero-lead { max-width: 520px; font-size: 19px; line-height: 1.55; color: #C9CEEA; }
@@ -188,17 +188,17 @@
   /* enquiry */
   .enquiry { background: #0D1548; display: flex; align-items: center; gap: 72px; }
   .enquiry-copy { width: 520px; flex-shrink: 0; display: flex; flex-direction: column; gap: 18px; }
-  .enquiry-title { font-family: Sora, sans-serif; font-weight: 700; font-size: 40px; line-height: 1.12; letter-spacing: -1px; color: #FFFFFF; }
+  .enquiry-title { font-family:Mon; font-weight: 700; font-size: 40px; line-height: 1.12; letter-spacing: -1px; color: #FFFFFF; }
   .enquiry-text { font-size: 17px; line-height: 1.6; color: #C9CEEA; }
   .contact-lines { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; font-size: 15px; color: #C9CEEA; }
   .enquiry-form { flex-grow: 1; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.16); border-radius: 18px; padding: 28px; display: flex; flex-direction: column; gap: 16px; }
   .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
   .field { display: flex; flex-direction: column; gap: 6px; }
   .field label { font-size: 13px; font-weight: 600; color: #C9CEEA; }
-  .field input, .field textarea { border-radius: 10px; border: 1px solid rgba(255,255,255,0.22); background: rgba(255,255,255,0.05); font-size: 15px; color: #FFFFFF; font-family: 'DM Sans', sans-serif; }
+  .field input, .field textarea { border-radius: 10px; border: 1px solid rgba(255,255,255,0.22); background: rgba(255,255,255,0.05); font-size: 15px; color: #FFFFFF; font-family: 'Monserrat'; }
   .field input { height: 46px; padding: 0 14px; }
   .field textarea { padding: 12px 14px; resize: none; }
-  .form-submit { height: 52px; border: 0; border-radius: 999px; background: #FFD23F; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 600; color: #111A57; cursor: pointer; }
+  .form-submit { height: 52px; border: 0; border-radius: 999px; background: #FFD23F; font-family: 'Montserrat'; font-size: 15px; font-weight: 600; color: #111A57; cursor: pointer; }
 
   /* footer extras */
   .footer-logo { margin-bottom: 16px; }
@@ -212,7 +212,7 @@
 <!-- ================= HEADER ================= -->
 <header class="site-header">
   <a href="/pakistan" class="logo">
-    <img src="apricart-logo-reveal.svg" alt="Apricart" class="logo-img">
+    <img src="/images/logo_white.png" alt="Apricart" class="logo-img">
   </a>
 
   <nav class="main-nav">
@@ -257,7 +257,7 @@
   <!-- 1 · HERO -->
   <section class="hero-dark">
     <div class="hero-grid"></div>
-    <img class="hero-graphic" src="apricart-hero-flow.svg" alt="Many suppliers connected through Apricart to every location" width="660" height="420">
+    <img class="hero-graphic" src="/image/apricart-hero-flow.svg" alt="Many suppliers connected through Apricart to every location" width="660" height="420">
 
     <div class="hero-content">
       <div class="hero-market">
@@ -381,7 +381,7 @@
       </div>
     </div>
     <div class="platform-graphic">
-      <img src="apricart-dashboard.svg" alt="Apricart procurement dashboard" width="600" height="400">
+      <img src="/images/apricart-dashboard.svg" alt="Apricart procurement dashboard" width="600" height="400">
     </div>
   </section>
 
@@ -457,7 +457,7 @@
   <div class="container footer-grid">
     <div class="footer-col">
       <div class="logo footer-logo">
-        <img src="logo_white.png" alt="Apricart" class="footer-logo-img">
+        <img src="/images/logo_white.png" alt="Apricart" class="footer-logo-img">
       </div>
       <p class="footer-about">Smarter supply chains for businesses.</p>
       <div class="social-row">
@@ -475,9 +475,12 @@
     </div>
     <div class="footer-col">
       <h4>Pakistan Office</h4>
-      <div class="row"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg><span>[Office address, City, Pakistan]</span></div>
-      <div class="row"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg><span>[+92 XXX XXXXXXX]</span></div>
-      <div class="row"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 6-10 7L2 6"></path></svg><span>[hello@apricart.pk]</span></div>
+      <div class="row"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+        <span>[Office address, City, Pakistan]</span></div>
+      <div class="row"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg><
+        span>[+92 XXX XXXXXXX]</span></div>
+      <div class="row"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 6-10 7L2 6"></path></svg>
+        <span>[hello@apricart.pk]</span></div>
     </div>
     <div class="footer-col">
       <h4>Stay Updated</h4>
