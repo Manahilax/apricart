@@ -10,52 +10,41 @@
 <style>
   :root {
     --navy: #0F1750;
-    --navy-2: #0F1750;
     --navy-3: #002072;
-    --slate: #6B7686;
-    --slate-light: #8A93A6;
     --sky-1: #E4EFFC;
-    --sky-2: #BFDBF7;
-    --sky-3: #9CC5F2;
     --gold: #F3C94E;
     --gold-dark: #E0B62E;
     --white: #FFFFFF;
     --line: #E3E9F3;
-    --bg: #FBFCFE;
   }
   *, *::before, *::after { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body { margin: 0; font-family: 'Montserrat', system-ui; background: #F5F6FA; -webkit-font-smoothing: antialiased; }
   a { color: #16206A; text-decoration: none; }
 
-
   .site-header, .site-footer { font-family: 'Montserrat', system-ui; color: var(--navy); }
   .site-header *, .site-footer * { margin: 0; padding: 0; }
   .site-header a, .site-footer a { color: inherit; }
   .site-header img, .site-footer img { max-width: 100%; display: block; }
   .container { max-width: 1240px; margin: 0 auto; padding: 0 48px; }
-  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700; font-size: 15px; padding: 14px 28px; border-radius: 999px; border: none; cursor: pointer; transition: background .15s ease, border-color .15s ease, transform .15s ease; font-family: 'Montserrat'; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700; font-size: 15px; padding: 14px 28px; border-radius: 999px; border: none; cursor: pointer; transition: background .15s ease; font-family: 'Montserrat'; }
   .btn-gold { background: var(--gold); color: var(--navy); }
   .btn-gold:hover { background: var(--gold-dark); }
-  .btn-outline-navy { background: transparent; border: 1.5px solid var(--navy); color: var(--navy); }
-  .btn-outline-navy:hover { background: rgba(22,34,78,0.06); }
-  .btn-outline-white { background: transparent; border: 3px solid rgba(255,255,255,0.5); color: var(--white); }
-  .btn-outline-white:hover { background: rgba(255,255,255,0.12); }
 
-  /* ---------- HEADER ---------- */
-  header.site-header { width: 100%; height: 84px; background: var(--white); border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; padding: 0 48px; position: sticky; top: 0; z-index: 50; }
+  /* ---------- HEADER (dark background, white text) ---------- */
+  header.site-header { width: 100%; height: 84px; background: var(--navy); border-bottom: 1px solid rgba(255,255,255,0.12); display: flex; align-items: center; justify-content: space-between; padding: 0 48px; position: sticky; top: 0; z-index: 50; }
   .logo-img { height: 90px; width: auto; display: block; }
 
   nav.main-nav { display: flex; align-items: stretch; gap: 34px; height: 100%; }
-  nav.main-nav > a { display: flex; align-items: center; font-size: 18px; font-weight: 900; color: var(--navy); padding: 6px 0; border-bottom: 2px solid transparent; transition: color .15s ease, border-color .15s ease; }
-  nav.main-nav > a:hover { color: var(--navy-3); border-bottom-color: var(--gold); }
+  nav.main-nav > a { display: flex; align-items: center; font-size: 18px; font-weight: 900; color: #FFFFFF; padding: 6px 0; border-bottom: 2px solid transparent; transition: opacity .15s ease, border-color .15s ease; }
+  nav.main-nav > a:hover { opacity: .85; border-bottom-color: var(--gold); }
   nav.main-nav > a.active { font-weight: 700; border-bottom-color: var(--gold); }
 
   .nav-item { position: relative; display: flex; align-items: center; }
-  .nav-trigger { display: flex; align-items: center; gap: 6px; height: 100%; font-size: 18px; font-weight: 900; color: var(--navy); background: none; border: none; cursor: pointer; font-family: 'Montserrat'; padding: 6px 0; border-bottom: 2px solid transparent; transition: color .15s ease, border-color .15s ease; }
-  .nav-trigger:hover, .nav-item.open .nav-trigger { color: var(--navy-3); border-bottom-color: var(--gold); }
+  .nav-trigger { display: flex; align-items: center; gap: 6px; height: 100%; font-size: 18px; font-weight: 900; color: #FFFFFF; background: none; border: none; cursor: pointer; font-family: 'Montserrat'; padding: 6px 0; border-bottom: 2px solid transparent; transition: opacity .15s ease, border-color .15s ease; }
+  .nav-trigger:hover { opacity: .85; border-bottom-color: var(--gold); }
   .nav-trigger .chevron { transition: transform .18s ease; display: flex; }
-  .nav-item:hover .chevron, .nav-item.open .chevron { transform: rotate(180deg); }
+  .nav-item:hover .chevron { transform: rotate(180deg); }
 
   .dropdown-panel {
     position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(6px);
@@ -66,26 +55,26 @@
     z-index: 60;
   }
   .nav-item:hover .dropdown-panel,
-  .nav-item.open .dropdown-panel,
-  .nav-item:focus-within .dropdown-panel {opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(-50%) translateY(0);}
+  .nav-item:focus-within .dropdown-panel { opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(-50%) translateY(0); }
   .dropdown-panel a { display: block; padding: 11px 14px; border-radius: 9px; font-size: 14px; font-weight: 500; color: var(--navy); }
   .dropdown-panel a:hover { background: var(--sky-1); color: var(--navy-3); }
 
-  .header-right { display: flex; align-items: center; gap: 14px;}
-  .header-right .btn { padding: 11px 24px; font-size: 14px; position: relative; }
-  .header-right .btn::after {
-    content: ''; position: absolute; left: 50%; bottom: -9px; width: 70%; height: 2px;
-    transform: translateX(-50%) scaleX(0); transform-origin: center;
-    transition: transform .15s ease;}
-  .header-right .btn:hover::after { transform: translateX(-50%) scaleX(1); }
+  .header-right { display: flex; align-items: center; gap: 14px; }
+  .header-right .btn { padding: 11px 24px; font-size: 14px; }
+  .site-header .btn-outline-navy { background: transparent; border: 2.5px solid rgba(255,255,255,0.6); color: #FFFFFF; }
+  .site-header .btn-outline-navy:hover { background: rgba(255,255,255,0.12); }
 
-  /* ---------- FOOTER ---------- */
+
   footer.site-footer { background: var(--navy); padding: 64px 0 0 0; color: rgba(255,255,255,0.7); }
   .footer-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 48px; padding-bottom: 48px; }
+  .footer-logo { margin-bottom: 16px; }
   .footer-logo-img { height: 60px; width: auto; display: block; }
+  .footer-about { font-size: 14px; line-height: 1.6; max-width: 220px; margin-bottom: 16px !important; }
+  .footer-note { font-size: 14px; line-height: 1.55; margin-bottom: 14px !important; }
   .footer-col h4 { font-weight: 700; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: var(--white); margin-bottom: 14px; }
   .footer-col a, .footer-col .row { display: block; font-size: 14px; margin-bottom: 12px; }
   .footer-col .row { display: flex; gap: 10px; align-items: flex-start; }
+  .footer-col .row svg { flex-shrink: 0; margin-top: 2px; }
   .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding: 22px 0; border-top: 1px solid rgba(255,255,255,0.14); font-size: 13px; }
   .footer-bottom .tag { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
   .social-row { display: flex; gap: 10px; margin-top: 4px; }
@@ -94,15 +83,6 @@
   .nl-row { display: flex; gap: 8px; }
   .nl-row input { flex: 1; min-width: 0; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18); border-radius: 999px; padding: 10px 14px; font-size: 13px; color: var(--white); font-family: 'Montserrat'; }
   .nl-row button { background: var(--gold); color: var(--navy); border: none; border-radius: 999px; padding: 0 18px; font-size: 13px; font-weight: 700; cursor: pointer; }
-  .logo.footer-logo .lo-part { color: rgba(255,255,255,0.85); }
-
-
-  /* ---------- NAV: dark background, white text ---------- */
-  header.site-header { background: #0F1750; border-bottom: 1px solid rgba(255,255,255,0.12); }
-  nav.main-nav > a, .nav-trigger { color: #FFFFFF; }
-  nav.main-nav > a:hover, .nav-trigger:hover, .nav-item.open .nav-trigger { color: #FFFFFF; opacity: .85; }
-  .site-header .btn-outline-navy { border-width: 2.5px; border-color: rgba(255,255,255,0.6); color: #FFFFFF; }
-  .site-header .btn-outline-navy:hover { background: rgba(255,255,255,0.12); }
 
   @media (max-width: 980px) {
     .container { padding: 0 24px; }
@@ -114,14 +94,13 @@
   /* ---------- PAGE ---------- */
   html, body { overflow-x: hidden; scrollbar-width: none; }
   html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; }
-  .page { background: #F5F6FA; }
   .page h1, .page h2, .page p { margin: 0; }
   .icon { stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
   .section { padding: 80px 96px; }
   .eyebrow-tag { font-size: 13px; font-weight: 600; letter-spacing: 1.6px; text-transform: uppercase; color: #2B55E6; }
-  .section-title { font-family:'Montserrat'; font-weight: 700; font-size: 36px; line-height: 1.15; letter-spacing: -0.9px; color: #111A57; }
+  .section-title { font-weight: 700; font-size: 36px; line-height: 1.15; letter-spacing: -0.9px; color: #111A57; }
   .section-intro { display: flex; flex-direction: column; gap: 10px; }
-  .card-title { font-family: 'Montserrat'; font-weight: 600; color: #111A57; }
+  .card-title { font-weight: 600; color: #111A57; }
   .card-text { font-size: 15px; line-height: 1.55; color: #475079; }
 
   /* hero */
@@ -129,38 +108,22 @@
   .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px); background-size: 48px 48px; }
   .hero-graphic { position: absolute; right: 80px; top: 90px; margin: 0; width: 660px; }
   .hero-graphic img { display: block; width: 100%; height: auto; }
-  .flow-labels { display: flex; justify-content: space-between; margin-top: 14px;font-size: 11px; font-weight: 600; letter-spacing: 1.6px; text-transform: uppercase;color:var(--white); }
+  .flow-labels { display: flex; justify-content: space-between; margin-top: 14px; font-size: 11px; font-weight: 600; letter-spacing: 1.6px; text-transform: uppercase; color: var(--white); }
   .hero-content { width: 620px; position: relative; z-index: 1; display: flex; flex-direction: column; gap: 20px; margin-bottom: 76px; }
   .hero-market { display: flex; align-items: center; gap: 10px; }
   .market-pill { height: 30px; padding: 0 14px; display: flex; align-items: center; gap: 8px; border-radius: 999px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); font-size: 12px; font-weight: 600; letter-spacing: 1.2px; color: #FFFFFF; }
   .market-dot { width: 7px; height: 7px; border-radius: 2px; background: #FFD23F; }
-  .market-switch {
-  position: relative;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 1.2px;
-  color: #9AA4D4;
-  transition: color .3s ease;
-}
-.market-switch:hover { color: #ffffff; }
-
-.market-switch::after {
-  content: "";
-  position: absolute; left: 0; bottom: -3px;
-  width: 100%; height: 1.5px;
-  background: #FFD23F;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform .3s ease;
-}
-.market-switch:hover::after { transform: scaleX(1); }
-  .hero-title { font-family:'Montserrat'; font-weight: 700; font-size: 60px; line-height: 1.04; letter-spacing: -1.8px; color: #FFFFFF; }
+  .market-switch { position: relative; font-size: 12px; font-weight: 600; letter-spacing: 1.2px; color: #9AA4D4; transition: color .3s ease; }
+  .market-switch:hover { color: #FFFFFF; }
+  .market-switch::after { content: ""; position: absolute; left: 0; bottom: -3px; width: 100%; height: 1.5px; background: #FFD23F; transform: scaleX(0); transform-origin: left; transition: transform .3s ease; }
+  .market-switch:hover::after { transform: scaleX(1); }
+  .hero-title { font-weight: 700; font-size: 60px; line-height: 1.04; letter-spacing: -1.8px; color: #FFFFFF; }
   .hero-title span { color: #FFD23F; }
   .hero-rule { width: 72px; height: 4px; border-radius: 2px; background: #2B55E6; }
   .hero-lead { max-width: 520px; font-size: 19px; line-height: 1.55; color: #C9CEEA; }
   .hero-actions { display: flex; gap: 12px; margin-top: 6px; }
   .hero-btn { height: 52px; padding: 0 28px; display: flex; align-items: center; background: #FFD23F; border-radius: 999px; font-size: 15px; font-weight: 600; color: #111A57; }
-  .hero-btn:hover { color: #111A57; filter: brightness(.95); }
+  .hero-btn:hover { filter: brightness(.95); }
   .hero-features { position: absolute; left: 0; right: 0; bottom: 0; height: 76px; border-top: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.03); display: flex; align-items: center; justify-content: space-between; padding: 0 96px; }
   .hero-feature { display: flex; align-items: center; gap: 12px; font-size: 15px; font-weight: 500; color: #E6E9F7; }
 
@@ -171,12 +134,13 @@
   .client { width: 196px; display: flex; flex-direction: column; align-items: center; gap: 8px; font-size: 12px; color: #8A92B2; }
   .client-logo { width: 196px; height: 68px; border: 1.5px dashed #C4CBE2; border-radius: 12px; display: flex; align-items: center; justify-content: center; letter-spacing: 1px; }
 
-   /* how we work */
-   .how { position: relative; overflow: hidden; background: #FFFFFF; display: flex; flex-direction: column; gap: 56px; }
+  /* how we work */
+  .how { position: relative; overflow: hidden; background: #FFFFFF; display: flex; flex-direction: column; gap: 56px; }
   .how-intro { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 14px; max-width: 560px; }
   .how .section-title { font-size: 48px; letter-spacing: -1.4px; }
   .how-lead { font-size: 17px; line-height: 1.6; color: #475079; }
-  .how-ring { position: absolute; top: -20px; right: -220px; width: 640px; height: 640px; pointer-events: none; z-index: 0; }  .how-ring svg { width: 100%; height: 100%; animation: how-spin 40s linear infinite; }
+  .how-ring { position: absolute; top: -20px; right: -220px; width: 640px; height: 640px; pointer-events: none; z-index: 0; }
+  .how-ring svg { width: 100%; height: 100%; animation: how-spin 40s linear infinite; }
   @keyframes how-spin { to { transform: rotate(360deg); } }
 
   .how-steps { position: relative; z-index: 1; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 24px; }
@@ -187,7 +151,6 @@
   .how-arrow::after { content: ""; position: absolute; right: -1px; top: -4px; width: 8px; height: 8px; border-top: 2px solid #2B55E6; border-right: 2px solid #2B55E6; transform: rotate(45deg); }
   .how-step:last-child .how-arrow { display: none; }
   .how-title { font-size: 19px; font-weight: 700; line-height: 1.3; min-height: 2.6em; color: #111A57; }
-  .how-text { font-size: 14px; line-height: 1.55; color: #475079; }
   .how-step:hover .how-num { color: #FFD23F; }
 
   @media (max-width: 1100px) {
@@ -225,30 +188,24 @@
   /* enquiry */
   .enquiry { background: #0D1548; display: flex; align-items: center; gap: 72px; }
   .enquiry-copy { width: 520px; flex-shrink: 0; display: flex; flex-direction: column; gap: 18px; }
-  .enquiry-title { font-family:Mon; font-weight: 700; font-size: 40px; line-height: 1.12; letter-spacing: -1px; color: #FFFFFF; }
+  .enquiry-title { font-weight: 700; font-size: 40px; line-height: 1.12; letter-spacing: -1px; color: #FFFFFF; }
   .enquiry-text { font-size: 17px; line-height: 1.6; color: #C9CEEA; }
   .contact-lines { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; font-size: 15px; color: #C9CEEA; }
   .enquiry-form { flex-grow: 1; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.16); border-radius: 18px; padding: 28px; display: flex; flex-direction: column; gap: 16px; }
   .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
   .field { display: flex; flex-direction: column; gap: 6px; }
   .field label { font-size: 13px; font-weight: 600; color: #C9CEEA; }
-  .field input, .field textarea { border-radius: 10px; border: 1px solid rgba(255,255,255,0.22); background: rgba(255,255,255,0.05); font-size: 15px; color: #FFFFFF; font-family: 'Monserrat'; }
+  .field input, .field textarea { border-radius: 10px; border: 1px solid rgba(255,255,255,0.22); background: rgba(255,255,255,0.05); font-size: 15px; color: #FFFFFF; font-family: 'Montserrat'; }
   .field input { height: 46px; padding: 0 14px; }
   .field textarea { padding: 12px 14px; resize: none; }
   .form-submit { height: 52px; border: 0; border-radius: 999px; background: #FFD23F; font-family: 'Montserrat'; font-size: 15px; font-weight: 600; color: #111A57; cursor: pointer; }
-
-  /* footer extras */
-  .footer-logo { margin-bottom: 16px; }
-  .footer-about { font-size: 14px; line-height: 1.6; max-width: 220px; margin-bottom: 16px !important; }
-  .footer-note { font-size: 14px; line-height: 1.55; margin-bottom: 14px !important; }
-  .footer-col .row svg { flex-shrink: 0; margin-top: 2px; }
 </style>
 </head>
 <body>
 
 <!-- ================= HEADER ================= -->
 <header class="site-header">
-  <a href="/pakistan" class="logo">
+  <a href="/pakistan">
     <img src="/images/logo_white.png" alt="Apricart" class="logo-img">
   </a>
 
@@ -295,13 +252,13 @@
   <section class="hero-dark">
     <div class="hero-grid"></div>
     <figure class="hero-graphic">
-        <img src="/images/apricart-hero-flow.svg" alt="Many suppliers connected through Apricart to every location" width="660" height="420">
-        <figcaption class="flow-labels">
-          <span>Multiple Categories</span>
-          <span>One Platform</span>
-          <span>Every location</span>
-        </figcaption>
-      </figure>
+      <img src="/images/apricart-hero-flow.svg" alt="Many suppliers connected through Apricart to every location" width="660" height="420">
+      <figcaption class="flow-labels">
+        <span>Multiple Categories</span>
+        <span>One Platform</span>
+        <span>Every location</span>
+      </figcaption>
+    </figure>
 
     <div class="hero-content">
       <div class="hero-market">
@@ -324,7 +281,7 @@
     </div>
   </section>
 
-<!-- 2 · TRUSTED BY -->
+  <!-- 2 · TRUSTED BY -->
   <section class="trusted">
     <span class="trusted-label">Trusted by leading organisations across Pakistan</span>
     <div class="logo-row">
@@ -337,56 +294,50 @@
     </div>
   </section>
 
-<!-- 3 · HOW WE WORK -->
-    <section class="section how" id="how">
-        <div class="how-ring" aria-hidden="true">
-          <svg viewBox="0 0 300 300" fill="none">
-            <circle cx="150" cy="150" r="118" stroke="#EEF1FB" stroke-width="2"/>
-            <circle cx="150" cy="150" r="118" stroke="#E4E9FA" stroke-width="30" pathLength="100" stroke-dasharray="28 72" transform="rotate(-60 150 150)"/>
-            <circle cx="150" cy="150" r="118" stroke="#FFF3CC" stroke-width="30" pathLength="100" stroke-dasharray="14 86" transform="rotate(140 150 150)"/>
-            <circle cx="150" cy="150" r="44" fill="#EEF1FB"/>
-          </svg>
-        </div>
-    
-        <div class="how-intro">
-          <span class="eyebrow-tag">What we do</span>
-          <h2 class="section-title">What Apricart offers your business</h2>
-          <p class="how-lead">We do not simply supply consumables. We remove the administrative weight of buying them.</p>
-        </div>
-    
-        <ol class="how-steps">
-          <li class="how-step">
-            <div class="how-num-row"><span class="how-num">01</span><span class="how-arrow"></span></div>
-            <span class="how-title">Centralise procurement</span>
-            <!-- <span class="how-text">Consolidate routine supply requirements through a single procurement partner.</span> -->
-          </li>
-          <li class="how-step">
-            <div class="how-num-row"><span class="how-num">02</span><span class="how-arrow"></span></div>
-            <span class="how-title">Reduce vendor complexity</span>
-            <!-- <span class="how-text">One relationship instead of many quotations, deliveries and invoices to chase.</span> -->
-          </li>
-          <li class="how-step">
-            <div class="how-num-row"><span class="how-num">03</span><span class="how-arrow"></span></div>
-            <span class="how-title">Standardise across locations</span>
-            <!-- <span class="how-text">Consistent products, pricing and service across every branch and office.</span> -->
-          </li>
-          <li class="how-step">
-            <div class="how-num-row"><span class="how-num">04</span><span class="how-arrow"></span></div>
-            <span class="how-title">Simplify billing</span>
-            <!-- <span class="how-text">Consolidated invoicing and easier reconciliation in place of fragmented billing.</span> -->
-          </li>
-          <li class="how-step">
-            <div class="how-num-row"><span class="how-num">05</span><span class="how-arrow"></span></div>
-            <span class="how-title">Improve supply reliability</span>
-            <!-- <span class="how-text">A dedicated supply network keeps essentials available when and where they are needed.</span> -->
-          </li>
-          <li class="how-step">
-            <div class="how-num-row"><span class="how-num">06</span><span class="how-arrow"></span></div>
-            <span class="how-title">Gain procurement visibility</span>
-            <!-- <span class="how-text">Clear view of routine expenditure by location, category and period.</span> -->
-          </li>
-        </ol>
-      </section>
+  <!-- 3 · HOW WE WORK -->
+  <section class="section how" id="how">
+    <div class="how-ring" aria-hidden="true">
+      <svg viewBox="0 0 300 300" fill="none">
+        <circle cx="150" cy="150" r="118" stroke="#EEF1FB" stroke-width="2"/>
+        <circle cx="150" cy="150" r="118" stroke="#E4E9FA" stroke-width="30" pathLength="100" stroke-dasharray="28 72" transform="rotate(-60 150 150)"/>
+        <circle cx="150" cy="150" r="118" stroke="#FFF3CC" stroke-width="30" pathLength="100" stroke-dasharray="14 86" transform="rotate(140 150 150)"/>
+        <circle cx="150" cy="150" r="44" fill="#EEF1FB"/>
+      </svg>
+    </div>
+
+    <div class="how-intro">
+      <span class="eyebrow-tag">What we do</span>
+      <h2 class="section-title">What Apricart offers your business</h2>
+      <p class="how-lead">We do not simply supply consumables. We remove the administrative weight of buying them.</p>
+    </div>
+
+    <ol class="how-steps">
+      <li class="how-step">
+        <div class="how-num-row"><span class="how-num">01</span><span class="how-arrow"></span></div>
+        <span class="how-title">Centralise procurement</span>
+      </li>
+      <li class="how-step">
+        <div class="how-num-row"><span class="how-num">02</span><span class="how-arrow"></span></div>
+        <span class="how-title">Reduce vendor complexity</span>
+      </li>
+      <li class="how-step">
+        <div class="how-num-row"><span class="how-num">03</span><span class="how-arrow"></span></div>
+        <span class="how-title">Standardise across locations</span>
+      </li>
+      <li class="how-step">
+        <div class="how-num-row"><span class="how-num">04</span><span class="how-arrow"></span></div>
+        <span class="how-title">Simplify billing</span>
+      </li>
+      <li class="how-step">
+        <div class="how-num-row"><span class="how-num">05</span><span class="how-arrow"></span></div>
+        <span class="how-title">Improve supply reliability</span>
+      </li>
+      <li class="how-step">
+        <div class="how-num-row"><span class="how-num">06</span><span class="how-arrow"></span></div>
+        <span class="how-title">Gain procurement visibility</span>
+      </li>
+    </ol>
+  </section>
 
   <!-- 4 · CATEGORIES -->
   <section class="section supply" id="supply">
@@ -439,7 +390,7 @@
     </div>
   </section>
 
-  <!-- FAQ -->
+  <!-- 6 · FAQ -->
   <section class="section faq" id="faq">
     <div class="section-intro">
       <span class="eyebrow-tag">Before you ask</span>
@@ -448,19 +399,19 @@
     <div class="faq-grid">
       <div class="faq-card">
         <span class="card-title">Where do you deliver?</span>
-        <span class="card-text"> Confirm coverage — cities served, lead times for main cities and for remote sites. </span>
+        <span class="card-text">Confirm coverage — cities served, lead times for main cities and for remote sites.</span>
       </div>
       <div class="faq-card">
         <span class="card-title">Is there a minimum order or contract?</span>
-        <span class="card-text"> Confirm minimum order value, contract term and whether a pilot at one location is possible. </span>
+        <span class="card-text">Confirm minimum order value, contract term and whether a pilot at one location is possible.</span>
       </div>
       <div class="faq-card">
         <span class="card-title">What are the payment terms?</span>
-        <span class="card-text"> Confirm credit terms, invoicing cycle, filer status and tax documentation provided. </span>
+        <span class="card-text">Confirm credit terms, invoicing cycle, filer status and tax documentation provided.</span>
       </div>
       <div class="faq-card">
         <span class="card-title">How long does onboarding take?</span>
-        <span class="card-text"> Confirm typical time from agreement to first delivery, and what you need from the client. </span>
+        <span class="card-text">Confirm typical time from agreement to first delivery, and what you need from the client.</span>
       </div>
     </div>
   </section>
@@ -471,9 +422,9 @@
       <h2 class="enquiry-title">Let's map your requirement.</h2>
       <p class="enquiry-text">Share your locations and categories and we will come back with an indicative product list and pricing.</p>
       <div class="contact-lines">
-        <span>Sales enquiries: phone number </span>
-        <span>Email:  corporate@apricart.pk </span>
-        <span>Head office:  address </span>
+        <span>Sales enquiries: phone number</span>
+        <span>Email: corporate@apricart.pk</span>
+        <span>Head office: address</span>
       </div>
     </div>
 
@@ -510,7 +461,7 @@
 <footer class="site-footer">
   <div class="container footer-grid">
     <div class="footer-col">
-      <div class="logo footer-logo">
+      <div class="footer-logo">
         <img src="/images/logo_white.png" alt="Apricart" class="footer-logo-img">
       </div>
       <p class="footer-about">Smarter supply chains for businesses.</p>
@@ -529,12 +480,9 @@
     </div>
     <div class="footer-col">
       <h4>Pakistan Office</h4>
-      <div class="row"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-        <span>[Office address, City, Pakistan]</span></div>
-      <div class="row"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg><
-        span>[+92 XXX XXXXXXX]</span></div>
-      <div class="row"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 6-10 7L2 6"></path></svg>
-        <span>[hello@apricart.pk]</span></div>
+      <div class="row"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg><span>[Office address, City, Pakistan]</span></div>
+      <div class="row"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg><span>[+92 XXX XXXXXXX]</span></div>
+      <div class="row"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 6-10 7L2 6"></path></svg><span>[hello@apricart.pk]</span></div>
     </div>
     <div class="footer-col">
       <h4>Stay Updated</h4>
