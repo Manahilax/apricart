@@ -171,15 +171,32 @@
   .client { width: 196px; display: flex; flex-direction: column; align-items: center; gap: 8px; font-size: 12px; color: #8A92B2; }
   .client-logo { width: 196px; height: 68px; border: 1.5px dashed #C4CBE2; border-radius: 12px; display: flex; align-items: center; justify-content: center; letter-spacing: 1px; }
 
-  /* what we offer */
-  .offer { background: #FFFFFF; display: flex; flex-direction: column; gap: 40px; }
-  .offer .section-title { font-size: 40px; letter-spacing: -1px; }
-  .offer-lead { max-width: 680px; font-size: 17px; line-height: 1.55; color: #475079; }
-  .offer-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
-  .offer-card { min-height: 205px; padding: 28px; background: #F8F9FC; border: 1px solid #E4E7F1; border-radius: 16px; display: flex; flex-direction: column; gap: 14px; }
-  .offer-card .card-title { font-size: 19px; }
-  .offer-icon { width: 44px; height: 44px; border-radius: 12px; background: #111A57; display: flex; align-items: center; justify-content: center; }
+   /* how we work */
+   .how { position: relative; overflow: hidden; background: #FFFFFF; display: flex; flex-direction: column; gap: 56px; }
+  .how-intro { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 14px; max-width: 560px; }
+  .how .section-title { font-size: 48px; letter-spacing: -1.4px; }
+  .how-lead { font-size: 17px; line-height: 1.6; color: #475079; }
+  .how-ring { position: absolute; right: 6%; top: 40px; width: 300px; height: 300px; pointer-events: none; }
+  .how-ring svg { width: 100%; height: 100%; animation: how-spin 40s linear infinite; }
+  @keyframes how-spin { to { transform: rotate(360deg); } }
 
+  .how-steps { position: relative; z-index: 1; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 24px; }
+  .how-step { display: flex; flex-direction: column; gap: 12px; }
+  .how-num-row { display: flex; align-items: center; gap: 14px; }
+  .how-num { font-size: 52px; font-weight: 700; line-height: 1; letter-spacing: -1px; color: #2B55E6; transition: color .25s ease; }
+  .how-arrow { flex: 1; height: 2px; background: #2B55E6; position: relative; opacity: .7; }
+  .how-arrow::after { content: ""; position: absolute; right: -1px; top: -4px; width: 8px; height: 8px; border-top: 2px solid #2B55E6; border-right: 2px solid #2B55E6; transform: rotate(45deg); }
+  .how-step:last-child .how-arrow { display: none; }
+  .how-title { font-size: 19px; font-weight: 700; line-height: 1.3; min-height: 2.6em; color: #111A57; }
+  .how-text { font-size: 14px; line-height: 1.55; color: #475079; }
+  .how-step:hover .how-num { color: #FFD23F; }
+
+  @media (max-width: 1100px) {
+    .how-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 40px; }
+    .how-step:nth-child(3) .how-arrow { display: none; }
+    .how-ring { display: none; }
+  }
+  
   /* categories */
   .supply { display: flex; flex-direction: column; gap: 32px; }
   .supply-head { display: flex; align-items: flex-end; justify-content: space-between; }
@@ -321,46 +338,56 @@
     </div>
   </section>
 
-  <!-- 3 · WHAT WE OFFER -->
-  <section class="section offer" id="offer">
-    <div class="section-intro">
-      <span class="eyebrow-tag">What we do</span>
-      <h2 class="section-title">What Apricart offers your business</h2>
-      <p class="offer-lead">We do not simply supply consumables. We remove the administrative weight of buying them.</p>
-    </div>
-    <div class="offer-grid">
-      <div class="offer-card">
-        <span class="offer-icon"><svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="#FFFFFF"/><path d="M12 9V3M12 15v6M9 12H3M15 12h6" stroke="#FFFFFF"/></svg></span>
-        <span class="card-title">Centralise procurement</span>
-        <span class="card-text">Consolidate routine supply requirements through a single procurement partner.</span>
-      </div>
-      <div class="offer-card">
-        <span class="offer-icon"><svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="6" cy="6" r="2" stroke="#FFFFFF"/><circle cx="6" cy="18" r="2" stroke="#FFFFFF"/><circle cx="18" cy="12" r="2.4" stroke="#FFD23F"/><path d="M8 7l7.8 3.9M8 17l7.8-3.9" stroke="#FFFFFF"/></svg></span>
-        <span class="card-title">Reduce vendor complexity</span>
-        <span class="card-text">One relationship instead of many quotations, deliveries and invoices to chase.</span>
-      </div>
-      <div class="offer-card">
-        <span class="offer-icon"><svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="7" height="7" rx="1.5" stroke="#FFFFFF"/><rect x="13" y="4" width="7" height="7" rx="1.5" stroke="#FFFFFF"/><rect x="4" y="13" width="7" height="7" rx="1.5" stroke="#FFFFFF"/><rect x="13" y="13" width="7" height="7" rx="1.5" stroke="#FFD23F"/></svg></span>
-        <span class="card-title">Standardise across locations</span>
-        <span class="card-text">Consistent products, pricing and service across every branch and office.</span>
-      </div>
-      <div class="offer-card">
-        <span class="offer-icon"><svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z" stroke="#FFFFFF"/><path d="M9.5 9h5M9.5 13h5" stroke="#FFD23F"/></svg></span>
-        <span class="card-title">Simplify billing</span>
-        <span class="card-text">Consolidated invoicing and easier reconciliation in place of fragmented billing.</span>
-      </div>
-      <div class="offer-card">
-        <span class="offer-icon"><svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z" stroke="#FFFFFF"/><path d="M9 12l2 2 4-4" stroke="#FFD23F"/></svg></span>
-        <span class="card-title">Improve supply reliability</span>
-        <span class="card-text">A dedicated supply network keeps essentials available when and where they are needed.</span>
-      </div>
-      <div class="offer-card">
-        <span class="offer-icon"><svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 19V11M10 19V5M16 19v-6" stroke="#FFFFFF"/><path d="M21 19H3" stroke="#FFD23F"/></svg></span>
-        <span class="card-title">Gain procurement visibility</span>
-        <span class="card-text">Clear view of routine expenditure by location, category and period.</span>
-      </div>
-    </div>
-  </section>
+    <!-- 3 · HOW WE WORK -->
+    <section class="section how" id="how">
+        <div class="how-ring" aria-hidden="true">
+          <svg viewBox="0 0 300 300" fill="none">
+            <circle cx="150" cy="150" r="118" stroke="#EEF1FB" stroke-width="2"/>
+            <circle cx="150" cy="150" r="118" stroke="#E4E9FA" stroke-width="30" pathLength="100" stroke-dasharray="28 72" transform="rotate(-60 150 150)"/>
+            <circle cx="150" cy="150" r="118" stroke="#FFF3CC" stroke-width="30" pathLength="100" stroke-dasharray="14 86" transform="rotate(140 150 150)"/>
+            <circle cx="150" cy="150" r="44" fill="#EEF1FB"/>
+          </svg>
+        </div>
+    
+        <div class="how-intro">
+          <span class="eyebrow-tag">What we do</span>
+          <h2 class="section-title">What Apricart offers your business</h2>
+          <p class="how-lead">We do not simply supply consumables. We remove the administrative weight of buying them.</p>
+        </div>
+    
+        <ol class="how-steps">
+          <li class="how-step">
+            <div class="how-num-row"><span class="how-num">01</span><span class="how-arrow"></span></div>
+            <span class="how-title">Centralise procurement</span>
+            <span class="how-text">Consolidate routine supply requirements through a single procurement partner.</span>
+          </li>
+          <li class="how-step">
+            <div class="how-num-row"><span class="how-num">02</span><span class="how-arrow"></span></div>
+            <span class="how-title">Reduce vendor complexity</span>
+            <span class="how-text">One relationship instead of many quotations, deliveries and invoices to chase.</span>
+          </li>
+          <li class="how-step">
+            <div class="how-num-row"><span class="how-num">03</span><span class="how-arrow"></span></div>
+            <span class="how-title">Standardise across locations</span>
+            <span class="how-text">Consistent products, pricing and service across every branch and office.</span>
+          </li>
+          <li class="how-step">
+            <div class="how-num-row"><span class="how-num">04</span><span class="how-arrow"></span></div>
+            <span class="how-title">Simplify billing</span>
+            <span class="how-text">Consolidated invoicing and easier reconciliation in place of fragmented billing.</span>
+          </li>
+          <li class="how-step">
+            <div class="how-num-row"><span class="how-num">05</span><span class="how-arrow"></span></div>
+            <span class="how-title">Improve supply reliability</span>
+            <span class="how-text">A dedicated supply network keeps essentials available when and where they are needed.</span>
+          </li>
+          <li class="how-step">
+            <div class="how-num-row"><span class="how-num">06</span><span class="how-arrow"></span></div>
+            <span class="how-title">Gain procurement visibility</span>
+            <span class="how-text">Clear view of routine expenditure by location, category and period.</span>
+          </li>
+        </ol>
+      </section>
 
   <!-- 4 · CATEGORIES -->
   <section class="section supply" id="supply">
