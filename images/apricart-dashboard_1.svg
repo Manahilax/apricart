@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="620" height="414" viewBox="0 0 620 414" fill="none">
+  <style>
+    .card { fill: #fff; fill-opacity: .07; stroke: #fff; stroke-opacity: .85; stroke-width: 1.5; }
+  </style>
+  <defs>
+    <clipPath id="view"><rect x="192" y="69" width="388" height="305"/></clipPath>
+    <linearGradient id="fadeG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".06" stop-color="#fff"/>
+      <stop offset=".92" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <mask id="fade" maskUnits="userSpaceOnUse" x="192" y="69" width="388" height="305">
+      <rect x="192" y="69" width="388" height="305" fill="url(#fadeG)"/>
+    </mask>
+  </defs>
+
+  <!-- window -->
+  <rect x="14" y="14" width="592" height="386" rx="22" fill="#fff" fill-opacity=".06" stroke="#fff" stroke-opacity=".85" stroke-width="1.5"/>
+  <circle cx="39" cy="45" r="6" fill="#fff" opacity=".35"/>
+  <circle cx="60" cy="45" r="6" fill="#fff" opacity=".22"/>
+  <circle cx="81" cy="45" r="6" fill="#fff" opacity=".22"/>
+  <rect x="444" y="39" width="136" height="12" rx="6" fill="#fff" opacity=".14"/>
+
+  <!-- sidebar: yellow highlight moves between the items -->
+  <g fill="#fff" opacity=".16">
+    <rect x="39" y="69" width="96" height="14" rx="7"/>
+    <rect x="39" y="94" width="137" height="14" rx="7"/>
+    <rect x="39" y="119" width="117" height="14" rx="7"/>
+    <rect x="39" y="144" width="82" height="14" rx="7"/>
+    <rect x="39" y="169" width="103" height="14" rx="7"/>
+    <rect x="39" y="194" width="120" height="14" rx="7"/>
+  </g>
+  <rect x="39" y="69" width="96" height="14" rx="7" fill="#FFD23F"><animate attributeName="y" values="69;69;94;94;119;119;144;144;169;169;194;194;69" keyTimes="0.0000;0.1200;0.1667;0.2867;0.3333;0.4533;0.5000;0.6200;0.6667;0.7867;0.8333;0.9533;1.0000" calcMode="spline" keySplines="0 0 1 1;.45 0 .2 1;0 0 1 1;.45 0 .2 1;0 0 1 1;.45 0 .2 1;0 0 1 1;.45 0 .2 1;0 0 1 1;.45 0 .2 1;0 0 1 1;.45 0 .2 1" dur="15.0s" repeatCount="indefinite"/><animate attributeName="width" values="96;96;137;137;117;117;82;82;103;103;120;120;96" keyTimes="0.0000;0.1200;0.1667;0.2867;0.3333;0.4533;0.5000;0.6200;0.6667;0.7867;0.8333;0.9533;1.0000" calcMode="spline" keySplines="0 0 1 1;.45 0 .2 1;0 0 1 1;.45 0 .2 1;0 0 1 1;.45 0 .2 1;0 0 1 1;.45 0 .2 1;0 0 1 1;.45 0 .2 1;0 0 1 1;.45 0 .2 1" dur="15.0s" repeatCount="indefinite"/></rect>
+
+  <!-- feed: 6 cards, 3 visible, scrolls up one card at a time -->
+  <g clip-path="url(#view)" mask="url(#fade)">
+   <g transform="translate(192 69)"><g>
+    <g transform="translate(0 0)"><!-- card 1 --><rect width="388" height="72" rx="12" class="card"/>
+      <rect x="18" y="17" width="38" height="38" rx="10" fill="#2B55E6"/>
+      <rect x="72" y="22" width="116" height="10" rx="5" fill="#fff" opacity=".35"/>
+      <rect x="72" y="40" width="74" height="8" rx="4" fill="#fff" opacity=".18"/>
+      <rect x="296" y="23" width="72" height="26" rx="13" fill="#FFD23F" fill-opacity=".22" stroke="#FFD23F">
+        <animate attributeName="stroke-opacity" values="1;.3;1" dur="1.6s" repeatCount="indefinite"/></rect>
+    </g>
+    <g transform="translate(0 86)"><!-- card 2 --><rect width="388" height="72" rx="12" class="card"/>
+      <rect x="18" y="17" width="38" height="38" rx="10" fill="#fff" opacity=".18"/>
+      <rect x="72" y="22" width="136" height="10" rx="5" fill="#fff" opacity=".3"/>
+      <rect x="72" y="40" width="62" height="8" rx="4" fill="#fff" opacity=".18"/>
+      <rect x="310" y="23" width="54" height="26" rx="13" fill="#fff" opacity=".12"/>
+      <circle cx="323" cy="36" r="9" fill="#fff" opacity=".5">
+        <animate attributeName="cx" values="323;323;351;351;323" keyTimes="0;.3;.4;.9;1" dur="3s" repeatCount="indefinite"/>
+        <animate attributeName="fill" values="#fff;#fff;#FFD23F;#FFD23F;#fff" keyTimes="0;.3;.4;.9;1" dur="3s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values=".5;.5;1;1;.5" keyTimes="0;.3;.4;.9;1" dur="3s" repeatCount="indefinite"/></circle>
+    </g>
+    <g transform="translate(0 172)"><!-- card 3 --><rect width="388" height="132" rx="12" class="card"/>
+      <rect x="18" y="16" width="84" height="8" rx="4" fill="#fff" opacity=".3"/>
+      <rect x="18" y="90" width="30" height="26" rx="6" fill="#fff" opacity=".25"><animate attributeName="height" values="26;40;26" dur="2.4s" repeatCount="indefinite"/><animate attributeName="y" values="90;76;90" dur="2.4s" repeatCount="indefinite"/></rect>
+      <rect x="62" y="73" width="30" height="43" rx="6" fill="#fff" opacity=".25"><animate attributeName="height" values="43;30;43" dur="2.8s" repeatCount="indefinite"/><animate attributeName="y" values="73;86;73" dur="2.8s" repeatCount="indefinite"/></rect>
+      <rect x="106" y="56" width="30" height="60" rx="6" fill="#2B55E6" opacity="1"><animate attributeName="height" values="60;74;60" dur="2.2s" repeatCount="indefinite"/><animate attributeName="y" values="56;42;56" dur="2.2s" repeatCount="indefinite"/></rect>
+      <rect x="150" y="39" width="30" height="77" rx="6" fill="#FFD23F" opacity="1"><animate attributeName="height" values="77;90;77" dur="2.6s" repeatCount="indefinite"/><animate attributeName="y" values="39;26;39" dur="2.6s" repeatCount="indefinite"/></rect>
+      <rect x="266" y="102" width="102" height="10" rx="5" fill="#fff" opacity=".14"/>
+    </g>
+    <g transform="translate(0 318)"><!-- card 4 --><rect width="388" height="72" rx="12" class="card"/>
+      <rect x="18" y="16" width="96" height="8" rx="4" fill="#fff" opacity=".3"/>
+      <rect x="300" y="15" width="68" height="10" rx="5" fill="#fff" opacity=".14"/>
+      <line x1="26" y1="48" x2="362" y2="48" stroke="#fff" stroke-opacity=".15" stroke-width="4" stroke-linecap="round"/>
+      <line x1="26" y1="48" x2="362" y2="48" stroke="#FFD23F" stroke-width="4" stroke-linecap="round" pathLength="100" stroke-dasharray="100 100">
+        <animate attributeName="stroke-dashoffset" values="100;0;0" keyTimes="0;.75;1" dur="3.2s" repeatCount="indefinite"/></line>
+      <circle cx="26" cy="48" r="7" fill="#FFD23F"/>
+      <circle cx="138" cy="48" r="7" fill="#fff" opacity=".45"/>
+      <circle cx="250" cy="48" r="7" fill="#fff" opacity=".45"/>
+      <circle cx="362" cy="48" r="7" fill="#fff" opacity=".45"/>
+    </g>
+    <g transform="translate(0 404)"><!-- card 5 --><rect width="388" height="132" rx="12" class="card"/>
+      <g transform="rotate(-90 66 66)">
+        <circle cx="66" cy="66" r="36" stroke="#fff" stroke-opacity=".12" stroke-width="14"/>
+        <circle cx="66" cy="66" r="36" stroke="#2B55E6" stroke-width="14" pathLength="100" stroke-dasharray="44 56"/>
+        <circle cx="66" cy="66" r="36" stroke="#FFD23F" stroke-width="14" pathLength="100" stroke-dasharray="26 74" stroke-dashoffset="-44">
+          <animate attributeName="stroke-dasharray" values="20 80;32 68;20 80" dur="3s" repeatCount="indefinite"/></circle>
+      </g>
+      <rect x="136" y="34" width="12" height="12" rx="3" fill="#2B55E6"/><rect x="156" y="36" width="84" height="8" rx="4" fill="#fff" opacity=".3"/>
+      <rect x="136" y="60" width="12" height="12" rx="3" fill="#FFD23F"/><rect x="156" y="62" width="64" height="8" rx="4" fill="#fff" opacity=".3"/>
+      <rect x="136" y="86" width="12" height="12" rx="3" fill="#fff" opacity=".25"/><rect x="156" y="88" width="74" height="8" rx="4" fill="#fff" opacity=".3"/>
+      <rect x="290" y="24" width="78" height="16" rx="8" fill="#fff" opacity=".3"/>
+      <rect x="310" y="48" width="58" height="8" rx="4" fill="#fff" opacity=".14"/>
+    </g>
+    <g transform="translate(0 550)"><!-- card 6 --><rect width="388" height="72" rx="12" class="card"/>
+      <path d="M18 18a4 4 0 0 1 4-4h18l10 10v28a4 4 0 0 1-4 4H22a4 4 0 0 1-4-4z" fill="#fff" opacity=".18"/>
+      <path d="M40 14v10h10" stroke="#fff" stroke-opacity=".35" stroke-width="1.5"/>
+      <rect x="66" y="22" width="104" height="10" rx="5" fill="#fff" opacity=".3"/>
+      <rect x="66" y="40" width="70" height="8" rx="4" fill="#fff" opacity=".18"/>
+      <rect x="254" y="30" width="62" height="12" rx="6" fill="#fff" opacity=".35"/>
+      <circle cx="350" cy="36" r="14" fill="#FFD23F"/>
+      <path d="M344 36l4 4 8-8" stroke="#16224E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <g transform="translate(0 636)"><rect width="388" height="72" rx="12" class="card"/>
+      <rect x="18" y="17" width="38" height="38" rx="10" fill="#2B55E6"/>
+      <rect x="72" y="22" width="116" height="10" rx="5" fill="#fff" opacity=".35"/>
+      <rect x="72" y="40" width="74" height="8" rx="4" fill="#fff" opacity=".18"/>
+      <rect x="296" y="23" width="72" height="26" rx="13" fill="#FFD23F" fill-opacity=".22" stroke="#FFD23F">
+        <animate attributeName="stroke-opacity" values="1;.3;1" dur="1.6s" repeatCount="indefinite"/></rect>
+    </g>
+    <g transform="translate(0 722)"><rect width="388" height="72" rx="12" class="card"/>
+      <rect x="18" y="17" width="38" height="38" rx="10" fill="#fff" opacity=".18"/>
+      <rect x="72" y="22" width="136" height="10" rx="5" fill="#fff" opacity=".3"/>
+      <rect x="72" y="40" width="62" height="8" rx="4" fill="#fff" opacity=".18"/>
+      <rect x="310" y="23" width="54" height="26" rx="13" fill="#fff" opacity=".12"/>
+      <circle cx="323" cy="36" r="9" fill="#fff" opacity=".5">
+        <animate attributeName="cx" values="323;323;351;351;323" keyTimes="0;.3;.4;.9;1" dur="3s" repeatCount="indefinite"/>
+        <animate attributeName="fill" values="#fff;#fff;#FFD23F;#FFD23F;#fff" keyTimes="0;.3;.4;.9;1" dur="3s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values=".5;.5;1;1;.5" keyTimes="0;.3;.4;.9;1" dur="3s" repeatCount="indefinite"/></circle>
+    </g>
+    <g transform="translate(0 808)"><rect width="388" height="132" rx="12" class="card"/>
+      <rect x="18" y="16" width="84" height="8" rx="4" fill="#fff" opacity=".3"/>
+      <rect x="18" y="90" width="30" height="26" rx="6" fill="#fff" opacity=".25"><animate attributeName="height" values="26;40;26" dur="2.4s" repeatCount="indefinite"/><animate attributeName="y" values="90;76;90" dur="2.4s" repeatCount="indefinite"/></rect>
+      <rect x="62" y="73" width="30" height="43" rx="6" fill="#fff" opacity=".25"><animate attributeName="height" values="43;30;43" dur="2.8s" repeatCount="indefinite"/><animate attributeName="y" values="73;86;73" dur="2.8s" repeatCount="indefinite"/></rect>
+      <rect x="106" y="56" width="30" height="60" rx="6" fill="#2B55E6" opacity="1"><animate attributeName="height" values="60;74;60" dur="2.2s" repeatCount="indefinite"/><animate attributeName="y" values="56;42;56" dur="2.2s" repeatCount="indefinite"/></rect>
+      <rect x="150" y="39" width="30" height="77" rx="6" fill="#FFD23F" opacity="1"><animate attributeName="height" values="77;90;77" dur="2.6s" repeatCount="indefinite"/><animate attributeName="y" values="39;26;39" dur="2.6s" repeatCount="indefinite"/></rect>
+      <rect x="266" y="102" width="102" height="10" rx="5" fill="#fff" opacity=".14"/>
+    </g>
+    <animateTransform attributeName="transform" type="translate" values="0 0;0 0;0 -86;0 -86;0 -172;0 -172;0 -318;0 -318;0 -404;0 -404;0 -550;0 -550;0 -636" keyTimes="0.0000;0.1200;0.1667;0.2867;0.3333;0.4533;0.5000;0.6200;0.6667;0.7867;0.8333;0.9533;1.0000" calcMode="spline" keySplines="0 0 1 1;.45 0 .2 1;0 0 1 1;.45 0 .2 1;0 0 1 1;.45 0 .2 1;0 0 1 1;.45 0 .2 1;0 0 1 1;.45 0 .2 1;0 0 1 1;.45 0 .2 1" dur="15.0s" repeatCount="indefinite"/>
+   </g></g>
+  </g>
+</svg>
