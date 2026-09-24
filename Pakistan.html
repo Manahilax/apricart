@@ -21,13 +21,17 @@
     --line: #E3E9F3;
   }
   *, *::before, *::after { box-sizing: border-box; }
-  html, body { overflow-x: hidden; }
-html { scrollbar-width: thin; scrollbar-color: #FFD23F #0F1750; }   /* Firefox, Chrome, Edge */
+html { overflow-x: hidden; }
+body { overflow-x: clip; }
 
-::-webkit-scrollbar { width: 10px; height: 10px; }                  /* Safari and older Chrome */
+
+::-webkit-scrollbar { width: 12px; height: 12px; }
 ::-webkit-scrollbar-track { background: #0F1750; }
-::-webkit-scrollbar-thumb { background: #FFD23F; border-radius: 999px; border: 2px solid #0F1750; }
-::-webkit-scrollbar-thumb:hover { background: #E0B62E; }
+::-webkit-scrollbar-thumb { background: #E4EFFC; border-radius: 999px; border: 3px solid #0F1750; }
+::-webkit-scrollbar-thumb:hover { background: #E4EFFC; }
+@supports (-moz-appearance: none) {
+html { scrollbar-width: thin; scrollbar-color: #E4EFFC #0F1750; } 
+}
   body { margin: 0; font-family: 'Montserrat', system-ui; background: #F5F6FA; -webkit-font-smoothing: antialiased; }
   a { color: #16206A; text-decoration: none; }
 
