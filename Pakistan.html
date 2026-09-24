@@ -121,33 +121,42 @@
   .client { width: 196px; display: flex; flex-direction: column; align-items: center; gap: 8px; font-size: 12px; color: #8A92B2; }
   .client-logo { width: 196px; height: 68px; border: 1.5px dashed #C4CBE2; border-radius: 12px; display: flex; align-items: center; justify-content: center; letter-spacing: 1px; }
 
-  /* what we doo */
-  .how { position: relative; overflow: hidden; background: #FFFFFF; display: flex; flex-direction: column; gap: 56px; }
-  .how-intro { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 14px; }
- .how-lead { font-size: 15px; line-height: 1.6; color: #475079; max-width: 560px; }
- .how .section-title { white-space: nowrap;font-size: 40px; letter-spacing: -1.4px; }
-  .how-ring { position: absolute; bottom: 110px; right: -220px; width: 640px; height: 640px; pointer-events: none; z-index: 0; }
+  /* what we do — heading with switch + feature grid */
+  .how { position: relative; overflow: hidden; background: #FFFFFF; display: flex; flex-direction: column; gap: 36px; padding-top: 64px; padding-bottom: 56px; }
+  .how-intro { position: relative; z-index: 1; }
+  .how .section-title { white-space: nowrap; font-size: 40px; line-height: 1.12; letter-spacing: -1.2px; }
+  .how .section-title .line2 { display: inline-flex; align-items: center; flex-wrap: wrap; gap: .22em; }
+  .how .section-title .line2 b { font-weight: 700; white-space: nowrap; }
+
+  /* the on/off switch inside the heading (flips on when the section scrolls into view) */
+  .switch { position: relative; display: inline-block; width: 1.55em; height: .86em; border-radius: 999px; background: #D5DAEA; vertical-align: middle; flex-shrink: 0; transition: background .45s ease; }
+  .switch::after { content: ""; position: absolute; top: .1em; left: .1em; width: .66em; height: .66em; border-radius: 50%; background: #FFFFFF; box-shadow: 0 2px 6px rgba(15,23,80,.25); transition: transform .45s cubic-bezier(.5,1.6,.4,1); }
+  .how.in-view .switch { background: #FFD23F; }
+  .how.in-view .switch::after { transform: translateX(.69em); }
+
+  /* the original spinning circle, now tucked into the top-right corner */
+  .how-ring { position: absolute; top: -250px; right: -210px; width: 560px; height: 560px; pointer-events: none; z-index: 0; }
   .how-ring svg { width: 100%; height: 100%; animation: how-spin 40s linear infinite; }
   @keyframes how-spin { to { transform: rotate(360deg); } }
 
-  .how-steps { position: relative; z-index: 1; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 24px; }
-  .how-step { display: flex; flex-direction: column; gap: 12px; }
-  .how-num-row { display: flex; align-items: center; gap: 14px; }
-  .how-num { font-size: 52px; font-weight: 700; line-height: 1; letter-spacing: -1px; color: #2B55E6; transition: color .25s ease; }
-  .how-arrow { flex: 1; height: 2px; background: #2B55E6; position: relative; opacity: .7; }
-  .how-arrow::after { content: ""; position: absolute; right: -1px; top: -4px; width: 8px; height: 8px; border-top: 2px solid #2B55E6; border-right: 2px solid #2B55E6; transform: rotate(45deg); }
-  .how-step:last-child .how-arrow { display: none; }
-  .how-title { font-size: 19px; font-weight: 700; line-height: 1.3; min-height: 2.6em; color: #111A57; }
-  .how-step:hover .how-num { color: #002072; }
+  .offer-grid { position: relative; z-index: 1; list-style: none; margin: 0 -20px; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px 20px; }
+  .offer { padding: 22px 20px; border-radius: 16px; border: 1px solid transparent; display: flex; flex-direction: column; gap: 8px; transition: background .3s ease, box-shadow .3s ease, border-color .3s ease, transform .3s ease; }
+  .offer-icon { width: 26px; height: 26px; color: #111A57; margin-bottom: 8px; transition: color .3s ease, transform .3s ease; }
+  .offer h3 { margin: 0; font-size: 16px; font-weight: 700; color: #111A57; }
+  .offer p { margin: 0; font-size: 14px; line-height: 1.55; color: #5A6285; max-width: 320px; }
+  /* highlighted card: follows the mouse; the first card is highlighted when nothing is hovered */
+  .offer:hover, .offer:focus-within, .offer-grid:not(:hover) .offer:first-child { background: #FFFFFF; border-color: #EEF1F8; box-shadow: 0 20px 40px -22px rgba(15,23,80,0.28); transform: translateY(-3px); }
+  .offer:hover .offer-icon, .offer:focus-within .offer-icon, .offer-grid:not(:hover) .offer:first-child .offer-icon { color: #2B55E6; transform: scale(1.08); }
 
   @media (max-width: 1100px) {
-    .how-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 40px; }
-    .how-step:nth-child(3) .how-arrow { display: none; }
     .how-ring { display: none; }
+  }
+  @media (max-width: 1000px) {
+    .offer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 0 -16px; }
+    .offer { padding: 20px 16px; }
   }
 
   .hl { background: linear-gradient(transparent 55%, #FFD23F 68%, #FFD23F 92%, transparent 92%); padding: 0 4px; margin: 0 -4px; }
-  .how-arrow::after { border-color: #2B55E6; }
 
   /* ---------- SHARED (Why Choose Us + Categories) ---------- */
   .eyebrow { font-weight: 700; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--navy-3); }
@@ -158,14 +167,20 @@
   .why-section { padding: 80px 0; background: linear-gradient(180deg, #F3F8FE 0%, #EEF5FD 100%); }
   .why-panel { background: var(--navy); border-radius: 24px; padding: 64px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; max-width: 1000px; margin: 0 auto; }
   .why-panel h2 { font-weight: 800; font-size: 30px; color: var(--white); margin-bottom: 10px; }
-  .why-panel p.sub { font-size: 14.5px; color: rgba(255,255,255,0.65); max-width: 380px; margin-bottom: 8px; }
   .why-list { display: flex; flex-direction: column; gap: 22px; }
   .why-item { display: flex; gap: 16px; }
   .why-item .icon { width: 40px; height: 40px; border-radius: 12px; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: var(--gold); flex-shrink: 0; }
   .why-item .txt strong { display: block; font-size: 15px; color: var(--white); font-weight: 700; margin-bottom: 3px; }
   .why-item .txt span { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.5; }
-  .why-callout { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14); border-radius: 16px; padding: 24px; margin-top: 8px; display: flex; align-items: center; gap: 16px; }
-  .why-callout .big { font-weight: 800; font-size: 26px; color: var(--gold); }
+  /* big stat: no box; the % and the caption sit to the right of the number, like the reference */
+  .why-stat { display: flex; flex-direction: column; margin-top: 28px; }
+  .why-stat-pre { font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 6px; }
+  .why-stat-row { display: flex; align-items: stretch; gap: 10px; }
+  .why-stat-num { font-size: 132px; font-weight: 800; line-height: .8; letter-spacing: -7px; color: #FFD23F; }
+  .why-stat-side { display: flex; flex-direction: column; justify-content: space-between; padding-top: 2px; }
+  .why-stat-side .pct { font-size: 52px; font-weight: 800; line-height: 1; color: #FFD23F; }
+  .why-stat-text { max-width: 250px; margin: 0 !important; font-size: 14.5px; font-weight: 500; line-height: 1.35; color: rgba(255,255,255,0.85); }
+  .why-stat-text span { color: #FFD23F; font-weight: 700; }
 
   /* ---------- CATEGORIES ---------- */
   .showcase-section { padding: 80px 0; min-height: auto; display: flex; align-items: center; }
@@ -204,7 +219,7 @@
   transform: scale(1);
   transition: transform .7s cubic-bezier(.2,.7,.2,1);
 }
- 
+
   .category-tile::before {
     content: ""; position: absolute; inset: 0; z-index: -2;
     background: linear-gradient(180deg, rgba(15,23,80,0) 40%, rgba(15,23,80,0.55) 70%, rgba(15,23,80,0.9) 100%);
@@ -306,6 +321,7 @@
   /* ---------- ≤1280: laptops ---------- */
   @media (max-width: 1280px) {
     .section { padding: 72px 56px; }
+    .how { padding-top: 56px; padding-bottom: 48px; }
     .hero-dark { padding: 0 56px; }
     .hero-features { padding: 0 56px; }
     .hero-graphic { right: 32px; width: 560px; }
@@ -327,6 +343,7 @@
     .hero-features { position: relative; margin: 0 -40px; width: calc(100% + 80px); height: auto; padding: 22px 40px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
 
     .section { padding: 64px 40px; }
+    .how { padding-top: 52px; padding-bottom: 44px; }
     .how .section-title, .faq .section-title { font-size: 40px; }
 
     .platform, .enquiry { flex-direction: column; align-items: stretch; gap: 40px; }
@@ -386,15 +403,16 @@
     .client, .client-logo { width: 100%; }
     .client-logo { height: 60px; font-size: 11px; }
 
-    .how { gap: 36px; }
-    .how-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 18px; }
-    .how-arrow { display: none; }
-    .how-num { font-size: 40px; }
-    .how-title { font-size: 16px; min-height: 0; }
+    .how { gap: 24px; padding-top: 44px; padding-bottom: 36px; }
+    .offer-grid { grid-template-columns: 1fr; gap: 2px; }
+    .offer { padding: 16px; }
 
     .why-section, .showcase-section { padding: 52px 0; }
     .container { padding: 0 20px; }
     .why-panel { padding: 36px 24px; gap: 32px; }
+    .why-stat-num { font-size: 96px; letter-spacing: -5px; }
+    .why-stat-side .pct { font-size: 40px; }
+    .why-stat-text { font-size: 13px; max-width: 160px; }
     .section-head h2 { font-size: 26px; }
     .category-tile { min-height: 160px; }
     .tile-content { padding: 16px 16px 58px; }
@@ -505,7 +523,7 @@
     </div>
   </section>
 
-  <!-- 3 · HOW WE WORK -->
+  <!-- 3 · WHAT WE DO -->
   <section class="section how" id="how">
     <div class="how-ring" aria-hidden="true">
       <svg viewBox="0 0 300 300" fill="none">
@@ -516,37 +534,42 @@
       </svg>
     </div>
 
-    <div class="how-intro"> 
-      <h2 class="section-title">What <span class="hl">Apricart</span> offers your business</h2>
-      <p class="how-lead">We do not simply supply consumables. We remove the administrative weight of buying them.</p>
+    <div class="how-intro">
+      <h2 class="section-title">When businesses<br><span class="line2">switch <span class="switch" aria-hidden="true"></span> <b>to Apricart.</b></span></h2>
     </div>
 
-    <ol class="how-steps">
-      <li class="how-step">
-        <div class="how-num-row"><span class="how-num">01</span><span class="how-arrow"></span></div>
-        <span class="how-title">Centralise procurement</span>
+    <ul class="offer-grid">
+      <li class="offer" tabindex="0">
+        <svg class="offer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 9V3M12 15v6M9 12H3M15 12h6"/></svg>
+        <h3>Centralise procurement</h3>
+        <p>One platform for every order, category and location, instead of scattered vendors and spreadsheets.</p>
       </li>
-      <li class="how-step">
-        <div class="how-num-row"><span class="how-num">02</span><span class="how-arrow"></span></div>
-        <span class="how-title">Reduce vendor complexity</span>
+      <li class="offer" tabindex="0">
+        <svg class="offer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h5l5 6M3 18h5l5-6h8"/><path d="M18 9l3 3-3 3"/></svg>
+        <h3>Reduce vendor complexity</h3>
+        <p>Replace dozens of suppliers with one partner, one agreement and one point of contact.</p>
       </li>
-      <li class="how-step">
-        <div class="how-num-row"><span class="how-num">03</span><span class="how-arrow"></span></div>
-        <span class="how-title">Standardise across locations</span>
+      <li class="offer" tabindex="0">
+        <svg class="offer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg>
+        <h3>Standardise across locations</h3>
+        <p>The same approved catalogue, pricing and quality at every office, branch and site.</p>
       </li>
-      <li class="how-step">
-        <div class="how-num-row"><span class="how-num">04</span><span class="how-arrow"></span></div>
-        <span class="how-title">Simplify billing</span>
+      <li class="offer" tabindex="0">
+        <svg class="offer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9.5 8.5h5M9.5 12.5h5"/></svg>
+        <h3>Simplify billing</h3>
+        <p>One consolidated monthly invoice across all your categories and locations.</p>
       </li>
-      <li class="how-step">
-        <div class="how-num-row"><span class="how-num">05</span><span class="how-arrow"></span></div>
-        <span class="how-title">Improve supply reliability</span>
+      <li class="offer" tabindex="0">
+        <svg class="offer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+        <h3>Improve supply reliability</h3>
+        <p>Scheduled deliveries from verified suppliers, so essentials arrive before they run out.</p>
       </li>
-      <li class="how-step">
-        <div class="how-num-row"><span class="how-num">06</span><span class="how-arrow"></span></div>
-        <span class="how-title">Gain procurement visibility</span>
+      <li class="offer" tabindex="0">
+        <svg class="offer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+        <h3>Gain procurement visibility</h3>
+        <p>See orders, spend and delivery status by location, category and period.</p>
       </li>
-    </ol>
+    </ul>
   </section>
 
   <!-- 4 · WHY CHOOSE US -->
@@ -555,10 +578,15 @@
       <div class="why-panel">
         <div>
           <h2>Why Businesses Choose Apricart</h2>
-          <p class="sub">A single procurement partner built for reliability, visibility and cost control.</p>
-          <div class="why-callout">
-            <span class="big">Up to [89]%</span>
-            <span style="font-size:13px; color:rgba(255,255,255,0.65); line-height:1.5;">Reported cost savings vs. managing vendors individually</span>
+          <div class="why-stat">
+            <span class="why-stat-pre">Up to</span>
+            <div class="why-stat-row">
+              <span class="why-stat-num">89</span>
+              <div class="why-stat-side">
+                <span class="pct">%</span>
+                <p class="why-stat-text">Reported <span>cost savings</span> vs.<br>managing vendors individually</p>
+              </div>
+            </div>
           </div>
         </div>
         <div class="why-list">
@@ -775,6 +803,19 @@
         toggle.setAttribute('aria-expanded', false);
       });
     });
+  })();
+
+  // flip the heading switch on when the "What we do" section scrolls into view
+  (function () {
+    var how = document.querySelector('.how');
+    if (!how) return;
+    if (!('IntersectionObserver' in window)) { how.classList.add('in-view'); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { setTimeout(function () { how.classList.add('in-view'); }, 250); io.disconnect(); }
+      });
+    }, { threshold: 0.4 });
+    io.observe(how);
   })();
 </script>
 </body>
