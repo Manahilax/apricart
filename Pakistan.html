@@ -21,7 +21,13 @@
     --line: #E3E9F3;
   }
   *, *::before, *::after { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html, body { overflow-x: hidden; }
+html { scrollbar-width: thin; scrollbar-color: #FFD23F #0F1750; }   /* Firefox, Chrome, Edge */
+
+::-webkit-scrollbar { width: 10px; height: 10px; }                  /* Safari and older Chrome */
+::-webkit-scrollbar-track { background: #0F1750; }
+::-webkit-scrollbar-thumb { background: #FFD23F; border-radius: 999px; border: 2px solid #0F1750; }
+::-webkit-scrollbar-thumb:hover { background: #E0B62E; }
   body { margin: 0; font-family: 'Montserrat', system-ui; background: #F5F6FA; -webkit-font-smoothing: antialiased; }
   a { color: #16206A; text-decoration: none; }
 
