@@ -137,19 +137,18 @@ h1 {
   }
 
   .market-arrow {
-    flex-shrink: 0;
-    width: 34px;
-    height: 34px;
-    border-radius: 35%;
-    background: var(--yellow);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--navy);
-    font-weight: 1000;
-    font-size: larger;
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--yellow);          
+  transition: transform .2s ease;
+}
+.market-arrow svg { width: 26px; height: 26px; }
 
-  }
+.market-card:hover .market-arrow { transform: translateX(4px); }   
 
   .hero-graphic {
     position: relative;
@@ -331,14 +330,22 @@ h1 {
             <div class="country">Pakistan</div>
             <div class="sub">Corporate Procurement</div>
           </div>
-          <div class="market-arrow">&#707;</div>
+          <div class="market-arrow">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <polyline points="9 5 16 12 9 19"></polyline>
+  </svg>
+</div>
         </a>
         <a class="market-card" href="#">
           <div>
             <div class="country">Saudi Arabia</div>
             <div class="sub">Food Distribution</div>
           </div>
-          <div class="market-arrow">&#707;</div>
+          <div class="market-arrow">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <polyline points="9 5 16 12 9 19"></polyline>
+  </svg>
+</div>
         </a>
       </div>
     </div>
