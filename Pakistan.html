@@ -21,20 +21,16 @@
     --line: #E3E9F3;
   }
   *, *::before, *::after { box-sizing: border-box; }
+
 html { overflow-x: hidden; }
 body { overflow-x: clip; }
 
-
-::-webkit-scrollbar { width: 12px; height: 12px; }
-::-webkit-scrollbar-track { background: #0F1750; }
-::-webkit-scrollbar-thumb { background: #E4EFFC; border-radius: 999px; border: 3px solid #0F1750; }
-::-webkit-scrollbar-thumb:hover { background: #E4EFFC; }
 @supports (-moz-appearance: none) {
-html { scrollbar-width: thin; scrollbar-color: #E4EFFC #0F1750; } 
+  html { scrollbar-width: thin; scrollbar-color: #E4EFFC #0F1750; }   /* Firefox only */
 }
-  body { margin: 0; font-family: 'Montserrat', system-ui; background: #F5F6FA; -webkit-font-smoothing: antialiased; }
-  a { color: #16206A; text-decoration: none; }
 
+body { margin: 0; font-family: 'Montserrat', system-ui; background: #F5F6FA; -webkit-font-smoothing: antialiased; }
+a { color: #16206A; text-decoration: none; }
   .site-header, .site-footer { font-family: 'Montserrat', system-ui; color: var(--navy); }
   .site-header *, .site-footer * { margin: 0; padding: 0; }
   .site-header a, .site-footer a { color: inherit; }
