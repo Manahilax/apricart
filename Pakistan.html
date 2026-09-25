@@ -45,7 +45,7 @@ a { color: #16206A; text-decoration: none; }
   nav.main-nav > a:hover { opacity: .85; border-bottom-color: var(--gold); }
   nav.main-nav > a.active { font-weight: 400; border-bottom-color: var(--gold); }
 
-  .nav-item { position: relative; display: flex; align-items: center; }
+  .nav-item { position: relative; display: flex; align-items: center; color: #FFFFFF; }
   .nav-trigger { display: flex; align-items: center; gap: 6px; height: 100%; font-size: 18px; font-weight: 400; color: #FFFFFF; background: none; border: none; cursor: pointer; font-family: 'Montserrat'; padding: 6px 0; border-bottom: 2px solid transparent; transition: opacity .15s ease, border-color .15s ease; }
   .nav-trigger:hover { opacity: .85; border-bottom-color: var(--gold); }
   .nav-trigger .chevron { transition: transform .18s ease; display: flex; }
@@ -451,10 +451,10 @@ a { color: #16206A; text-decoration: none; }
     <a href="index.html" class="active">Home</a>
 
     <div class="nav-item">
-      <button class="nav-trigger" aria-haspopup="true" aria-expanded="false">
-        About Apricart
-        <span class="chevron"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
-      </button>
+        <a href="aboutus.html" class="nav-trigger" aria-haspopup="true">
+            About us
+            <span class="chevron"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+          </a>
       <div class="dropdown-panel">
         <a href="aboutus.html#our-story">Our Story</a>
         <a href="aboutus.html#vision">Vision</a>
