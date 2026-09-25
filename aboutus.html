@@ -85,19 +85,47 @@
   .about-hero .lead { max-width: 560px; font-size: 18px; line-height: 1.6; color: #C9CEEA; }
 
 
-  /* ---------- OUR STORY ---------- */
-  .story { background: #FFFFFF; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 72px; align-items: center; }
+  /* ---------- OUR STORY: text on the left, bento grid of photos + text boxes on the right ---------- */
+  .story { background: #FFFFFF; display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: 64px; align-items: center; }
   .story-copy { display: flex; flex-direction: column; gap: 20px; }
-  .story-quote {text-align: justify; position: relative; padding-left: 22px; border-left: 3px solid var(--yellow); font-size: 18px; line-height: 1.7; color: var(--text); }
-  .story-copy .btn-yellow { align-self: flex-start; margin-top: 8px; }
+  .story-quote { text-align: justify; position: relative; padding-left: 22px; border-left: 3px solid var(--yellow); font-size: 18px; line-height: 1.7; color: var(--text); }
 
-  .story-photos { display: flex; gap: 16px; height: 400px; }
-  .story-photo { position: relative; flex: 1; margin: 0; border-radius: 20px; overflow: hidden; background: linear-gradient(160deg, #2B55E6 0%, #0F1750 100%); box-shadow: 0 18px 36px -20px rgba(15,23,80,0.45); }
-  .story-photo:nth-child(2) { flex: 1.25; margin: -24px 0; background: linear-gradient(160deg, #FFD23F 0%, #E0B62E 100%); }
-  .story-photo:nth-child(3) { background: linear-gradient(160deg, #6F8CF5 0%, #2B55E6 100%); }
+  .story-bento { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(6, minmax(0, 1fr)); gap: 14px; height: 500px; }
+  /* column 1: tall photo, text box under it */
+  .bento-1 { grid-column: 1; grid-row: 1 / 5; }
+  .bento-2 { grid-column: 1; grid-row: 5 / 7; }
+  /* column 2: text box on top, tall photo under it */
+  .bento-3 { grid-column: 2; grid-row: 1 / 3; }
+  .bento-4 { grid-column: 2; grid-row: 3 / 7; }
+  /* column 3: photo on top, tall text box under it */
+  .bento-5 { grid-column: 3; grid-row: 1 / 4; }
+  .bento-6 { grid-column: 3; grid-row: 4 / 7; }
+
+  .story-photo { position: relative; margin: 0; border-radius: 20px; overflow: hidden; background: linear-gradient(160deg, #2B55E6 0%, #0F1750 100%); box-shadow: 0 18px 36px -22px rgba(15,23,80,0.45); }
+  .story-photo.alt-1 { background: linear-gradient(160deg, #FFD23F 0%, #E0B62E 100%); }
+  .story-photo.alt-2 { background: linear-gradient(160deg, #6F8CF5 0%, #2B55E6 100%); }
   .story-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
   .story-photo:hover img { transform: scale(1.06); }
-  .story-photo figcaption { position: absolute; left: 14px; right: 14px; bottom: 14px; padding: 8px 12px; border-radius: 10px; background: rgba(15,23,80,0.72); backdrop-filter: blur(4px); font-size: 12.5px; font-weight: 600; color: #FFFFFF; }
+
+  .story-box { position: relative; overflow: hidden; border-radius: 20px; padding: 20px 20px 18px; display: flex; flex-direction: column; justify-content: space-between; gap: 10px; transition: transform .25s ease; }
+  .story-box:hover { transform: translateY(-3px); }
+  .story-box h3 { position: relative; z-index: 1; font-size: 17px; font-weight: 700; line-height: 1.25; letter-spacing: -.2px; }
+  .story-box p { position: relative; z-index: 1; font-size: 13px; line-height: 1.5; }
+  .story-box .box-ic { position: relative; z-index: 1; width: 32px; height: 32px; border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+  .story-box .box-ic svg { width: 17px; height: 17px; }
+  /* soft rings in the corner, like the reference */
+  .story-box::after { content: ""; position: absolute; right: -46px; top: -46px; width: 140px; height: 140px; border-radius: 50%; background: radial-gradient(circle, transparent 38%, rgba(255,255,255,0.35) 39%, rgba(255,255,255,0.35) 46%, transparent 47%, transparent 58%, rgba(255,255,255,0.25) 59%, rgba(255,255,255,0.25) 66%, transparent 67%); }
+
+  .box-blue   { background: #E4ECFD; color: var(--ink); }
+  .box-blue p { color: var(--text); }
+  .box-blue .box-ic { background: #FFFFFF; color: var(--blue); }
+  .box-yellow   { background: #FFE58A; color: var(--ink); }
+  .box-yellow p { color: #4A4A2A; }
+  .box-yellow .box-ic { background: #FFFFFF; color: var(--gold-dark); }
+  .box-navy   { background: var(--navy); color: #FFFFFF; }
+  .box-navy p { color: #C9CEEA; }
+  .box-navy .box-ic { background: rgba(255,255,255,0.12); color: var(--yellow); }
+  .box-navy::after { background: radial-gradient(circle, transparent 38%, rgba(255,210,63,0.35) 39%, rgba(255,210,63,0.35) 46%, transparent 47%, transparent 58%, rgba(255,210,63,0.2) 59%, rgba(255,210,63,0.2) 66%, transparent 67%); }
 
   /* ---------- IDENTITY / VISION ---------- */
   .identity { background: #F5F6FA; }
@@ -130,7 +158,8 @@
   /* ---------- FOOTER (identical to index) ---------- */
   footer.site-footer { background: var(--navy); padding: 64px 0 0 0; color: rgba(255,255,255,0.7); }
   .footer-grid { display: grid; grid-template-columns: repeat(3, auto); justify-content: space-between; gap: 48px; padding-bottom: 48px; }
-  .footer-col:last-child { width: 300px; }   /* room for the email box */  .footer-logo { margin-bottom: 16px; }
+  .footer-col:last-child { width: 300px; }   /* room for the email box */
+  .footer-logo { margin-bottom: 16px; }
   .footer-logo-img { height: 60px; width: auto; display: block; }
   .footer-about { font-size: 14px; line-height: 1.6; max-width: 220px; margin-bottom: 16px !important; }
   .footer-note { font-size: 14px; line-height: 1.55; margin-bottom: 14px !important; }
@@ -153,13 +182,15 @@
     nav.main-nav { gap: 24px; }
     nav.main-nav > a, .nav-trigger { font-size: 16px; }
     .about-hero h1 { font-size: 52px; }
-    .story { gap: 48px; }
+    .story { gap: 44px; }
+    .story-box h3 { font-size: 15.5px; }
+    .story-box p { font-size: 12.5px; }
   }
   @media (max-width: 1100px) {
     .section { padding: 72px 40px; }
     .about-hero { padding: 72px 40px 64px; }
     .story { grid-template-columns: 1fr; }
-    .story-photos { height: 340px; }
+    .story-bento { height: 480px; }
     .team-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
   }
   @media (max-width: 980px) {
@@ -196,9 +227,13 @@
     .about-hero .lead { font-size: 16px; }
     .section-title { font-size: 30px; letter-spacing: -.6px; }
     .story-quote { font-size: 16px; }
-    .story-photos { height: 240px; gap: 10px; }
-    .story-photo:nth-child(2) { margin: -12px 0; }
-    .story-photo figcaption { display: none; }
+    /* bento becomes two simple columns: each photo sits next to its text box */
+    .story-bento { height: auto; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: none; grid-auto-rows: minmax(170px, auto); gap: 10px; }
+    .story-bento > * { grid-column: auto; grid-row: auto; }
+    .bento-3 { order: 4; }
+    .bento-4 { order: 3; }
+    .bento-1 { order: 1; } .bento-2 { order: 2; } .bento-5 { order: 5; } .bento-6 { order: 6; }
+    .story-box { padding: 16px; }
     .identity-pillars { padding: 28px 20px; }
     .identity-panel { padding: 60px 22px 28px; }
     .team-grid { grid-template-columns: 1fr; }
@@ -220,7 +255,7 @@
     <a href="index.html">Home</a>
 
     <div class="nav-item">
-      <a href="aboutus.html" class="nav-trigger" aria-haspopup="true">
+      <a href="aboutus.html" class="nav-trigger active" aria-haspopup="true">
         About us
         <span class="chevron"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
       </a>
@@ -237,8 +272,8 @@
         <span class="chevron"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
       </button>
       <div class="dropdown-panel">
-        <a href="/pakistan/services/supplies">Supplies</a>
-        <a href="/pakistan/services/system">System</a>
+        <a href="supplies.html">Supplies</a>
+        <a href="system.html">System</a>
       </div>
     </div>
 
@@ -272,19 +307,40 @@
       <p class="story-quote">Born out of a need for reliable, transparent procurement, Apricart connects Pakistani businesses directly to verified suppliers. We believe in dependable supply chains, empowering local vendors, and delivering the everyday essentials that keep workplaces running.</p>
     </div>
 
-    <div class="story-photos">
-      <figure class="story-photo">
+    <!-- bento: 3 photos + 3 text boxes (the titles now live in the boxes, not on the photos) -->
+    <div class="story-bento">
+      <figure class="story-photo bento-1">
         <img src="/images/suppliers.png" alt="Shelves of office supplies being picked in the Apricart warehouse" loading="lazy" onerror="this.remove()">
-        <figcaption>Sourced from verified suppliers</figcaption>
       </figure>
-      <figure class="story-photo">
+
+      <div class="story-box box-blue bento-2">
+        <span class="box-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span>
+        <div>
+          <h3>Sourced from verified suppliers</h3>
+          <p style="margin-top:6px;">Every vendor vetted for quality and pricing.</p>
+        </div>
+      </div>
+
+      <div class="story-box box-yellow bento-3">
+        <h3>Delivered office to office</h3>
+        <p>Scheduled deliveries to every branch and site, tracked from dispatch to drop-off.</p>
+      </div>
+
+      <figure class="story-photo alt-1 bento-4">
         <img src="/images/delivery.png" alt="Apricart delivery arriving at an office reception" loading="lazy" onerror="this.remove()">
-        <figcaption>Delivered office to office</figcaption>
       </figure>
-      <figure class="story-photo">
+
+      <figure class="story-photo alt-2 bento-5">
         <img src="/images/team.png" alt="Apricart account manager reviewing an order with a client" loading="lazy" onerror="this.remove()">
-        <figcaption>Backed by a dedicated team</figcaption>
       </figure>
+
+      <div class="story-box box-navy bento-6">
+        <span class="box-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+        <div>
+          <h3>Backed by a dedicated team</h3>
+          <p style="margin-top:8px;">One account manager who knows your business and is always reachable.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -372,6 +428,7 @@
         <p class="desc">[Connecting Apricart with clients, partners, and communities through clear, reliable communication.]</p>
       </div>
     </div>
+  </section>
 
 </main>
 
@@ -392,7 +449,7 @@
     <div class="footer-col">
       <h4>Quick Links</h4>
       <a href="aboutus.html">About Apricart</a>
-      <a href="#">Our Business</a>
+      <a href="supplies.html">Our Business</a>
       <a href="partners.html">Partners</a>
       <a href="contact_us.html">Contact</a>
     </div>
