@@ -107,24 +107,19 @@
   .story-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
   .story-photo:hover img { transform: scale(1.06); }
 
-  .story-box { position: relative; overflow: hidden; border-radius: 20px; padding: 20px 20px 18px; display: flex; flex-direction: column; justify-content: space-between; gap: 10px; transition: transform .25s ease; }
+  .story-box { position: relative; overflow: hidden; border-radius: 20px; padding: 20px 20px 18px; display: flex; flex-direction: column; justify-content: flex-end; transition: transform .25s ease; }
   .story-box:hover { transform: translateY(-3px); }
   .story-box h3 { position: relative; z-index: 1; font-size: 17px; font-weight: 700; line-height: 1.25; letter-spacing: -.2px; }
   .story-box p { position: relative; z-index: 1; font-size: 13px; line-height: 1.5; }
-  .story-box .box-ic { position: relative; z-index: 1; width: 32px; height: 32px; border-radius: 10px; display: flex; align-items: center; justify-content: center; }
-  .story-box .box-ic svg { width: 17px; height: 17px; }
   /* soft rings in the corner, like the reference */
   .story-box::after { content: ""; position: absolute; right: -46px; top: -46px; width: 140px; height: 140px; border-radius: 50%; background: radial-gradient(circle, transparent 38%, rgba(255,255,255,0.35) 39%, rgba(255,255,255,0.35) 46%, transparent 47%, transparent 58%, rgba(255,255,255,0.25) 59%, rgba(255,255,255,0.25) 66%, transparent 67%); }
 
   .box-blue   { background: #E4ECFD; color: var(--ink); }
   .box-blue p { color: var(--text); }
-  .box-blue .box-ic { background: #FFFFFF; color: var(--blue); }
   .box-yellow   { background: #FFE58A; color: var(--ink); }
   .box-yellow p { color: #4A4A2A; }
-  .box-yellow .box-ic { background: #FFFFFF; color: var(--gold-dark); }
   .box-navy   { background: var(--navy); color: #FFFFFF; }
   .box-navy p { color: #C9CEEA; }
-  .box-navy .box-ic { background: rgba(255,255,255,0.12); color: var(--yellow); }
   .box-navy::after { background: radial-gradient(circle, transparent 38%, rgba(255,210,63,0.35) 39%, rgba(255,210,63,0.35) 46%, transparent 47%, transparent 58%, rgba(255,210,63,0.2) 59%, rgba(255,210,63,0.2) 66%, transparent 67%); }
 
   /* ---------- IDENTITY / VISION ---------- */
@@ -321,8 +316,10 @@
       </div>
 
       <div class="story-box box-yellow bento-3">
-        <h3>Delivered office to office</h3>
-        <p>Scheduled deliveries to every branch and site, tracked from dispatch to drop-off.</p>
+        <div>
+          <h3>Delivered office to office</h3>
+          <p style="margin-top:6px;">Scheduled deliveries to every branch and site.</p>
+        </div>
       </div>
 
       <figure class="story-photo alt-1 bento-4">
