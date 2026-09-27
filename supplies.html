@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apricart — Pakistan | Supplies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+  :root {
+    --navy: #0F1750;
+    --navy-2: #1F2E63;
+    --navy-3: #002072;
+    --ink: #111A57;
+    --text: #475079;
+    --slate: #6B7486;
+    --slate-light: #8A93A6;
+    --blue: #2B55E6;
+    --yellow: #FFD23F;
+    --gold: #F3C94E;
+    --gold-dark: #E0B62E;
+    --sky-1: #E4EFFC;
+    --white: #FFFFFF;
+    --line: #E3E9F3;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
+  body { margin: 0; overflow-x: clip; font-family: 'Montserrat', system-ui; background: #FFFFFF; color: var(--ink); -webkit-font-smoothing: antialiased; }
+  a { color: #16206A; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+  button, input, select { font-family: inherit; }
+
+  .site-header, .site-footer { font-family: 'Montserrat', system-ui; color: var(--navy); }
+  .site-header *, .site-footer * { margin: 0; padding: 0; }
+  .site-header a, .site-footer a { color: inherit; }
+  .container { max-width: 1240px; margin: 0 auto; padding: 0 48px; }
+
+  header.site-header { width: 100%; height: 84px; background: var(--navy); border-bottom: 1px solid rgba(255,255,255,0.12); display: flex; align-items: center; justify-content: flex-start; gap: 48px; padding: 0 48px; position: sticky; top: 0; z-index: 50; }
+  .logo-img { height: 90px; width: auto; display: block; }
+
+  nav.main-nav { display: flex; align-items: stretch; gap: 34px; height: 100%; }
+  nav.main-nav > a { display: flex; align-items: center; font-size: 18px; font-weight: 400; color: #FFFFFF; padding: 6px 0; border-bottom: 2px solid transparent; transition: opacity .15s ease, border-color .15s ease; }
+  nav.main-nav > a:hover { opacity: .85; border-bottom-color: var(--gold); }
+
+  .nav-item { position: relative; display: flex; align-items: center; }
+  .nav-trigger { display: flex; align-items: center; gap: 6px; height: 100%; font-size: 18px; font-weight: 400; color: #FFFFFF; background: none; border: none; cursor: pointer; font-family: 'Montserrat'; padding: 6px 0; border-bottom: 2px solid transparent; transition: opacity .15s ease, border-color .15s ease; }
+  .nav-trigger:hover, .nav-trigger.active { border-bottom-color: var(--gold); }
+  .nav-trigger:hover { opacity: .85; }
+  .nav-trigger .chevron { transition: transform .18s ease; display: flex; }
+  .nav-item:hover .chevron { transform: rotate(180deg); }
+
+  .dropdown-panel {
+    position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(6px);
+    background: var(--white); border: 1px solid var(--line); border-radius: 14px;
+    box-shadow: 0 20px 48px -14px rgba(22,34,78,0.22); padding: 10px; min-width: 210px;
+    opacity: 0; visibility: hidden; pointer-events: none;
+    transition: opacity .16s ease, transform .16s ease; z-index: 60;
+  }
+  .nav-item:hover .dropdown-panel,
+  .nav-item:focus-within .dropdown-panel { opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+  .dropdown-panel a { display: block; padding: 11px 14px; border-radius: 9px; font-size: 14px; font-weight: 500; color: var(--navy); }
+  .dropdown-panel a:hover { background: var(--sky-1); color: var(--navy-3); }
+  .menu-toggle { display: none; }
+
+  .page h1, .page h2, .page h3, .page p { margin: 0; }
+
+
+  .shop-bar-wrap { margin-top: 48px; }
+  .shop-bar { padding: 0 0 24px; border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .shop-bar h1 { font-size: 30px; font-weight: 700; letter-spacing: -.7px; color: var(--ink); }
+  .shop-bar h1 span { color: var(--blue); }
+  .search { display: flex; align-items: center; gap: 8px; width: min(440px, 100%); padding: 6px 6px 6px 18px; border: 1.5px solid var(--line); border-radius: 999px; background: #F5F6FA; transition: border-color .15s ease, background .15s ease; }
+  .search:focus-within { border-color: var(--blue); background: #FFFFFF; }
+  .search svg { color: var(--slate); flex-shrink: 0; }
+  .search input { flex: 1; min-width: 0; border: none; background: none; outline: none; font-size: 14px; font-weight: 500; color: var(--ink); padding: 8px 4px; }
+  .search input::placeholder { color: var(--slate-light); }
+  .search button { height: 40px; padding: 0 22px; border: none; border-radius: 999px; background: var(--yellow); color: var(--ink); font-size: 14px; font-weight: 600; cursor: pointer; transition: filter .15s ease; }
+  .search button:hover { filter: brightness(.95); }
+
+
+  .shop { padding: 28px 0 100px; }
+
+  /* toolbar */
+  .products-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 28px; flex-wrap: wrap; }
+  .toolbar-left { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+
+
+  .cat-menu { position: relative; }
+  .cat-toggle { display: inline-flex; align-items: center; gap: 10px; padding: 10px 16px; border: 1.5px solid var(--line); border-radius: 999px; background: #FFFFFF; color: var(--ink); font-size: 14px; font-weight: 600; cursor: pointer; transition: border-color .15s ease, background .15s ease; }
+  .cat-toggle:hover, .cat-menu.open .cat-toggle { border-color: var(--navy); }
+  .cat-toggle .ic { width: 18px; height: 18px; color: var(--blue); flex-shrink: 0; }
+  .cat-toggle .muted { color: var(--slate); font-weight: 500; }
+  .cat-toggle .chev { display: flex; color: var(--slate); transition: transform .18s ease; }
+  .cat-menu.open .cat-toggle .chev { transform: rotate(180deg); }
+
+  .cat-dropdown { position: absolute; top: calc(100% + 8px); left: 0; z-index: 20; min-width: 270px; list-style: none; margin: 0; padding: 8px; background: #FFFFFF; border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 20px 48px -14px rgba(22,34,78,0.25); opacity: 0; visibility: hidden; transform: translateY(6px); transition: opacity .16s ease, transform .16s ease, visibility .16s; }
+  .cat-menu.open .cat-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+  .cat-dropdown .divider { height: 1px; margin: 6px 4px; background: var(--line); }
+
+  .cat-btn { width: 100%; display: flex; align-items: center; gap: 10px; padding: 10px 12px; border: none; border-radius: 10px; background: none; color: var(--text); font-size: 14px; font-weight: 600; text-align: left; white-space: nowrap; cursor: pointer; transition: background .15s ease, color .15s ease; }
+  .cat-btn svg { width: 18px; height: 18px; flex-shrink: 0; color: var(--slate-light); transition: color .15s ease; }
+  .count { margin-left: auto; min-width: 26px; padding: 2px 8px; border-radius: 999px; background: #EEF1F8; color: var(--text); font-size: 11.5px; font-weight: 700; text-align: center; }
+  .cat-toggle .count { margin-left: 0; }
+  .cat-btn:hover { background: #F5F6FA; color: var(--ink); }
+  .cat-btn.active { background: #EEF3FD; color: var(--ink); }
+  .cat-btn.active svg { color: var(--blue); }
+  .cat-btn.active .count { background: var(--yellow); color: var(--ink); }
+
+
+  .help-strip { margin-top: 56px; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 26px 30px; border-radius: 18px; background: var(--navy); }
+  .help-strip strong { display: block; font-size: 17px; color: #FFFFFF; margin-bottom: 4px; }
+  .help-strip p { font-size: 14px; line-height: 1.55; color: #C9CEEA; }
+  .help-strip a { flex-shrink: 0; display: inline-flex; align-items: center; gap: 8px; height: 46px; padding: 0 22px; border-radius: 999px; background: var(--yellow); color: var(--ink); font-size: 14px; font-weight: 600; transition: filter .15s ease; }
+  .help-strip a:hover { filter: brightness(.95); }
+  .result-count { font-size: 14px; font-weight: 500; color: var(--text); }
+  .result-count b { color: var(--ink); }
+  .sort-select { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: var(--ink); }
+  .sort-select select { appearance: none; -webkit-appearance: none; padding: 10px 38px 10px 16px; border: 1.5px solid var(--line); border-radius: 999px; background: #FFFFFF url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%236B7486' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") no-repeat right 14px center; font-size: 14px; font-weight: 600; color: var(--ink); cursor: pointer; }
+  .sort-select select:focus { outline: none; border-color: var(--blue); }
+
+
+  .product-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 28px 24px; }
+  .product-card { display: block; }
+  .product-visual { aspect-ratio: 1 / 1; border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; transition: transform .2s ease, box-shadow .2s ease; }
+  .product-card:hover .product-visual { transform: translateY(-4px); box-shadow: 0 16px 32px -12px rgba(22,34,78,0.18); }
+  .product-visual .icon-circle { width: 68px; height: 68px; border-radius: 50%; background: rgba(255,255,255,0.6); display: flex; align-items: center; justify-content: center; }
+  .product-card h3 { font-size: 16px; font-weight: 700; color: var(--ink); }
+
+  .empty-state { display: none; padding: 60px 20px; text-align: center; border: 1.5px dashed var(--line); border-radius: 18px; color: var(--text); font-size: 15px; }
+  .empty-state.show { display: block; }
+  .empty-state a { color: var(--blue); font-weight: 700; }
+
+
+  footer.site-footer { background: var(--navy); padding: 64px 0 0 0; color: rgba(255,255,255,0.7); }
+  .footer-grid { display: grid; grid-template-columns: repeat(3, auto); justify-content: space-between; gap: 48px; padding-bottom: 48px; }
+  .footer-col:last-child { width: 300px; }
+  .footer-logo { margin-bottom: 16px; }
+  .footer-logo-img { height: 60px; width: auto; display: block; }
+  .footer-about { font-size: 14px; line-height: 1.6; max-width: 220px; margin-bottom: 16px !important; }
+  .footer-note { font-size: 14px; line-height: 1.55; margin-bottom: 14px !important; }
+  .footer-col h4 { font-weight: 700; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: var(--white); margin-bottom: 14px; }
+  .footer-col a { display: block; font-size: 14px; margin-bottom: 12px; }
+  .footer-col a:hover { color: #FFFFFF; }
+  .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding: 22px 0; border-top: 1px solid rgba(255,255,255,0.14); font-size: 13px; }
+  .footer-bottom .tag { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+  .social-row { display: flex; gap: 10px; margin-top: 4px; }
+  .social-row a { width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; margin: 0; }
+  .social-row a:hover { background: rgba(255,255,255,0.18); }
+  .nl-row { display: flex; gap: 8px; }
+  .nl-row input { flex: 1; min-width: 0; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18); border-radius: 999px; padding: 10px 14px; font-size: 13px; color: var(--white); font-family: 'Montserrat'; }
+  .nl-row button { background: var(--gold); color: var(--navy); border: none; border-radius: 999px; padding: 0 18px; font-size: 13px; font-weight: 700; cursor: pointer; }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 1280px) {
+    nav.main-nav { gap: 24px; }
+    nav.main-nav > a, .nav-trigger { font-size: 16px; }
+  }
+  @media (max-width: 1100px) {
+    .product-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
+  }
+  @media (max-width: 980px) {
+    .container { padding: 0 24px; }
+    header.site-header { height: 68px; padding: 0 24px; }
+    .logo-img { height: 60px; }
+    .menu-toggle { display: flex; flex-direction: column; justify-content: center; gap: 5px; width: 44px; height: 44px; padding: 10px; background: none; border: 1.5px solid rgba(255,255,255,0.35); border-radius: 10px; cursor: pointer; margin-left: auto; }
+    .menu-toggle span { display: block; height: 2px; border-radius: 2px; background: #FFFFFF; transition: transform .25s ease, opacity .2s ease; }
+    .menu-open .menu-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .menu-open .menu-toggle span:nth-child(2) { opacity: 0; }
+    .menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    nav.main-nav { display: none; position: absolute; top: 100%; left: 0; right: 0; height: auto; flex-direction: column; align-items: stretch; gap: 0; padding: 8px 24px 24px; background: var(--navy); border-bottom: 1px solid rgba(255,255,255,0.12); box-shadow: 0 24px 40px -20px rgba(0,0,0,0.5); max-height: calc(100vh - 68px); overflow-y: auto; }
+    .menu-open nav.main-nav { display: flex; }
+    nav.main-nav > a, .nav-trigger { font-size: 17px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.1); width: 100%; justify-content: space-between; }
+    .nav-trigger.active { color: #FFD23F; border-bottom-color: rgba(255,255,255,0.1); }
+    .nav-item { flex-direction: column; align-items: stretch; }
+    .nav-item .chevron { display: none; }
+    .dropdown-panel { position: static; transform: none; opacity: 1; visibility: visible; pointer-events: auto; background: transparent; border: 0; box-shadow: none; padding: 4px 0 8px 14px; min-width: 0; }
+    .nav-item:hover .dropdown-panel, .nav-item:focus-within .dropdown-panel { transform: none; }
+    .dropdown-panel a { color: rgba(255,255,255,0.75); padding: 10px 0; }
+    .dropdown-panel a:hover { background: none; color: #FFFFFF; }
+
+    .shop-bar-wrap { margin-top: 36px; }
+    .shop-bar { flex-direction: column; align-items: stretch; gap: 16px; padding-bottom: 20px; }
+    .search { width: 100%; }
+
+    .product-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .help-strip { flex-direction: column; align-items: flex-start; padding: 24px; }
+
+    .footer-grid { grid-template-columns: repeat(2, minmax(0,1fr)); justify-content: stretch; }
+    .footer-col:last-child { width: auto; }
+  }
+  @media (max-width: 600px) {
+    .logo-img { height: 48px; }
+    .shop-bar-wrap { margin-top: 28px; }
+    .shop-bar h1 { font-size: 23px; }
+    .product-grid { gap: 22px 14px; }
+    .products-toolbar { align-items: stretch; }
+    .toolbar-left { width: 100%; justify-content: space-between; }
+    .cat-dropdown { min-width: min(280px, calc(100vw - 40px)); }
+    .help-strip a { width: 100%; justify-content: center; }
+    .container { padding: 0 20px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; gap: 8px; }
+  }
+</style>
+</head>
+<body>
+
+
+<header class="site-header">
+  <a href="index.html">
+    <img src="images/logo_white.png" alt="Apricart" class="logo-img">
+  </a>
+
+  <nav class="main-nav" id="main-nav">
+    <a href="index.html">Home</a>
+    <a href="aboutus.html">About us</a>
+
+    <div class="nav-item">
+      <button class="nav-trigger active" aria-haspopup="true" aria-expanded="false">
+        Our Business
+        <span class="chevron"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+      </button>
+      <div class="dropdown-panel">
+        <a href="supplies.html">Supplies</a>
+      </div>
+    </div>
+
+    <a href="partners.html">Partners</a>
+    <a href="contact_us.html">Contact</a>
+  </nav>
+
+  <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<main class="page">
+
+
+  <div class="container shop-bar-wrap">
+    <div class="shop-bar">
+      <h1>Everything your <span>workplace</span> needs</h1>
+      <form class="search" role="search" id="search-form">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input type="search" id="search-input" placeholder="Search supplies" aria-label="Search supplies">
+        <button type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+
+
+  <section class="shop">
+    <div class="container">
+
+      <div>
+        <div class="products-toolbar">
+          <div class="toolbar-left">
+            <!-- category menu (closed until clicked) -->
+            <div class="cat-menu" id="cat-menu">
+              <button class="cat-toggle" id="cat-toggle" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="cat-dropdown">
+                <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg>
+                <span class="muted">Category:</span>
+                <span id="cat-label">All products</span>
+                <span class="chev"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+              </button>
+
+              <ul class="cat-dropdown" id="cat-dropdown" role="menu">
+                <li><button class="cat-btn active" data-filter="all" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg>
+                  <span class="name">All products</span> <span class="count" data-count="all"></span></button></li>
+                <li class="divider" role="separator"></li>
+                <li><button class="cat-btn" data-filter="office" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                  <span class="name">Office &amp; Stationery</span> <span class="count" data-count="office"></span></button></li>
+                <li><button class="cat-btn" data-filter="kitchen" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg>
+                  <span class="name">Kitchen Supplies</span> <span class="count" data-count="kitchen"></span></button></li>
+                <li><button class="cat-btn" data-filter="hygiene" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></svg>
+                  <span class="name">Hygiene &amp; Cleaning</span> <span class="count" data-count="hygiene"></span></button></li>
+                <li><button class="cat-btn" data-filter="water" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.7s6.5 7.2 6.5 11.8a6.5 6.5 0 0 1-13 0C5.5 9.9 12 2.7 12 2.7z"/></svg>
+                  <span class="name">Water</span> <span class="count" data-count="water"></span></button></li>
+                <li><button class="cat-btn" data-filter="general" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8 12 3 3 8l9 5 9-5z"/><path d="M3 8v9l9 5 9-5V8"/><line x1="12" y1="13" x2="12" y2="22"/></svg>
+                  <span class="name">General Workplace</span> <span class="count" data-count="general"></span></button></li>
+              </ul>
+            </div>
+
+            <p class="result-count" id="result-count" aria-live="polite"></p>
+          </div>
+
+          <label class="sort-select">
+            Sort by
+            <select id="sort">
+              <option value="default">Featured</option>
+              <option value="az">Name: A to Z</option>
+              <option value="za">Name: Z to A</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="product-grid" id="product-grid">
+
+          <a href="#" class="product-card" data-category="office">
+            <div class="product-visual" style="background:#EAF1FC;">
+              <span class="icon-circle" style="color:var(--navy-3);">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+              </span>
+            </div>
+            <h3>A4 Copy Paper</h3>
+          </a>
+
+          <a href="#" class="product-card" data-category="office">
+            <div class="product-visual" style="background:#EAF1FC;">
+              <span class="icon-circle" style="color:var(--navy-3);">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M2 8h20"></path></svg>
+              </span>
+            </div>
+            <h3>Assorted Notebooks</h3>
+          </a>
+
+          <a href="#" class="product-card" data-category="kitchen">
+            <div class="product-visual" style="background:#FBF6E3;">
+              <span class="icon-circle" style="color:var(--gold-dark);">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="2" x2="6" y2="4"></line><line x1="10" y1="2" x2="10" y2="4"></line><line x1="14" y1="2" x2="14" y2="4"></line></svg>
+              </span>
+            </div>
+            <h3>Instant Coffee Sachets</h3>
+          </a>
+
+          <a href="#" class="product-card" data-category="kitchen">
+            <div class="product-visual" style="background:#FBF6E3;">
+              <span class="icon-circle" style="color:var(--gold-dark);">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="M18.7 8 12 14.7 8.7 11.3 3 17"></path></svg>
+              </span>
+            </div>
+            <h3>Disposable Cutlery Set</h3>
+          </a>
+
+          <a href="#" class="product-card" data-category="hygiene">
+            <div class="product-visual" style="background:#FBF6E3;">
+              <span class="icon-circle" style="color:var(--gold-dark);">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"></path></svg>
+              </span>
+            </div>
+            <h3>Multi-Surface Disinfectant</h3>
+          </a>
+
+          <a href="#" class="product-card" data-category="hygiene">
+            <div class="product-visual" style="background:#FBF6E3;">
+              <span class="icon-circle" style="color:var(--gold-dark);">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"></rect><path d="M8 12h8"></path></svg>
+              </span>
+            </div>
+            <h3>Hand Towel Rolls</h3>
+          </a>
+
+          <a href="#" class="product-card" data-category="water">
+            <div class="product-visual" style="background:#E4EFFC;">
+              <span class="icon-circle" style="color:#3F7AC2;">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.7s6.5 7.2 6.5 11.8a6.5 6.5 0 0 1-13 0C5.5 9.9 12 2.7 12 2.7z"></path></svg>
+              </span>
+            </div>
+            <h3>19L Water Dispenser Bottle</h3>
+          </a>
+
+          <a href="#" class="product-card" data-category="water">
+            <div class="product-visual" style="background:#E4EFFC;">
+              <span class="icon-circle" style="color:#3F7AC2;">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path></svg>
+              </span>
+            </div>
+            <h3>500ml Bottled Water (Case)</h3>
+          </a>
+
+          <a href="#" class="product-card" data-category="general">
+            <div class="product-visual" style="background:#EDEFF5;">
+              <span class="icon-circle" style="color:var(--navy);">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8 12 3 3 8l9 5 9-5z"></path><path d="M3 8v9l9 5 9-5V8"></path><line x1="12" y1="13" x2="12" y2="22"></line></svg>
+              </span>
+            </div>
+            <h3>Printer Toner Cartridge</h3>
+          </a>
+
+          <a href="#" class="product-card" data-category="general">
+            <div class="product-visual" style="background:#EDEFF5;">
+              <span class="icon-circle" style="color:var(--navy);">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+              </span>
+            </div>
+            <h3>Storage &amp; Filing Boxes</h3>
+          </a>
+
+          <a href="#" class="product-card" data-category="general">
+            <div class="product-visual" style="background:#EDEFF5;">
+              <span class="icon-circle" style="color:var(--navy);">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+              </span>
+            </div>
+            <h3>Employee Welfare Kit</h3>
+          </a>
+
+        </div>
+
+        <div class="empty-state" id="empty-state">No supplies match your search. Try another word, or <a href="contact_us.html">ask us to source it</a>.</div>
+
+        <div class="help-strip">
+          <div>
+            <strong>Can't find an item?</strong>
+            <p>We source beyond this list. Tell us what you need and we'll add it to your catalogue.</p>
+          </div>
+          <a href="contact_us.html">Request an item
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-col">
+      <div class="footer-logo">
+        <img src="images/logo_white.png" alt="Apricart" class="footer-logo-img">
+      </div>
+      <p class="footer-about">Smarter supply chains for businesses.</p>
+      <div class="social-row">
+        <a href="#" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.34 18.34V10.1H5.67v8.24h2.67zM7 8.96a1.55 1.55 0 1 0 0-3.1 1.55 1.55 0 0 0 0 3.1zM18.34 18.34h.01v-4.5c0-2.4-1.28-3.52-3-3.52-1.38 0-2 .76-2.34 1.3v-1.11H10.3c.04.75 0 8.24 0 8.24h2.67v-4.6c0-.25.02-.5.1-.68.2-.5.66-1.03 1.44-1.03.95 0 1.42.7 1.42 1.85v4.46l2.42-.01z"/></svg></a>
+        <a href="#" aria-label="X"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2.9h3.3l-7.2 8.2 8.5 11h-6.6l-5.2-6.8-6 6.8H2.4l7.7-8.8L2 2.9h6.8l4.7 6.3 5.4-6.3zm-1.2 17.2h1.8L7 4.8H5l12.7 15.3z"/></svg></a>
+        <a href="#" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.4c0-.87.24-1.46 1.5-1.46h1.6V4.28C16.3 4.2 15.4 4.1 14.4 4.1c-2.3 0-3.9 1.4-3.9 4v2.4H8v3h2.5V21h3z"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="index.html">Home</a>
+      <a href="aboutus.html">About Apricart</a>
+      <a href="supplies.html">Our Business</a>
+      <a href="partners.html">Partners</a>
+      <a href="contact_us.html">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Stay Updated</h4>
+      <p class="footer-note">Procurement tips and product news, occasionally.</p>
+      <div class="nl-row">
+        <input type="email" placeholder="Work email">
+        <button>Join</button>
+      </div>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>&copy; 2026 Apricart. All rights reserved.</span>
+    <span class="tag">Nationwide Corporate Delivery</span>
+  </div>
+</footer>
+
+<script>
+
+  (function () {
+    var header = document.querySelector('.site-header');
+    var toggle = header.querySelector('.menu-toggle');
+    toggle.addEventListener('click', function () {
+      var open = header.classList.toggle('menu-open');
+      toggle.setAttribute('aria-expanded', open);
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    });
+    header.querySelectorAll('.main-nav a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        header.classList.remove('menu-open');
+        toggle.setAttribute('aria-expanded', false);
+      });
+    });
+  })();
+
+
+  (function () {
+    var grid = document.getElementById('product-grid');
+    var cards = Array.prototype.slice.call(grid.querySelectorAll('.product-card'));
+    var original = cards.slice();
+    var catBtns = document.querySelectorAll('.cat-btn');
+    var searchInput = document.getElementById('search-input');
+    var sortSel = document.getElementById('sort');
+    var countEl = document.getElementById('result-count');
+    var emptyEl = document.getElementById('empty-state');
+    var filter = 'all';
+
+    document.querySelectorAll('[data-count]').forEach(function (el) {
+      var key = el.getAttribute('data-count');
+      el.textContent = key === 'all' ? cards.length : cards.filter(function (c) { return c.dataset.category === key; }).length;
+    });
+
+    function name(card) { return card.querySelector('h3').textContent.trim(); }
+
+    function render() {
+      var q = searchInput.value.trim().toLowerCase();
+      var list = original.slice();
+      if (sortSel.value === 'az') list.sort(function (a, b) { return name(a).localeCompare(name(b)); });
+      if (sortSel.value === 'za') list.sort(function (a, b) { return name(b).localeCompare(name(a)); });
+      var shown = 0;
+      list.forEach(function (card) {
+        grid.appendChild(card);
+        var inCat = filter === 'all' || card.dataset.category === filter;
+        var inSearch = !q || name(card).toLowerCase().indexOf(q) !== -1;
+        var visible = inCat && inSearch;
+        card.style.display = visible ? '' : 'none';
+        if (visible) shown++;
+      });
+      countEl.innerHTML = 'Showing <b>' + shown + '</b> of ' + cards.length + ' products';
+      emptyEl.classList.toggle('show', shown === 0);
+    }
+
+
+    var menu = document.getElementById('cat-menu');
+    var toggleBtn = document.getElementById('cat-toggle');
+    var label = document.getElementById('cat-label');
+    function setMenu(open) {
+      menu.classList.toggle('open', open);
+      toggleBtn.setAttribute('aria-expanded', open);
+    }
+    toggleBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      setMenu(!menu.classList.contains('open'));
+    });
+    document.addEventListener('click', function (e) {
+      if (!menu.contains(e.target)) setMenu(false);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { setMenu(false); toggleBtn.focus(); }
+    });
+
+    catBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        catBtns.forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        filter = btn.getAttribute('data-filter');
+        label.textContent = btn.querySelector('.name').textContent;
+        setMenu(false);
+        render();
+      });
+    });
+    document.getElementById('search-form').addEventListener('submit', function (e) { e.preventDefault(); render(); });
+    searchInput.addEventListener('input', render);
+    sortSel.addEventListener('change', render);
+    render();
+  })();
+</script>
+<script src="country.js"></script>
+</body>
+</html>
