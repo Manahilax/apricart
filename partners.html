@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  /* ---------- THEME (same as index + about) ---------- */
+
   :root {
     --navy: #0F1750;
     --navy-2: #1F2E63;
@@ -34,7 +34,7 @@
   .site-header a, .site-footer a { color: inherit; }
   .container { max-width: 1240px; margin: 0 auto; padding: 0 48px; }
 
-  /* ---------- HEADER (same as index) ---------- */
+  /* ---------- HEADER  ---------- */
   header.site-header { width: 100%; height: 84px; background: var(--navy); border-bottom: 1px solid rgba(255,255,255,0.12); display: flex; align-items: center; justify-content: flex-start; gap: 48px; padding: 0 48px; position: sticky; top: 0; z-index: 50; }
   .logo-img { height: 90px; width: auto; display: block; }
 
@@ -44,7 +44,6 @@
   nav.main-nav > a.active { border-bottom-color: var(--gold); }
 
   .nav-item { position: relative; display: flex; align-items: center; }
-  .site-header a.nav-trigger { color: #FFFFFF; }
   .nav-trigger { display: flex; align-items: center; gap: 6px; height: 100%; font-size: 18px; font-weight: 400; color: #FFFFFF; background: none; border: none; cursor: pointer; font-family: 'Montserrat'; padding: 6px 0; border-bottom: 2px solid transparent; transition: opacity .15s ease, border-color .15s ease; }
   .nav-trigger:hover { opacity: .85; border-bottom-color: var(--gold); }
   .nav-trigger .chevron { transition: transform .18s ease; display: flex; }
@@ -65,7 +64,7 @@
 
   .page h1, .page h2, .page p { margin: 0; }
 
-  /* ---------- HERO (dark, like the about page) ---------- */
+  /* ---------- HERO ---------- */
   .partners-hero { position: relative; overflow: hidden; background: var(--navy); padding: 96px 96px 88px; }
   .partners-hero .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px); background-size: 48px 48px; }
   .partners-hero .hero-glow { position: absolute; left: 50%; top: -260px; margin-left: -300px; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(43,85,230,0.45) 0%, rgba(43,85,230,0) 70%); }
@@ -196,9 +195,8 @@
 
   <nav class="main-nav" id="main-nav">
     <a href="index.html">Home</a>
+    <a href="aboutus.html">About us</a>
 
-    <div class="nav-item">
-      <a href="aboutus.html" > About us</a>
     <div class="nav-item">
       <button class="nav-trigger" aria-haspopup="true" aria-expanded="false">
         Our Business
