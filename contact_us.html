@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Contact Us — Apricart Pakistan</title>
+<title>Contact Us | Apricart Pakistan</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  /* ---------- THEME (same as index, about, partners) ---------- */
+  /*  THEME  */
   :root {
     --navy: #0F1750;
     --navy-2: #1F2E63;
@@ -34,7 +34,7 @@
   .site-header a, .site-footer a { color: inherit; }
   .container { max-width: 1240px; margin: 0 auto; padding: 0 48px; }
 
-  /* ---------- HEADER (same as index) ---------- */
+  /*  HEADER  */
   header.site-header { width: 100%; height: 84px; background: var(--navy); border-bottom: 1px solid rgba(255,255,255,0.12); display: flex; align-items: center; justify-content: flex-start; gap: 48px; padding: 0 48px; position: sticky; top: 0; z-index: 50; }
   .logo-img { height: 90px; width: auto; display: block; }
 
@@ -64,7 +64,7 @@
 
   .page h1, .page h2, .page p { margin: 0; }
 
-  /* ---------- CONTACT PANEL ---------- */
+  /*  CONTACT PANEL  */
   .contact-section { padding: 72px 96px 96px; }
   .panel { position: relative; overflow: hidden; max-width: 1240px; margin: 0 auto; background: var(--navy); border-radius: 28px; box-shadow: 0 40px 80px -36px rgba(15,23,80,0.6); }
   .panel .panel-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px); background-size: 48px 48px; }
@@ -115,7 +115,7 @@
   .form-status { display: none; margin-top: 18px !important; padding: 12px 14px; border-radius: 12px; background: #EEF3FD; color: var(--ink); font-size: 14px; font-weight: 500; }
   .form-status.show { display: block; }
 
-  /* ---------- RESPONSIVE ---------- */
+  /*  RESPONSIVE  */
   @media (max-width: 1280px) {
     .contact-section { padding: 64px 56px 88px; }
     nav.main-nav { gap: 24px; }
@@ -166,7 +166,7 @@
 </head>
 <body>
 
-<!-- ================= HEADER (same as index) ================= -->
+<!--  HEADER  -->
 <header class="site-header">
   <a href="index.html">
     <img src="images/logo_white.png" alt="Apricart" class="logo-img">
@@ -202,7 +202,7 @@
       <div class="panel-glow"></div>
 
       <div class="content-wrap">
-        <!-- left: heading + details -->
+  
         <div class="left-col">
           <h1 class="headline">Contact <span>us.</span></h1>
           <div class="hero-rule"></div>
@@ -233,7 +233,6 @@
           </div>
         </div>
 
-        <!-- right: form -->
         <form class="form-card" id="contact-form">
           <h2>Send us a message</h2>
           <p class="sub">We usually reply within one working day.</p>
@@ -296,7 +295,6 @@
     document.getElementById('file-name').textContent = this.files.length ? this.files[0].name : 'Upload file';
   });
 
-  // placeholder submit: replace with your form service (e.g. Formspree) or backend endpoint
   document.getElementById('contact-form').addEventListener('submit', function (e) {
     e.preventDefault();
     document.getElementById('form-status').classList.add('show');

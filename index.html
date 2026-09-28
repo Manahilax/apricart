@@ -366,18 +366,15 @@ h1 {
           </filter>
         </defs>
 
-        <!-- Three concentric orbit rings -->
         <circle class="ring" cx="310" cy="310" r="306"/>
         <circle class="ring" cx="310" cy="310" r="238"/>
         <circle class="ring" cx="310" cy="310" r="170"/>
 
-        <!-- Innermost ring: a fixed-length yellow arc leads the yellow dot -->
         <g class="orbit-3-lead">
           <path d="M 310 140 A 170 170 0 0 1 452.34 214.34" fill="none" stroke="#f5b921" stroke-width="3" stroke-linecap="round" opacity="0.85"/>
         </g>
         <circle class="dot-yellow traveler orbit-3" r="8" cx="0" cy="0" fill="#f5b921"/>
 
-        <!-- Shapes traveling along each ring's own path -->
         <circle class="dot-yellow traveler orbit-1" r="9" cx="0" cy="0" fill="#f5b921"/>
         <rect class="square-blue traveler orbit-1 square-rev" width="24" height="24" rx="7" x="-12" y="-12" fill="#3b5bfb" style="animation-delay:-21s;"/>
 
@@ -386,7 +383,7 @@ h1 {
 
         <circle class="dot-white traveler orbit-3" r="5" cx="0" cy="0" fill="#ffffff" style="animation-delay:-6s;"/>
 
-        <!-- Core circle with cart -->
+
         <g class="core-group">
           <circle class="core-circle-bg core-glow" cx="310" cy="310" r="135" filter="url(#softGlow)" opacity="0.35"/>
           <circle class="core-circle-bg" cx="310" cy="310" r="110"/>
