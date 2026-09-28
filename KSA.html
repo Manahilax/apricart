@@ -103,14 +103,15 @@
   .hero-feature { display: flex; align-items: center; gap: 12px; font-size: 15px; font-weight: 500; color: #E6E9F7; }
   .hero-feature svg { color: var(--yellow); flex-shrink: 0; }
 
-  .about { background: #F5F6FA; display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 64px; align-items: center; }
-  .about-copy { display: flex; flex-direction: column; gap: 20px; }
+  .about { background: #F5F6FA; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; align-items: center; }
+  .section.about { padding-top: 64px; padding-bottom: 64px; }
+  .about-copy { display: flex; flex-direction: column; gap: 16px; }
   .about-copy .lead { font-size: 19px; font-weight: 500; line-height: 1.6; color: var(--ink); }
   .about-quote { padding-left: 22px; border-left: 3px solid var(--yellow); display: flex; flex-direction: column; gap: 14px; }
-  .about-quote p { font-size: 16px; line-height: 1.75; color: var(--text); }
+  .about-quote p { font-size: 15.5px; line-height: 1.65; color: var(--text); }
 
   /* about photo (change the path in the <img>) */
-  .about-photo { position: relative; margin: 0; height: 520px; border-radius: 22px; overflow: hidden; background: linear-gradient(160deg, #2B55E6 0%, #0F1750 100%); box-shadow: 0 24px 48px -24px rgba(15,23,80,0.45); }
+  .about-photo { position: relative; margin: 0; height: 340px; border-radius: 22px; overflow: hidden; background: linear-gradient(160deg, #2B55E6 0%, #0F1750 100%); box-shadow: 0 24px 48px -24px rgba(15,23,80,0.45); }
   .about-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
   .about-photo:hover img { transform: scale(1.04); }
 
@@ -284,7 +285,8 @@
     .truck-card img { height: 280px; }
     .hero-features { position: relative; margin: 56px -40px 0; padding: 20px 40px; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
     .about, .contact { grid-template-columns: 1fr; }
-    .about-photo { height: 440px; }
+    .about-photo { height: 300px; }
+    .section.about { padding-top: 56px; padding-bottom: 56px; gap: 32px; }
     .app-top { grid-template-columns: 1fr; }
     .showcase-layout { grid-template-columns: 1fr; gap: 36px; }
     .why-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -325,7 +327,8 @@
     .hero-features { margin: 44px -20px 0; padding: 20px; grid-template-columns: 1fr; gap: 14px; }
     .section-title { font-size: 28px; letter-spacing: -.6px; }
     .about-quote p { font-size: 15px; }
-    .about-photo { height: 300px; border-radius: 18px; }
+    .about-photo { height: 220px; border-radius: 18px; }
+    .section.about { padding-top: 44px; padding-bottom: 44px; gap: 24px; }
     .notify { flex-direction: column; }
     .phone { width: 230px; height: 460px; }
     .float-card { padding: 8px 10px 8px 8px; }
@@ -389,7 +392,7 @@
     <div class="ksa-hero-inner">
       <h1>Best wholesale value for <span>all the food essentials</span> in your store</h1>
       <div class="hero-rule"></div>
-      <p class="lead">A reliable supply of food and everyday staples for baqalas and neighbourhood retailers across Saudi Arabia.</p>
+      <p class="lead">A reliable supply of food and everyday staples for baqalas and neighbourhood retailers across Riyadh.</p>
       <div class="hero-actions">
         <a href="#products" class="btn btn-yellow">Explore our products</a>
       </div>
