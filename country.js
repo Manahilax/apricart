@@ -4,7 +4,7 @@
  
   var markets = {
     pk:  { name: 'Pakistan', full: 'Pakistan',     home: 'Pakistan.html', about: 'pakaboutus.html', business: 'supplies.html',     businessLabel: 'Supplies' },
-    ksa: { name: 'KSA',      full: 'Saudi Arabia', home: 'KSA.html',      about: 'ksaaboutus.html', business: 'supplies_ksa.html', businessLabel: 'Products' }
+    ksa: { name: 'Saudi Arabia',      full: 'Saudi Arabia', home: 'KSA.html',      about: 'ksaaboutus.html', business: 'supplies_ksa.html', businessLabel: 'Products' }
   };
  
   // Pages that belong to one market (file name, lowercase, without .html)
