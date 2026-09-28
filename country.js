@@ -1,4 +1,3 @@
-
 (function () {
   var KEY = 'apricart-market';
  
@@ -104,10 +103,13 @@
   };
   var css = document.createElement('style');
   css.textContent =
-    '.market-badge { margin-left: auto; display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 16px 0 10px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.28); background: rgba(255,255,255,0.08); color: #FFFFFF; font: 600 14px Montserrat, system-ui, sans-serif; white-space: nowrap; cursor: default; user-select: none; }' +
+    '.market-actions { margin-left: auto; display: flex; align-items: center; gap: 10px; flex-shrink: 0; }' +
+    '.market-actions .menu-toggle { margin-left: 0 !important; }' +
+    '.market-badge { display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 16px 0 10px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.28); background: rgba(255,255,255,0.08); color: #FFFFFF; font: 600 14px Montserrat, system-ui, sans-serif; white-space: nowrap; cursor: default; user-select: none; flex-shrink: 0; }' +
     '.market-flag { width: 26px; height: 18px; border-radius: 4px; display: block; flex-shrink: 0; box-shadow: 0 0 0 1px rgba(255,255,255,0.25); }' +
-    '.market-badge + .menu-toggle { margin-left: 12px; }' +
-    '@media (max-width: 600px) { .market-badge { padding: 0 12px 0 8px; gap: 8px; font-size: 13px; } }';
+    'header.site-header > a:first-child, header.site-header .logo-img { flex-shrink: 0; }' +
+    /* mobile / tablet (when the hamburger menu shows): flag only, right next to the menu button */
+    '@media (max-width: 980px) { .market-badge { width: 44px; height: 44px; padding: 0; gap: 0; justify-content: center; } .market-badge .market-name { display: none; } }';
   document.head.appendChild(css);
  
   // Only show a badge once a market has been chosen; it is a label, not a switcher
@@ -115,9 +117,14 @@
   var badge = document.createElement('span');
   badge.className = 'market-badge';
   badge.setAttribute('aria-label', 'Market: ' + m.full);
+  badge.setAttribute('title', m.full);
   badge.innerHTML = flags[current] + '<span class="market-name">' + m.name + '</span>';
  
+  // flag + menu button sit together on the right (the menu button keeps its click handler when moved)
+  var actions = document.createElement('div');
+  actions.className = 'market-actions';
   var toggle = header.querySelector('.menu-toggle');
-  if (toggle) header.insertBefore(badge, toggle); else header.appendChild(badge);
+  if (toggle) header.insertBefore(actions, toggle); else header.appendChild(actions);
+  actions.appendChild(badge);
+  if (toggle) actions.appendChild(toggle);
 })();
- 
