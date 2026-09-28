@@ -108,8 +108,13 @@
     '.market-badge { display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 16px 0 10px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.28); background: rgba(255,255,255,0.08); color: #FFFFFF; font: 600 14px Montserrat, system-ui, sans-serif; white-space: nowrap; cursor: default; user-select: none; flex-shrink: 0; }' +
     '.market-flag { width: 26px; height: 18px; border-radius: 4px; display: block; flex-shrink: 0; box-shadow: 0 0 0 1px rgba(255,255,255,0.25); }' +
     'header.site-header > a:first-child, header.site-header .logo-img { flex-shrink: 0; }' +
-    /* mobile / tablet (when the hamburger menu shows): flag only, right next to the menu button */
-    '@media (max-width: 980px) { .market-badge { width: 44px; height: 44px; padding: 0; gap: 0; justify-content: center; } .market-badge .market-name { display: none; } }';
+    '.market-nav-label { display: none; }' +
+    /* flag only when the name does not fit (decided by fitBadge below, not by screen width) */
+    '.market-compact .market-badge { width: 44px; height: 44px; padding: 0; gap: 0; justify-content: center; }' +
+    '.market-compact .market-badge .market-name { display: none; }' +
+    /* when the name is hidden on a small screen, show it at the top of the opened menu instead */
+    '@media (max-width: 980px) { .market-compact nav.main-nav .market-nav-label { display: flex; align-items: center; gap: 10px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.1); color: #FFFFFF; font: 600 15px Montserrat, system-ui, sans-serif; }' +
+    ' .market-compact nav.main-nav .market-nav-label small { font-weight: 500; color: rgba(255,255,255,0.6); margin-right: 2px; } }';
   document.head.appendChild(css);
  
   // Only show a badge once a market has been chosen; it is a label, not a switcher
@@ -127,4 +132,29 @@
   if (toggle) header.insertBefore(actions, toggle); else header.appendChild(actions);
   actions.appendChild(badge);
   if (toggle) actions.appendChild(toggle);
+
+  // on phones, also show the country name at the top of the opened menu
+  var nav = header.querySelector('nav.main-nav');
+  if (nav) {
+    var label = document.createElement('div');
+    label.className = 'market-nav-label';
+    label.innerHTML = flags[current] + '<span><small>Market:</small> ' + m.full + '</span>';
+    nav.insertBefore(label, nav.firstChild);
+  }
+
+  // Show the country name whenever it fits; fall back to flag only when the header is too tight
+  function fitBadge() {
+    header.classList.remove('market-compact');
+    var hr = header.getBoundingClientRect(), ar = actions.getBoundingClientRect();
+    var logoLink = header.querySelector('a');
+    var lr = logoLink ? logoLink.getBoundingClientRect() : { right: hr.left };
+    var tooTight = header.scrollWidth > header.clientWidth + 1 || ar.right > hr.right + 1 || ar.left < lr.right + 8;
+    if (tooTight) header.classList.add('market-compact');
+  }
+  fitBadge();
+  window.addEventListener('resize', fitBadge);
+  window.addEventListener('load', fitBadge);
+  var logoImg = header.querySelector('img');
+  if (logoImg && !logoImg.complete) logoImg.addEventListener('load', fitBadge);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitBadge);
 })();
