@@ -139,39 +139,6 @@
   .phone-ui .lines span:last-child { width: 55%; }
   .phone-ui .add { width: 24px; height: 24px; border-radius: 50%; background: var(--yellow); flex-shrink: 0; }
 
-  /*  WHY APRICART EXISTS  */
-  .story { background: #FFFFFF; display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: 64px; align-items: center; }
-  .story-copy { display: flex; flex-direction: column; gap: 20px; }
-  .story-quote { text-align: justify; position: relative; padding-left: 22px; border-left: 3px solid var(--yellow); font-size: 17px; line-height: 1.7; color: var(--text); }
-  .story-quote p + p { margin-top: 14px; }
-
-  .story-bento { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(6, minmax(0, 1fr)); gap: 14px; height: 500px; }
-  .bento-1 { grid-column: 1; grid-row: 1 / 5; }
-  .bento-2 { grid-column: 1; grid-row: 5 / 7; }
-  .bento-3 { grid-column: 2; grid-row: 1 / 3; }
-  .bento-4 { grid-column: 2; grid-row: 3 / 7; }
-  .bento-5 { grid-column: 3; grid-row: 1 / 4; }
-  .bento-6 { grid-column: 3; grid-row: 4 / 7; }
-
-  .story-photo { position: relative; margin: 0; border-radius: 20px; overflow: hidden; background: linear-gradient(160deg, #2B55E6 0%, #0F1750 100%); box-shadow: 0 18px 36px -22px rgba(15,23,80,0.45); }
-  .story-photo.alt-1 { background: linear-gradient(160deg, #FFD23F 0%, #E0B62E 100%); }
-  .story-photo.alt-2 { background: linear-gradient(160deg, #6F8CF5 0%, #2B55E6 100%); }
-  .story-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
-  .story-photo:hover img { transform: scale(1.06); }
-
-  .story-box { position: relative; overflow: hidden; border-radius: 20px; padding: 20px 20px 18px; display: flex; flex-direction: column; justify-content: flex-end; transition: transform .25s ease; }
-  .story-box:hover { transform: translateY(-3px); }
-  .story-box h3 { position: relative; z-index: 1; font-size: 17px; font-weight: 700; line-height: 1.25; letter-spacing: -.2px; }
-  .story-box p { position: relative; z-index: 1; font-size: 13px; line-height: 1.5; }
-  .story-box::after { content: ""; position: absolute; right: -46px; top: -46px; width: 140px; height: 140px; border-radius: 50%; background: radial-gradient(circle, transparent 38%, rgba(255,255,255,0.35) 39%, rgba(255,255,255,0.35) 46%, transparent 47%, transparent 58%, rgba(255,255,255,0.25) 59%, rgba(255,255,255,0.25) 66%, transparent 67%); }
-
-  .box-blue   { background: #E4ECFD; color: var(--ink); }
-  .box-blue p { color: var(--text); }
-  .box-yellow   { background: #FFE58A; color: var(--ink); }
-  .box-yellow p { color: #4A4A2A; }
-  .box-navy   { background: var(--navy); color: #FFFFFF; }
-  .box-navy p { color: #C9CEEA; }
-  .box-navy::after { background: radial-gradient(circle, transparent 38%, rgba(255,210,63,0.35) 39%, rgba(255,210,63,0.35) 46%, transparent 47%, transparent 58%, rgba(255,210,63,0.2) 59%, rgba(255,210,63,0.2) 66%, transparent 67%); }
 
 
 
@@ -353,51 +320,7 @@
     </div>
   </section>
 
-  <!--  WHY APRICART EXISTS  -->
-  <section class="section story" id="our-story">
-    <div class="story-copy">
-      <h2 class="section-title">Why <span class="hl">Apricart</span> exists</h2>
-      <div class="story-quote">
-        <p>Apricart Saudi Arabia exists to make wholesale simpler for everyday retail. Running a store means balancing product availability, changing prices and multiple suppliers, which takes time away from serving customers.</p>
-        <p>Apricart brings essential food products together at competitive prices, backed by dependable supply, dedicated sales support and doorstep delivery from our own fleet. Our goal is to help retailers keep their shelves stocked while managing costs and protecting margins.</p>
-      </div>
-    </div>
 
-    <div class="story-bento">
-      <figure class="story-photo bento-1">
-        <img src="images/suppliers.jpg" alt="Food products being picked in the Apricart warehouse" loading="lazy" onerror="this.remove()">
-      </figure>
-
-      <div class="story-box box-blue bento-2">
-        <div>
-          <h3>Sourced from verified suppliers</h3>
-          <p style="margin-top:6px;">Every vendor vetted for quality and pricing.</p>
-        </div>
-      </div>
-
-      <div class="story-box box-yellow bento-3">
-        <div>
-          <h3>Delivered to your shop door</h3>
-          <p style="margin-top:6px;">Our own fleet, on regular delivery days.</p>
-        </div>
-      </div>
-
-      <figure class="story-photo alt-1 bento-4">
-        <img src="images/delivery.png" alt="Apricart delivery arriving at a neighbourhood store" loading="lazy" onerror="this.remove()">
-      </figure>
-
-      <figure class="story-photo alt-2 bento-5">
-        <img src="images/team.png" alt="Apricart account manager reviewing an order with a client" loading="lazy" onerror="this.remove()">
-      </figure>
-
-      <div class="story-box box-navy bento-6">
-        <div>
-          <h3>Backed by a dedicated team</h3>
-          <p style="margin-top:8px;">A sales team on hand for orders, product requirements and replenishment.</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <section class="section app-section" id="app">
     <div class="app-card">
