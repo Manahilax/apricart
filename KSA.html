@@ -83,7 +83,7 @@
     --hero-img: url('images/ksa_hero_bg.jpeg');
     position: relative; overflow: hidden; min-height: 660px;
     background: var(--navy) var(--hero-img) center / cover no-repeat;
-    padding: 104px 96px 180px;
+    padding: 104px 96px 180px 96px;
   }
   .ksa-hero .hero-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(15,23,80,0.92) 0%, rgba(15,23,80,0.8) 45%, rgba(15,23,80,0.45) 100%); }
   .ksa-hero-inner { position: relative; z-index: 1; max-width: 640px; display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
@@ -136,7 +136,6 @@
   .phone { position: relative; z-index: 1; width: 250px; height: 500px; border-radius: 40px; background: #F5F6FA; border: 9px solid #0A0F38; box-shadow: 0 40px 70px -30px rgba(0,0,0,0.6); overflow: hidden; animation: phoneFloat 6s ease-in-out infinite; }
   @keyframes phoneFloat { 0%, 100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-16px) rotate(2deg); } }
   .phone::before { content: ""; position: absolute; top: 8px; left: 50%; width: 70px; height: 18px; margin-left: -35px; border-radius: 999px; background: #0A0F38; z-index: 4; }
-  .phone > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 3; }
 
   .phone-ui { padding: 38px 14px 14px; display: flex; flex-direction: column; gap: 10px; }
   .phone-ui .bar { height: 30px; border-radius: 10px; background: var(--navy); }
@@ -422,7 +421,6 @@
         </div>
 
         <div class="phone">
-          <img src="images/app-screen.png" alt="Apricart app preview" loading="lazy" onerror="this.remove()">
           <div class="phone-ui" aria-hidden="true">
             <div class="bar"></div>
             <div class="search"></div>
@@ -459,23 +457,18 @@
 
       <div class="category-grid">
         <a href="#contact" class="category-tile" style="grid-column:1; grid-row:1 / span 3;">
-          <img class="tile-bg" src="images/ksa/rice.jpg" alt="" loading="lazy" onerror="this.remove()">
           <span class="tile-content"><span class="tile-title">Rice</span></span>
         </a>
         <a href="#contact" class="category-tile" style="grid-column:2; grid-row:1;">
-          <img class="tile-bg" src="images/ksa/legumes.jpg" alt="" loading="lazy" onerror="this.remove()">
           <span class="tile-content"><span class="tile-title">Legumes</span></span>
         </a>
         <a href="#contact" class="category-tile" style="grid-column:2; grid-row:2;">
-          <img class="tile-bg" src="images/ksa/spice.jpg" alt="" loading="lazy" onerror="this.remove()">
           <span class="tile-content"><span class="tile-title">Spices</span></span>
         </a>
         <a href="#contact" class="category-tile" style="grid-column:2; grid-row:3;">
-          <img class="tile-bg" src="images/ksa/nuts.jpg" alt="" loading="lazy" onerror="this.remove()">
           <span class="tile-content"><span class="tile-title">Nuts</span></span>
         </a>
         <a href="#contact" class="category-tile" style="grid-column:3; grid-row:1 / span 2;">
-          <img class="tile-bg" src="images/ksa/oil.jpg" alt="" loading="lazy" onerror="this.remove()">
           <span class="tile-content"><span class="tile-title">Oil</span></span>
         </a>
         <a href="#contact" class="category-tile tile-cta" style="grid-column:3; grid-row:3;">
@@ -543,7 +536,7 @@
 
 </main>
 
-<!-- ================= FOOTER (same as the other pages) ================= -->
+
 <footer class="site-footer">
   <div class="container footer-grid">
     <div class="footer-col">
@@ -598,7 +591,7 @@
     });
   })();
 
-  // placeholder form handlers: connect these to your backend
+  
   document.getElementById('notify-form').addEventListener('submit', function (e) {
     e.preventDefault();
     document.getElementById('notify-status').classList.add('show');
