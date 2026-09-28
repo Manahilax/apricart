@@ -1,29 +1,4 @@
 
-MANAHIL, Connected
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Country · JS
-/* Apricart market switcher
-   - Remembers the market (Pakistan / KSA) the visitor picked on the landing page
-   - Shows it (flag + name, display only) in the nav bar of every page that has <header class="site-header">
-   - Points About / Our Business / Home links at the right market's pages
-   Include it at the bottom of every page:  <script src="country.js"></script>  */
 (function () {
   var KEY = 'apricart-market';
  
