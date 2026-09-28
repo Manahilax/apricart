@@ -214,8 +214,8 @@
   </a>
 
   <nav class="main-nav" id="main-nav">
-    <a href="index.html">Home</a>
-    <a href="aboutus.html">About us</a>
+    <a href="Pakistan.html">Home</a>
+    <a href="pakaboutus.html">About us</a>
 
     <div class="nav-item">
       <button class="nav-trigger active" aria-haspopup="true" aria-expanded="false">
@@ -439,8 +439,8 @@
     </div>
     <div class="footer-col">
       <h4>Quick Links</h4>
-      <a href="index.html">Home</a>
-      <a href="aboutus.html">About Apricart</a>
+      <a href="Pakistan.html">Home</a>
+      <a href="pakaboutus.html">About Apricart</a>
       <a href="supplies.html">Our Business</a>
       <a href="partners.html">Partners</a>
       <a href="contact_us.html">Contact</a>
@@ -548,6 +548,10 @@
     searchInput.addEventListener('input', render);
     sortSel.addEventListener('change', render);
     render();
+
+    var start = new URLSearchParams(window.location.search).get('category');
+    var startBtn = start && document.querySelector('.cat-btn[data-filter="' + start + '"]');
+    if (startBtn) startBtn.click();
   })();
 </script>
 <script src="country.js"></script>
