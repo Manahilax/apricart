@@ -121,11 +121,13 @@ a { color: #16206A; text-decoration: none; }
   .hero-feature .icon, .check-item .icon { color: var(--gold); }
 
   /* trusted by */
-  .trusted { height: 240px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; padding: 0 96px; }
-  .trusted-label { font-size: 20px; font-weight: 600; letter-spacing: 0.6px; color: #5A6285; }
-  .logo-row { display: flex; gap: 20px; }
-  .client { width: 196px; display: flex; flex-direction: column; align-items: center; gap: 8px; font-size: 12px; color: #8A92B2; }
-  .client-logo { width: 196px; height: 68px; border-radius: 12px; display: flex; align-items: center; justify-content: center; letter-spacing: 1px; }
+  .trusted { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 44px; padding: 80px 96px; }
+  .trusted-label { font-size: 20px; font-weight: 600; letter-spacing: 0.6px; color: #5A6285; text-align: center; }
+  .logo-row { width: 100%; max-width: 1280px; display: flex; flex-wrap: wrap; justify-content: center; gap: 32px 36px; }
+  .client { width: calc((100% - 4 * 36px) / 5); max-width: 232px; display: flex; flex-direction: column; align-items: center; }
+  .client-logo { width: 100%; height: 124px; padding: 20px 26px; border-radius: 18px; background: #FFFFFF; border: 1px solid #E6E9F4; box-shadow: 0 14px 30px -24px rgba(15,23,80,0.35); display: flex; align-items: center; justify-content: center; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+  .client-logo:hover { transform: translateY(-4px); border-color: var(--gold); box-shadow: 0 22px 40px -24px rgba(15,23,80,0.45); }
+  .client-logo img { display: block; width: 100%; height: 100%; object-fit: contain; }
 
   .how { position: relative; overflow: hidden; background: #FFFFFF; display: flex; flex-direction: column; gap: 36px; padding-top: 64px; padding-bottom: 56px; }
   .how-intro { position: relative; z-index: 1; }
@@ -330,8 +332,10 @@ a { color: #16206A; text-decoration: none; }
     .hero-title { font-size: 52px; }
     nav.main-nav { gap: 24px; }
     nav.main-nav > a, .nav-trigger { font-size: 16px; }
-    .logo-row { display: grid; grid-template-columns: repeat(3, 196px); }
-    .trusted { height: auto; padding: 56px; }
+    .trusted { padding: 64px 56px; }
+    .logo-row { gap: 26px 28px; }
+    .client { width: calc((100% - 4 * 28px) / 5); }
+    .client-logo { height: 110px; padding: 18px 20px; }
     .platform-copy, .enquiry-copy { width: 46%; }
   }
 
@@ -376,7 +380,8 @@ a { color: #16206A; text-decoration: none; }
 
   /* ---------- ≤900: small tablets ---------- */
   @media (max-width: 900px) {
-    .logo-row { grid-template-columns: repeat(2, minmax(0, 196px)); }
+    .logo-row { gap: 22px; }
+    .client { width: calc((100% - 2 * 22px) / 3); max-width: none; }
     .faq-item summary { font-size: 17px; }
     .how .section-title { white-space: normal; }
   }
@@ -399,10 +404,11 @@ a { color: #16206A; text-decoration: none; }
     .section-title { font-size: 28px; }
     .how .section-title, .faq .section-title { font-size: 30px; letter-spacing: -.6px; }
 
-    .trusted { padding: 44px 20px; }
-    .logo-row { width: 100%; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
-    .client, .client-logo { width: 100%; }
-    .client-logo { height: 60px; font-size: 11px; }
+    .trusted { padding: 52px 20px; gap: 28px; }
+    .trusted-label { font-size: 17px; }
+    .logo-row { gap: 14px; }
+    .client { width: calc((100% - 14px) / 2); }
+    .client-logo { height: 92px; padding: 14px 16px; border-radius: 14px; }
 
     .how { gap: 24px; padding-top: 44px; padding-bottom: 36px; }
     .offer-grid { grid-template-columns: 1fr; gap: 2px; }
@@ -507,32 +513,46 @@ a { color: #16206A; text-decoration: none; }
         <div class="client-logo">
           <img src="images/clients/c1.png" alt="Client name" loading="lazy">
         </div>
-        <span class="client-count">[ 00+ locations ]</span>
-      </div><div class="client">
+      </div>
+      <div class="client">
         <div class="client-logo">
           <img src="images/clients/c2.png" alt="Client name" loading="lazy">
         </div>
-        <span class="client-count">[ 00+ locations ]</span>
-      </div><div class="client">
+      </div>
+      <div class="client">
         <div class="client-logo">
           <img src="images/clients/c3.png" alt="Client name" loading="lazy">
         </div>
-        <span class="client-count">[ 00+ locations ]</span>
-      </div><div class="client">
+      </div>
+      <div class="client">
         <div class="client-logo">
           <img src="images/clients/c4.png" alt="Client name" loading="lazy">
         </div>
-        <span class="client-count">[ 00+ locations ]</span>
-      </div><div class="client">
+      </div>
+      <div class="client">
         <div class="client-logo">
           <img src="images/clients/c5.png" alt="Client name" loading="lazy">
         </div>
-        <span class="client-count">[ 00+ locations ]</span>
-      </div><div class="client">
+      </div>
+      <div class="client">
         <div class="client-logo">
           <img src="images/clients/c6.png" alt="Client name" loading="lazy">
         </div>
-        <span class="client-count">[ 00+ locations ]</span>
+      </div>
+      <div class="client">
+        <div class="client-logo">
+          <img src="images/clients/c7.png" alt="Client name" loading="lazy">
+        </div>
+      </div>
+      <div class="client">
+        <div class="client-logo">
+          <img src="images/clients/c8.png" alt="Client name" loading="lazy">
+        </div>
+      </div>
+      <div class="client">
+        <div class="client-logo">
+          <img src="images/clients/c9.png" alt="Client name" loading="lazy">
+        </div>
       </div>
     </div>
   </section>
