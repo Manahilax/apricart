@@ -98,6 +98,12 @@
   .ic-blue   { background: var(--blue);  color: #FFFFFF; }
   .ic-yellow { background: var(--yellow); color: var(--navy); }
   .ic-sky    { background: #EEF3FD;      color: var(--blue); }
+  .marquee-section .marquee-track { gap: 40px; padding: 10px 20px; }
+  .marquee-section .marquee-row { margin-bottom: 36px; }
+  .marquee-section .marquee-row.left .marquee-track, .marquee-section .marquee-row.right .marquee-track { animation-duration: 60s; }
+  .logo-chip { flex-shrink: 0; width: 240px; height: 120px; padding: 20px 26px; background: #FFFFFF; border: 1px solid #EEF1F8; border-radius: 18px; box-shadow: 0 10px 22px -16px rgba(15,23,80,0.35); display: flex; align-items: center; justify-content: center; transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease; }
+  .logo-chip:hover { border-color: var(--yellow); transform: translateY(-3px); box-shadow: 0 18px 30px -18px rgba(15,23,80,0.45); }
+  .logo-chip img { width: 100%; height: 100%; object-fit: contain; }
 
   /*  CTA  */
   .partner-cta { padding: 0 96px 96px; background: #F5F6FA; }
@@ -174,6 +180,9 @@
     .marquee-section { padding: 52px 0 56px; }
     .client-chip { font-size: 14px; padding: 11px 18px 11px 11px; }
     .client-chip .chip-icon { width: 30px; height: 30px; }
+    .logo-chip { width: 170px; height: 90px; padding: 14px 18px; border-radius: 14px; }
+    .marquee-section .marquee-track { gap: 22px; }
+    .marquee-section .marquee-row { margin-bottom: 22px; }
     .partner-cta { padding: 0 20px 52px; }
     .cta-card { padding: 32px 22px; }
     .cta-card h2 { font-size: 24px; }
@@ -229,36 +238,43 @@
 
   <!--  CLIENT MARQUEE  -->
   <section class="marquee-section" aria-label="Our clients">
-    <div class="marquee-row left">
-      <div class="marquee-track">
-        <span class="client-chip"><span class="chip-icon ic-navy">A</span>[Partner A]</span>
-        <span class="client-chip"><span class="chip-icon ic-yellow">B</span>[Partner B]</span>
-        <span class="client-chip"><span class="chip-icon ic-blue">C</span>[Partner C]</span>
-        <span class="client-chip"><span class="chip-icon ic-sky">D</span>[Partner D]</span>
-        <span class="client-chip"><span class="chip-icon ic-navy">E</span>[Partner E]</span>
-        <span class="client-chip"><span class="chip-icon ic-yellow">F</span>[Partner F]</span>
+    <div class="client-set" data-market="pk">
+      <div class="marquee-row left">
+        <div class="marquee-track">
+          <span class="logo-chip"><img src="images/clients/c1.png" alt="Askari Bank"></span>
+          <span class="logo-chip"><img src="images/clients/c2.png" alt="UBL"></span>
+          <span class="logo-chip"><img src="images/clients/c3.png" alt="JS Bank"></span>
+          <span class="logo-chip"><img src="images/clients/c4.png" alt="Lucky Motor Corporation"></span>
+          <span class="logo-chip"><img src="images/clients/c5.png" alt="Meezan Bank"></span>
+          <span class="logo-chip"><img src="images/clients/c6.png" alt="Nishat Chunian"></span>
+          <span class="logo-chip"><img src="images/clients/c7.png" alt="PetPak"></span>
+          <span class="logo-chip"><img src="images/clients/c8.png" alt="Attock Cement Pakistan"></span>
+          <span class="logo-chip"><img src="images/clients/c9.png" alt="Tooba / Zaiqa Food Industries"></span>
+        </div>
+      </div>
+      <div class="marquee-row right">
+        <div class="marquee-track">
+          <span class="logo-chip"><img src="images/clients/c6.png" alt="Nishat Chunian"></span>
+          <span class="logo-chip"><img src="images/clients/c8.png" alt="Attock Cement Pakistan"></span>
+          <span class="logo-chip"><img src="images/clients/c2.png" alt="UBL"></span>
+          <span class="logo-chip"><img src="images/clients/c9.png" alt="Tooba / Zaiqa Food Industries"></span>
+          <span class="logo-chip"><img src="images/clients/c4.png" alt="Lucky Motor Corporation"></span>
+          <span class="logo-chip"><img src="images/clients/c1.png" alt="Askari Bank"></span>
+          <span class="logo-chip"><img src="images/clients/c7.png" alt="PetPak"></span>
+          <span class="logo-chip"><img src="images/clients/c3.png" alt="JS Bank"></span>
+          <span class="logo-chip"><img src="images/clients/c5.png" alt="Meezan Bank"></span>
+        </div>
       </div>
     </div>
 
-    <div class="marquee-row right">
-      <div class="marquee-track">
-        <span class="client-chip"><span class="chip-icon ic-sky">G</span>[Partner G]</span>
-        <span class="client-chip"><span class="chip-icon ic-blue">H</span>[Partner H]</span>
-        <span class="client-chip"><span class="chip-icon ic-yellow">I</span>[Partner I]</span>
-        <span class="client-chip"><span class="chip-icon ic-navy">J</span>[Partner J]</span>
-        <span class="client-chip"><span class="chip-icon ic-blue">K</span>[Partner K]</span>
-        <span class="client-chip"><span class="chip-icon ic-sky">L</span>[Partner L]</span>
+    <div class="client-set" data-market="ksa" hidden>
+      <div class="marquee-row left">
+        <div class="marquee-track">
+        </div>
       </div>
-    </div>
-
-    <div class="marquee-row left">
-      <div class="marquee-track">
-        <span class="client-chip"><span class="chip-icon ic-blue">M</span>[Partner M]</span>
-        <span class="client-chip"><span class="chip-icon ic-navy">N</span>[Partner N]</span>
-        <span class="client-chip"><span class="chip-icon ic-yellow">O</span>[Partner O]</span>
-        <span class="client-chip"><span class="chip-icon ic-sky">P</span>[Partner P]</span>
-        <span class="client-chip"><span class="chip-icon ic-blue">Q</span>[Partner Q]</span>
-        <span class="client-chip"><span class="chip-icon ic-navy">R</span>[Partner R]</span>
+      <div class="marquee-row right">
+        <div class="marquee-track">
+        </div>
       </div>
     </div>
   </section>
@@ -333,9 +349,20 @@
     });
   })();
 
-  document.querySelectorAll('.marquee-track').forEach(function (track) {
-    var original = track.innerHTML;
+  (function () {
+    var market = 'pk';
+    try { market = localStorage.getItem('apricart-market') || 'pk'; } catch (e) {}
+    var ksa = document.querySelector('.client-set[data-market="ksa"]');
+    if (market === 'ksa' && !ksa.querySelector('.logo-chip')) market = 'pk';
+    document.querySelectorAll('.client-set').forEach(function (set) {
+      set.hidden = set.getAttribute('data-market') !== market;
+    });
+  })();
+
+  document.querySelectorAll('.client-set:not([hidden]) .marquee-track').forEach(function (track) {
     var count = track.children.length;
+    if (!count) return;
+    var original = track.innerHTML;
     while (track.scrollWidth < window.innerWidth + 200) { track.insertAdjacentHTML('beforeend', original); }
     track.insertAdjacentHTML('beforeend', track.innerHTML);
     Array.prototype.slice.call(track.children, count).forEach(function (el) { el.setAttribute('aria-hidden', 'true'); });
